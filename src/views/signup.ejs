@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/signup.css">
+    <link rel="stylesheet" href="/js/signup.js">
+    <title>Login</title>
+</head>
+
+    <body>
+
+        <header class="fixed-header">
+            <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+            <nav class="menu-nav">
+                <ul class="menu-list">
+                    <li class="menu-item"><a href="/">Trang chủ</a></li>
+                    <li class="menu-item"><a href="#">Sản phẩm</a></li>
+                    <li class="menu-item"><a href="#">Liên hệ</a></li>
+                </ul>
+
+            </nav>
+            <nav class="btn-nav">
+                <a class ="btn-login " href="/dangnhap">Đăng Nhập</a>
+                <a class ="btn-signup" href="/dangky">Đăng Ký</a>
+            </nav>
+            
+        </header>
+    
+        <div class="content">
+            <div class="container">
+                
+                
+                <h2>Đăng ký</h2>
+                <form action="/dangky-taikhoan" class="signup-form" method="post">
+                    
+                    
+                    <label>Tài khoản</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào tên tài khoản" value="<%= oldData?.username || '' %>" name="username">
+                    </div>
+        
+                    <label>Mật khẩu</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="password" id="password">
+                        <span class="togglePassword">👁</span>
+                    </div>
+
+                    <label>Nhập lại mật khẩu</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="repassword" id="password">
+                        <span class="togglePassword">👁</span>
+                    </div>
+
+                    <label>Họ và tên</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" id="Fullname" placeholder="Họ và tên" value="<%= oldData.myname || '' %>" name="myname">
+                        
+                    </div>
+
+                    <label>Email</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" id="email" placeholder="Nhập vào email" value="<%= oldData.email || '' %>" name="email">
+                        
+                    </div>
+        
+                    <label>Số điện thoại</label>
+                    <div class="inputForm">
+                        <input type="number" class="input" id="Phone" placeholder="Số điện thoại" value="<%= oldData.phone || '' %>" name="phone">
+                    </div>
+
+                    <label>Địa chỉ</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" id="Address" placeholder="Nhập vào địa chỉ" value="<%= oldData.address || '' %>" name="address">
+                    </div>
+                    <% if (message) { %>
+                        <p style="color: red;"><%= message %></p>
+                    <% } %>
+                    <button class="button-submitt">Đăng ký</button> 
+        
+                    <p>Bạn đã có tài khoản? <a href="/dangnhap">Đăng nhập</a></p>
+                </form>
+            </div>
+        </div>
+
+       
+        
+    
+    </body>
+    <script src="/js/signup.js"></script>
+</html>
