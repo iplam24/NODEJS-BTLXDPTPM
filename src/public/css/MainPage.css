@@ -409,15 +409,22 @@ ul li a:hover {
     display: flex;
     flex-direction: column; /* Sắp xếp nội dung theo chiều dọc */
     justify-content: flex-start; /* Chữ ở trên cùng */
-    align-items: center; /* Căn giữa nội dung */
-    text-align: center;
+    
     height: 100%; /* Đảm bảo chiều cao bằng QC1 + QC2 */
 }
 
-.text-qc3 {
-    font-size: 18px;
+.text-qc3-1{
     font-weight: bold;
-    margin-bottom: 10px; /* Tạo khoảng cách giữa chữ và ảnh */
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.text-qc3-2{
+    font-weight: bold;
+    margin-bottom: 10px;
+    
+    font-size: 18px;
 }
 
 .img-qc3 {
