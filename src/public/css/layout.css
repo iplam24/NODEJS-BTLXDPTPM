@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-
+/* Header cố định */
 .fixed-header {
     position: fixed; 
     top: 0;
@@ -18,18 +18,8 @@
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
-    height: 60px; 
+    height: 60px;
 }
-
-
-
-.content {
-    margin-top: 60px; 
-    padding: 20px;
-}
-
-
-
 
 /* Logo */
 .logo {
@@ -38,19 +28,16 @@
 }
 
 .logo img {
-    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
-    width: auto; /* Giữ nguyên tỷ lệ ảnh */
-    max-height: 50px; /* Giới hạn chiều cao tối đa */
-    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
-    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
+    height: 80%;
+    width: auto;
+    max-height: 50px;
+    object-fit: contain;
+    padding: 5px 0;
 }
-
-
-
 
 /* Menu điều hướng */
 .menu-nav {
-    flex: 1; /* Chiếm phần còn lại của header */
+    flex: 1;
     padding-left: 50px;
 }
 
@@ -63,6 +50,7 @@
 
 .menu-item {
     margin-right: 50px;
+    font-family: Arial, sans-serif;
 }
 
 .menu-item a {
@@ -72,11 +60,12 @@
     transition: color 0.3s;
 }
 
-/* Nút đăng nhập và đăng ký */
+/* Nút đăng nhập & đăng ký cho desktop */
 .btn-nav {
     display: flex;
     gap: 15px;
     padding-right: 20px;
+    align-items: center;
 }
 
 .btn-login, .btn-signup {
@@ -85,13 +74,76 @@
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: all 0.3s;
     white-space: nowrap;
+    text-align: center;
+    display: inline-block;
 }
 
 .btn-login:hover, .btn-signup:hover {
+    background-color: rgba(0, 0, 0, 0.1);
     opacity: 0.8;
 }
+
+/* Nút Menu Toggle cho Mobile */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Ẩn icon đăng nhập mặc định trên desktop */
+.mobile-login {
+    display: none;
+    text-decoration: none;
+    color: black;
+}
+
+/* Mobile Responsive */
+@media screen and (max-width: 768px) {
+    .menu-nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-list {
+        flex-direction: column;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .menu-item {
+        margin: 10px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-nav.active {
+        display: block;
+    }
+
+    /* Ẩn nút đăng nhập & đăng ký trên mobile */
+    .btn-nav {
+        display: none;
+    }
+
+    /* Hiển thị icon đăng nhập trên mobile */
+    .mobile-login {
+        display: block;
+        font-size: 30px;
+        text-decoration: none;
+        color: black;
+    }
+}
+
 
 /*----------------------- footer */
 html, body {
