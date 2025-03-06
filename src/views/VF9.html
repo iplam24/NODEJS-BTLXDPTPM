@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/public/css/css_test.css">
+    <link rel="stylesheet" href="/src/public/css/VF99.css">
+    <link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+        
+	/>
+        <script src="/src/public/js/VF9.js"></script>
+
+        <!-- Thư viện jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <!-- Thư viện AOS (Animate On Scroll) -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+        <!-- Thư viện Swiper.js (Slider) -->
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+        <!-- Thư viện GSAP (Hiệu ứng cuộn trang) -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+
+    <title>Login</title>
+</head>
+
+    <body>
+        <!--header-->
+        <header class="fixed-header">
+            <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+            <nav class="menu-nav">
+                <ul class="menu-list">
+                    <li  class="menu-item"><a href="#" style="color: white;">Trang chủ</a></li>
+                    <li class="menu-item"><a href="#" style="color: white;">Sản phẩm</a></li>
+                    <li class="menu-item"><a href="#" style="color: white;">Liên hệ</a></li>
+                </ul>
+
+            </nav>
+            <nav class="btn-nav">
+                <a class ="btn-login " style="color: white; font-family: Arial, Helvetica, sans-serif;">Đăng Nhập</a>
+                <a class ="btn-signup" style="color: white; font-family: Arial, Helvetica, sans-serif;">Đăng Ký</a>
+            </nav>
+            
+        </header>
+    
+         <!-- Thân trang -->
+    <div class="video-container">
+        <video id="adVideo" autoplay loop muted playsinline>
+            <source src="/src/public/video/VF9 Video.mov" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ video.
+        </video>
+    </div>
+
+    <br>
+    <br>
+
+    <br>
+    <br>
+
+
+
+    <!-----------Banner---------->
+
+    <div class="home-page-vf9"></div>
+        
+        <section id="section-hero" class="section-hero invert-color">
+            <div class="hero-img dim" id="tl1-hero-img">
+                <picture>
+                    <source srcset="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw058b87b8/images/PDP/vf9/202406/hero-mb.webp" media="(max-width: 768px)">
+                    <source srcset="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw357c1d3e/images/PDP/vf9/202406/hero.webp" media="(min-width: 769px)">
+                    <img src="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw357c1d3e/images/PDP/vf9/202406/hero.webp" alt="" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                </picture>
+            </div>
+            <div class="tag-line">
+                <div class="container-main">
+                    <div class="content">
+                        <div class="logo-vf9 op-0" id="tl1-logo" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 0.2;">
+                            <img src="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw3377c850/images/PDP/vf9/202406/logo-vf9-tag-line.svg" alt="VF 9 Lựa chọn tận hưởng đẳng cấp">
+                        </div>
+                        <p class="heading op-0" id="tl1-heading" style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); opacity: 1;">
+                            <span>Lựa chọn tận hưởng</span><br>
+                            <strong>Đẳng cấp</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="vehicle-specs op-0" id="tl1-specs" style="opacity: 1; position: absolute;">
+                <div class="statics statics-pc">
+                    <div class="item">
+                        <p>
+                            <span>Quãng đường di chuyển/lần sạc đầy</span><br>
+                            <strong>626<small> km</small></strong>
+                        </p>
+                    </div>
+                    <div class="line">
+                        <img src="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw9f1666ff/images/PDP/vf9/202406/separate-line.webp" alt="">
+                    </div>
+                    <div class="item">
+                        <p>
+                            <span>Vận hành mạnh mẽ</span><br>
+                            <strong>408<small> hp/</small>620<small> Nm</small></strong>
+                        </p>
+                    </div>
+                    <div class="line">
+                        <img src="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dw9f1666ff/images/PDP/vf9/202406/separate-line.webp" alt="">
+                    </div>
+                    <div class="item">
+                        <p>
+                            <span>Bảo hành xe 200.000 km hoặc</span><br>
+                            <strong>10<small> năm</small></strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="statics statics-sp">
+                    <div class="swiper vf-swiper-collection swiper-fade swiper-initialized swiper-horizontal swiper-autoheight swiper-watch-progress swiper-backface-hidden">
+                        <div class="swiper-wrapper" id="swiper-wrapper-610b28354c15090cf" aria-live="off" style="transition-duration: 0ms; height: 67px;">
+                            
+                            
+                            
+                        <div class="swiper-slide swiper-slide-next" data-swiper-slide-index="0" role="group" aria-label="1 / 3" style="transition-duration: 0ms; width: 468px; opacity: 0; transform: translate3d(0px, 0px, 0px);">
+                                <div class="item">
+                                    <p>
+                                        <span>Quãng đường di chuyển/lần sạc đầyyyyy</span><br>
+                                        <strong>626<small> km</small></strong>
+                                    </p>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="2 / 3" style="transition-duration: 0ms; width: 468px; opacity: 0; transform: translate3d(-468px, 0px, 0px);">
+                                <div class="item">
+                                    <p>
+                                        <span>Vận hành mạnh mẽ</span><br>
+                                        <strong>408<small> hp/</small>620 Nm<small></small></strong>
+                                    </p>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-visible swiper-slide-active" data-swiper-slide-index="2" role="group" aria-label="3 / 3" style="transition-duration: 0ms; width: 468px; opacity: 1; transform: translate3d(-936px, 0px, 0px);">
+                                <div class="item">
+                                    <p>
+                                        <span>Bảo hành xe 200.000 km hoặc</span><br>
+                                        <strong>10<small> năm</small></strong>
+                                    </p>
+                                </div>
+                            </div></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
+                <p class="disclaimer" style="color: white;">
+                    Lưu ý: Các thông tin sản phẩm có thể thay đổi mà không cần báo trước<br>
+                    (*) Tiêu chuẩn WLTP, phiên bản Eco pin CATL
+                </p>
+            </div>
+        </section>
+
+        
+
+    </div>
+
+
+    <!-- Nội dung khác -->
+    <div class="content">
+        <div class="VF9-icon-container">
+            <div class="VF9-icon"> 
+                <img src="/src/public/image/VF9-removebg-preview.png" alt="">
+                <div class="inforrr">
+                    <div class="iconnn"><img src="/src/public/image/vf9.svg" alt="VF9"></div>
+                    <div class="nameee" style="font-size: 20px;">VF9 ECO(7 chỗ)</div>
+                </div>
+            </div>
+            <div class="VF9-icon">
+                <img src="/src/public/image/VF9-removebg-preview.png" alt="">
+                <div class="inforrr">
+                    <div class="iconnn"><img src="/src/public/image/vf9.svg" alt="VF9"></div>
+                    <div class="nameee" style="font-size: 20px;">VF9 Plus(tuỳ chọn 7 chỗ)</div>
+                </div>
+            </div>
+            <div class="VF9-icon">
+                <img src="/src/public/image/VF9-removebg-preview.png" alt="">
+                <div class="inforrr">
+                    <div class="iconnn"><img src="/src/public/image/vf9.svg" alt="VF9"></div>
+                    <div class="nameee" style="font-size: 20px;">VF9 Plus(ghế cơ trưởng)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="vf9-container">
+            <!-- Khu vực thông tin -->
+            <div class="vf9-in4-2">
+                <!-- Ô vuông hiển thị thông tin -->
+                <!--<div class="car-info-box">
+                    VF9 Eco <br> 1.499.000.000 VNĐ
+                </div>  -->
+                <h2>Thông số kỹ thuật</h2>
+                <ul>
+                    <li><b>Động cơ:</b> Điện</li>
+                    <li><b>Công suất cực đại:</b> 402 HP</li>
+                    <li><b>Mô men xoắn cực đại:</b> 620 Nm</li>
+                    <li><b>Dẫn động:</b> AWD</li>
+                    <li><b>Kích thước (DxRxC):</b> 5.118 x 2.254 x 1.696mm</li>
+                    <li><b>Trọng lượng (không tải):</b> 2.719 Kg</li>
+                    <li><b>Thời gian sạc nhanh 20%-80%:</b> ~30 phút</li>
+                    <li><b>Dung lượng pin (kWh):</b> 123 Kwh</li>
+                    <li><b>Thời gian tăng tốc từ 0-100Km/h:</b> ~6,5 giây</li>
+                </ul>
+            </div>
+        
+            <!-- Khu vực hiển thị xe -->
+            <div class="car-displayy">
+                <img id="carImagee" class="car-image" src="/src/public/image/VF9-img-red.png" alt="Xe">
+                <div class="color-buttonss">
+                    <button class="color-btnn" style="background: red;" onclick="changeCarColor('red')"></button>
+                    <button class="color-btnn" style="background: blue;" onclick="changeCarColor('blue')"></button>
+                    <button class="color-btnn" style="background: black;" onclick="changeCarColor('black')"></button>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        
+    </div>
+    
+
+        <!---------footer------------->
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-left">
+                        <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+                        <p>Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast</p>
+                        <p><strong>MST/MSDN:</strong> 0108926276 do Sở KHĐT TP Hà Nội cấp lần đầu ngày 01/10/2019 và các lần thay đổi tiếp theo.</p>
+                        <p><strong>Địa chỉ trụ sở chính:</strong> Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+                    </div>
+                    
+                    <div class="footer-middle">
+                        <h4>Hệ sinh thái</h4>
+                        <ul>
+                            <li><a href="#">Vinhomes</a></li>
+                            <li><a href="#">Vinpearl</a></li>
+                        </ul>
+                    </div>
+            
+                    <div class="footer-right">
+                        <h4>DỊCH VỤ KHÁCH HÀNG</h4>
+                        <p>📞 1900 23 23 89</p>
+                        <p>📧 <a href="mailto:support.vn@vinfastauto.com">support.vn@vinfastauto.com</a></p>
+                        
+                        <h4>SPEAK-UP HOTLINE</h4>
+                        <p>📞 +84 24 4458 2193</p>
+                        <p>📧 <a href="mailto:v.speakup@vinfast.vn">v.speakup@vinfast.vn</a></p>
+            
+                        <h4>Kết nối với VinFast</h4>
+                        <div class="social-icons">
+                            <a href="#">
+                                <i src="facebook-icon.png" alt="Facebook" class="fa-brands fa-facebook"></i>
+                            </a>
+                            <a href="#">
+                                <i src="youtube-icon.png" alt="YouTube" class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="footer-bottom">
+                    <p>© Copyright 2025 | VinFast. All rights reserved.</p>
+         
+                </div>
+            </footer>
+        </div>
+        
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    let video = document.getElementById("adVideo");
+    video.addEventListener("loadedmetadata", function() {
+        console.log("Video đã tải xong và bắt đầu phát.");
+            });
+        });
+
+        function changeCarColor(color) {
+            let carImage = document.getElementById("carImagee");
+
+            // Cập nhật đường dẫn ảnh theo màu
+            switch (color) {
+                case "red":
+                    carImage.src = "/src/public/image/VF9-img-red.png";
+                    break;
+                case "blue":
+                    carImage.src = "/src/public/image/VF9-Img.png";
+                    break;
+                case "black":
+                    carImage.src = "/src/public/image/VF9-img-black.png";
+                    break;
+                default:
+                    carImage.src = "/src/public/image/VF9-Img.png";
+            }
+        }
+
+
+
+    </script>
+
+    </body>
+    <script src="/src/public/js/VF9.js"></script>
+    <script src="/src/public/js/VF9-version.js"></script>
+</html>
