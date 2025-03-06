@@ -67,3 +67,13 @@ $(document).ready(() => {
     // 📌 Khởi tạo AOS (Animation On Scroll)
     AOS.init({ once: true });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const versions = document.querySelectorAll(".VF9-icon");
+
+    versions.forEach((version) => {
+        version.addEventListener("click", function () {
+            versions.forEach((v) => v.classList.remove("active")); // Xóa active khỏi tất cả
+            this.classList.add("active"); // Thêm active vào mục được chọn
+        });
+    });
+});

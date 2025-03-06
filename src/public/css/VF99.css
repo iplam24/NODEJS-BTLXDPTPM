@@ -293,25 +293,66 @@ ul li a:hover {
 
 .VF9-icon-container {
     display: flex;
-    flex-direction: row; /* Sắp xếp theo chiều ngang */
-    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    flex-direction: row;
+    width: 100%;
 }
 
 .VF9-icon {
-    width: 33.33%; /* Chia đều 3 phần, không có khoảng trống */
-    height: 150px; /* Giới hạn chiều cao */
+    width: 33.33%;
+    height: 150px;
     display: flex;
-    justify-content: center; /* Căn giữa nội dung */
+    justify-content: center;
     align-items: center;
-    overflow: hidden; /* Ẩn nội dung vượt quá */
-    border-top: 2px solid black;  /* Viền trên */
-    border-bottom: 2px solid black; /* Viền dưới */
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 }
 
+/* Đảm bảo ảnh không bị phóng to bất thường */
 .VF9-icon img {
-    max-width: 100%; /* Đảm bảo ảnh không vượt quá div */
+    max-width: 100%;
     max-height: 100%;
     height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Viền ban đầu ẩn */
+.VF9-icon::before,
+.VF9-icon::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    left: 50%;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.VF9-icon::before {
+    top: 0;
+}
+
+.VF9-icon::after {
+    bottom: 0;
+}
+
+/* Khi hover, viền mở rộng từ giữa ra hai bên */
+.VF9-icon:hover::before,
+.VF9-icon:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Khi click, viền hiển thị luôn */
+.VF9-icon.active::before,
+.VF9-icon.active::after {
+    width: 100%;
+    left: 0;
+}
+
+/* Hiệu ứng nhỏ khi hover vào ảnh */
+.VF9-icon:hover img {
+    transform: scale(1.05);
 }
 
 /* Hiệu ứng fade-out và fade-in */
@@ -329,12 +370,6 @@ ul li a:hover {
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Hiệu ứng khi chọn phiên bản */
-.VF9-icon.active {
-    border: 2px solid red;
-    background-color: rgba(255, 0, 0, 0.1);
-    transition: all 0.3s ease;
-}
 
 
 /* Tổng thể */

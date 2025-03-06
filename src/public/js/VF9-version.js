@@ -7,41 +7,51 @@ document.addEventListener("DOMContentLoaded", function () {
         "VF9 ECO(7 chỗ)": {
             title: "VF9 ECO",
             specs: [
-                "Động cơ: 2.0 Turbo",
-                "Công suất cực đại: 227 HP",
-                "Mô men xoắn cực đại: 380 Nm",
-                "Hộp số: 9AT",
-                "Cỡ lốp: 245/40R19",
-                "Kích thước (DxRxC): 4.884 x 1.889 x 1.447 mm",
-                "Trọng lượng (không tải): 1.650 Kg",
+                "Động cơ: Điện",
+                "Công suất cực đại: 402 HP",
+                "Mô men xoắn cực đại: 620 Nm",
+                "Dẫn động: AWD",
+                "Kích thước (DxRxC): 5.118 x 2.254 x 1.696mm",
+                "Trọng lượng (không tải): 2.719 Kg",
+                "Quãng đường di chuyển/lần sạc đầy: 423Km - 580Km",
+                "Thời gian sạc nhanh 20%-80%: ~30 phút",
+                "Dung lượng pin (kWh): 92 hoặc 123",
+                "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
-            image: "/src/public/image/VF9-Img.png"
+            image: "/src/public/image/VF9-img-red.png"
         },
         "VF9 Plus(tuỳ chọn 7 chỗ)": {
             title: "VF9 Plus (7 chỗ)",
             specs: [
-                "Động cơ: 2.5 Turbo",
-                "Công suất cực đại: 300 HP",
-                "Mô men xoắn cực đại: 420 Nm",
-                "Hộp số: 10AT",
-                "Cỡ lốp: 255/45R20",
-                "Kích thước (DxRxC): 5.100 x 2.000 x 1.500 mm",
-                "Trọng lượng (không tải): 1.750 Kg",
+                "Động cơ: Điện",
+                "Công suất cực đại: 408 HP",
+                "Mô men xoắn cực đại: 620 Nm",
+                "Dẫn động: AWD",
+                "Kích thước (DxRxC): 5.118 x 2.254 x 1.696mm",
+                "Trọng lượng (không tải): 2.799 Kg",
+                "Quãng đường di chuyển/lần sạc đầy: 423Km - 580Km",
+                "Thời gian sạc nhanh 20%-80%: ~30 phút",
+                "Dung lượng pin (kWh): 92 hoặc 123",
+                "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
             image: "/src/public/image/VF9-img-black.png"
         },
         "VF9 Plus(ghế cơ trưởng)": {
             title: "VF9 Plus (ghế cơ trưởng)",
             specs: [
-                "Động cơ: 3.0 Turbo",
-                "Công suất cực đại: 350 HP",
-                "Mô men xoắn cực đại: 500 Nm",
-                "Hộp số: 10AT",
-                "Cỡ lốp: 265/45R21",
-                "Kích thước (DxRxC): 5.300 x 2.050 x 1.550 mm",
-                "Trọng lượng (không tải): 1.850 Kg",
+                "Động cơ: Điện",
+                "Công suất cực đại: 408 HP",
+                "Mô men xoắn cực đại: 620 Nm",
+                "Dẫn động: AWD",
+                "Kích thước (DxRxC): 5.118 x 2.254 x 1.696mm",
+                "Trọng lượng (không tải): 2.799 Kg",
+                "Quãng đường di chuyển/lần sạc đầy: 626 Km",
+                "Thời gian sạc nhanh 20%-80%: ~30 phút",
+                "Dung lượng pin (kWh): 123 Kwh",
+                "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
             image: "/src/public/image/VF9-Img.png"
+            
         }
     };
 
