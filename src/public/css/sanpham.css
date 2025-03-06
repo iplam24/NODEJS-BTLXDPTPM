@@ -1,0 +1,359 @@
+/* Reset chung */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.fixed-header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    height: 60px; 
+}
+
+
+
+.content {
+    margin-top: 60px; 
+    padding: 20px;
+}
+
+
+
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center; 
+}
+
+.logo img {
+    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
+    width: auto; /* Giữ nguyên tỷ lệ ảnh */
+    max-height: 50px; /* Giới hạn chiều cao tối đa */
+    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
+    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
+}
+
+
+
+
+/* Menu điều hướng */
+.menu-nav {
+    flex: 1; /* Chiếm phần còn lại của header */
+    padding-left: 50px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    margin-right: 50px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+/* Nút đăng nhập và đăng ký */
+.btn-nav {
+    display: flex;
+    gap: 15px;
+    padding-right: 20px;
+}
+
+.btn-login, .btn-signup {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.btn-login:hover, .btn-signup:hover {
+    opacity: 0.8;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+}
+
+footer {
+    background: #f8f8f8;
+    padding: 20px 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer-left .logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.footer-bottom img {
+    width: 120px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center; /* Căn giữa logo theo chiều dọc */
+}
+
+.logo img {
+    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
+    width: auto; /* Giữ nguyên tỷ lệ ảnh */
+    max-height: 50px; /* Giới hạn chiều cao tối đa */
+    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
+    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
+}
+
+/* san pham*/
+body {
+    background-color: #F7F8F8;
+    min-height: 100vh;
+}
+
+/* main */
+.main-content > div {
+    width: 70%;
+}
+.main-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.uk-navbar-nav {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Catamaran", sans-serif;
+    gap: 15px;
+    margin: 0 auto 35px;
+    padding: 0;
+}
+.uk-navbar-nav > li {
+    padding: 0;
+    min-width: 140px;
+    text-align: center;
+}
+.uk-navbar-nav >li >a {
+    text-decoration: none;
+    padding: 15px 20px;
+    display: block;
+    background-color: #fff;
+    color: #222;
+    font-size: 15px;
+    min-height: auto;
+    font-weight: 600;
+    box-shadow: 0 0 25px #cccccc42;
+    border-radius: 7px;
+    transition: 0.5s all ease-in-out;
+    white-space: nowrap;
+}
+.uk-navbar-nav>li>a:hover, .uk-navbar-nav>li.uk-active>a {
+    background-color: #7B68EE;
+    color: #fff;
+}
+.img-gallery-container > li {
+    position: relative;
+    padding: 10px;
+    margin-top: 5px !important;
+}
+.img-gal {
+    height: 415px;
+    width: 100%;
+    object-fit: contain;
+    transition: 0.5s all ease-in-out;
+    border-radius: 6px;
+    background-color: #f0f0f0;
+}
+.img-gallery-container > li:hover > img {
+    filter: brightness(0.4) blur(3px);
+}
+.float-gallery-content {
+    position: absolute;
+    width: 90%;
+    z-index: -1;
+    background: #fff;
+    padding: 0;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s all ease-in-out;
+    overflow: hidden;
+}
+.img-gallery-container > li:hover .float-gallery-content {
+    bottom: 20px;
+    opacity: 1;
+    visibility: visible;
+    z-index: 9;
+}
+.uk-block {
+    display: block;
+}
+.float-gallery-content .content {
+    padding: 8px 15px;
+}
+.float-gallery-content .content > a {
+    color: #212121;
+    position: relative;
+    bottom: -50px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.float-gallery-content .content > a:hover {
+    color: #7B68EE;
+}
+button {
+    border: 0;
+    height: 100%;
+    padding: 5px 15px;
+    background: #7B68EE;
+    font-size: 30px;
+    color: #fff;
+    position: relative;
+    right: -100px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.highlight {
+    color:#7B68EE;
+    font-weight: 600;
+    position: relative;
+    left: -100px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+.img-gallery-container > li:hover .highlight {
+    left: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover button {
+    right: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+.img-gallery-container > li:hover .content > a {
+    bottom: 0;
+    opacity: 1;
+    transition-delay: 0.1s;
+}
+@media screen and (max-width: 1100px) {
+    .img-gal {
+        height: 300px;
+   }
+}
+@media screen and (max-width: 650px) {
+    .img-gal {
+        height: 225px;
+   }
+}
+@media screen and (max-width: 480px) {
+    .img-gal {
+        height: 125px;
+   }
+}
+
+/* footer */
