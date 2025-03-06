@@ -619,11 +619,12 @@ header .btn.btn-primary:disabled,section .btn.btn-primary:disabled {
 
 .section-hero .vehicle-specs .statics .item {
     color: white;
-    width: 100%;
-    white-space: nowrap; /* Ngăn xuống dòng */
-    overflow: hidden; /* Ngăn tràn */
-    text-overflow: ellipsis; /* Thêm dấu "..." nếu quá dài */
+    width: auto; /* Để phần tử có thể mở rộng theo nội dung */
+    white-space: nowrap;
+    overflow: visible; /* Hiển thị đầy đủ nội dung */
+    text-overflow: unset;
 }
+
 
 .section-hero .vehicle-specs .statics .item p {
     font-size: 16px;
