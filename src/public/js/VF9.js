@@ -77,3 +77,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+function showImages(type, element) {
+    document.getElementById('noithat').style.display = type === 'noithat' ? 'grid' : 'none';
+    document.getElementById('ngoaithat').style.display = type === 'ngoaithat' ? 'grid' : 'none';
+    
+    document.querySelectorAll('.btnn').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
+}

@@ -426,7 +426,7 @@ ul li a:hover {
 
 /* Ảnh xe lớn hơn */
 .car-image {
-    width: 750px;
+    width: 1500px;
     height: auto;
     transition: opacity 0.3s ease-in-out;
 }
@@ -449,3 +449,117 @@ ul li a:hover {
 .color-btnn:hover {
     transform: scale(1.1);
 }
+
+
+
+/*-------------------------*/
+.Buy-car {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Khoảng cách giữa các nút */
+    margin-top: 30px; /* Khoảng cách giữa div .Buy-car với phần trên */
+}
+
+.btn-buy {
+    position: relative;
+    z-index: 1; /* Chữ nằm trên cùng */
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+}
+
+/* Nền đen xuất hiện từ trái */
+.btn-buy::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: left 0.4s ease-in-out;
+    z-index: -1; /* Đặt nền ở dưới chữ */
+}
+
+/* Khi hover, nền đen tràn vào */
+.btn-buy:hover::before {
+    left: 0;
+}
+
+/* Đảm bảo chữ chuyển thành trắng khi nền đen xuất hiện */
+.btn-buy:hover {
+    color: white;
+}
+
+
+.image-switcher-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.btnn-container {
+    margin-bottom: 20px;
+}
+
+.btnn {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #ccc;
+    color: black;
+    margin: 0 10px;
+    transition: 0.3s;
+}
+
+.btnn.active {
+    background-color: black;
+    color: white;
+}
+
+.image-grid-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+    padding-bottom: 10px;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    width: max-content;
+    margin: auto;
+    overflow: visible; /* Cho phép hiển thị phần ảnh vượt ra ngoài */
+    padding: 20px 0;  /* Thêm khoảng cách trên dưới */
+}
+
+
+.image-itemn {
+    width: 390px;
+    height: 280px;
+    object-fit: cover;
+    transition: transform 0.3s;
+    border-radius: 15px; /* Điều chỉnh độ cong của viền */
+    margin: 5px 0; /* Thêm khoảng cách trên dưới */
+ 
+}
+
+.image-itemn:hover {
+    transform: scale(1.1);
+    transform-origin: center;
+}
+/*--------------------*/
+.divider {
+    width: 80%;           /* Chiều rộng 80% của khung chứa */
+    margin: 20px auto;    /* Cách đều hai bên và khoảng cách trên dưới */
+    border-top: 1px solid #ccc;  /* Đường kẻ với màu xám nhạt */
+  }
+
+

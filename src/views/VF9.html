@@ -162,8 +162,43 @@
 
     </div>
 
+    <!----- Nội thất , NT----->
+    <div class="image-switcher-container">
+        <div class="btnn-container">
+            <button class="btnn active" onclick="showImages('noithat', this)">Nội thất</button>
+            <button class="btnn" onclick="showImages('ngoaithat', this)">Ngoại thất</button>
+        </div>
+        
+        <div class="image-grid-wrapper">
+            <div class="image-grid" id="noithat">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-8-798x466.jpg" alt="Nội thất 1" class="image-itemn">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-7-798x466.jpg" alt="Nội thất 2" class="image-itemn">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-1-798x466.jpg" alt="Nội thất 3" class="image-itemn">
+                <img src="https://storage.googleapis.com/vinfast-data-01/noi-that-vinfast-vf-9_1653891117.png" alt="Nội thất 4" class="image-itemn">
+                <img src="https://img1.oto.com.vn/2022/07/12/OpzfnMD2/vf9-3-1ba6.png" alt="Nội thất 5" class="image-itemn">
+                <img src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/interior-4.webp" alt="Nội thất 6" class="image-itemn">
+                <img src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/interior-ambient.webp" alt="Nội thất 7" class="image-itemn">
+                <img src="https://thegioiphuongtien.vn/uploaded/files/7408548abf70360b77ba9a48c1eed2bd.jpg" alt="Nội thất 8" class="image-itemn">
+            </div>
+            
+            <div class="image-grid" id="ngoaithat" style="display: none;">
+                <img src="ngoaithat1.jpg" alt="Ngoại thất 1" class="image-itemn">
+                <img src="ngoaithat2.jpg" alt="Ngoại thất 2" class="image-itemn">
+                <img src="ngoaithat3.jpg" alt="Ngoại thất 3" class="image-itemn">
+                <img src="ngoaithat4.jpg" alt="Ngoại thất 4" class="image-itemn">
+                <img src="ngoaithat5.jpg" alt="Ngoại thất 5" class="image-itemn">
+                <img src="ngoaithat6.jpg" alt="Ngoại thất 6" class="image-itemn">
+                <img src="ngoaithat7.jpg" alt="Ngoại thất 7" class="image-itemn">
+                <img src="ngoaithat8.jpg" alt="Ngoại thất 8" class="image-itemn">
+            </div>
+        </div>
+    </div>
 
-    <!-- Nội dung khác -->
+    <div class="divider"></div>
+
+
+
+    <!-- Mua xe -->
     <div class="content">
         <div class="VF9-icon-container">
             <div class="VF9-icon"> 
@@ -189,14 +224,12 @@
             </div>
         </div>
 
+
         <div class="vf9-container">
             <!-- Khu vực thông tin -->
             <div class="vf9-in4-2">
-                <!-- Ô vuông hiển thị thông tin -->
-                <!--<div class="car-info-box">
-                    VF9 Eco <br> 1.499.000.000 VNĐ
-                </div>  -->
-                <h2>Thông số kỹ thuật</h2>
+                 
+                <h2>VF9 ECO</h2>
                 <ul>
                     <li><b>Động cơ:</b> Điện</li>
                     <li><b>Công suất cực đại:</b> 402 HP</li>
@@ -212,13 +245,22 @@
         
             <!-- Khu vực hiển thị xe -->
             <div class="car-displayy">
-                <img id="carImagee" class="car-image" src="/src/public/image/VF9-img-red.png" alt="Xe">
+                <img id="carImagee" class="car-image" src="/src/public/image/VF9-red.png" alt="Xe">
                 <div class="color-buttonss">
-                    <button class="color-btnn" style="background: red;" onclick="changeCarColor('red')"></button>
-                    <button class="color-btnn" style="background: blue;" onclick="changeCarColor('blue')"></button>
-                    <button class="color-btnn" style="background: black;" onclick="changeCarColor('black')"></button>
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/red.webp" onclick="changeCarColor('red')">
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/gray.webp" onclick="changeCarColor('gray')">
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/blue.webp" onclick="changeCarColor('blue')">
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/white.webp" onclick="changeCarColor('white')">
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/black.webp" onclick="changeCarColor('black')">
+                    <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/silver.webp" onclick="changeCarColor('silver')">
+                </div>
+                <div class="Buy-car">
+                    <button class="btn-buy">Thêm vào giỏ hàng</button>
+                    <button class="btn-buy">Đặt xe</button>
+                    <button class="btn-buy">Tải brochure</button>
                 </div>
             </div>
+
         </div>
         
         
@@ -287,16 +329,25 @@
             // Cập nhật đường dẫn ảnh theo màu
             switch (color) {
                 case "red":
-                    carImage.src = "/src/public/image/VF9-img-red.png";
+                    carImage.src = "/src/public/image/VF9-red.png";
                     break;
-                case "blue":
-                    carImage.src = "/src/public/image/VF9-Img.png";
+                case "gray":
+                    carImage.src = "/src/public/image/VF9-gray.png";
                     break;
                 case "black":
-                    carImage.src = "/src/public/image/VF9-img-black.png";
+                    carImage.src = "/src/public/image/VF9-Blue.png";
+                    break;
+                case "white":
+                    carImage.src = "/src/public/image/VF9-white.png";
+                    break;
+                case "black":
+                    carImage.src = "/src/public/image/VF9-black.png";
+                    break;
+                case "silver":
+                    carImage.src = "/src/public/image/VF9-silver.png";
                     break;
                 default:
-                    carImage.src = "/src/public/image/VF9-Img.png";
+                    carImage.src = "/src/public/image/VF9-red.png";
             }
         }
 
