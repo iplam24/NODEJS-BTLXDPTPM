@@ -128,5 +128,4 @@ const logInserver=async(req,res)=>{
         }
     }
     }
-
     module.exports={logInserver,postCreateNewUser}
