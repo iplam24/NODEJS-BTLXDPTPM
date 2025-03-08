@@ -1,15 +1,12 @@
 const express = require('express');
+const {getAdmin,getAccount} =require('../models/adminDAO');
 const router = express.Router();
 
 // Route trang dashboard admin
-router.get('/admin', (req, res) => {
-    res.render('admin/dashboard', { title: 'Admin Dashboard' });
-});
+router.get('/admin',getAdmin);
 
 // Route quản lý users
-router.get('/users', (req, res) => {
-    res.render('admin/users', { title: 'User Management' });
-});
+router.get('/admin/account',getAccount);
 
 // Route settings admin
 router.get('/settings', (req, res) => {
