@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/public/css/signup.css">
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+       <h2>Đăng ký</h2>
+            <form action="/dangky-taikhoan" class="signup-form" method="post">
+                
+                
+                <label>Tên tài khoản</label>
+                <div class="inputForm">
+                    <input type="text" class="input" placeholder="Nhập vào tên tài khoản"  name="username">
+                </div>
+    
+                <label>Mật khẩu</label>
+                <div class="inputForm">
+                    <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="password" id="password">
+                    <span class="togglePassword">👁</span>
+                </div>
+
+                <label>Nhập lại mật khẩu</label>
+                <div class="inputForm">
+                    <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="repassword" id="password">
+                    <span class="togglePassword">👁</span>
+                </div>
+
+                <label>Họ và tên</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="Fullname" placeholder="Họ và tên"  name="myname">
+                    
+                </div>
+
+                <label>Email</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="email" placeholder="Nhập vào email"  name="email">
+                    
+                </div>
+    
+                <label>Số điện thoại</label>
+                <div class="inputForm">
+                    <input type="number" class="input" id="Phone" placeholder="Số điện thoại" name="phone">
+                </div>
+
+                <label>Địa chỉ</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="Address" placeholder="Nhập vào địa chỉ"  name="address">
+                </div>
+
+                <label for="quyen">Chọn quyền:</label>
+                <select class="inputForm" id="quyen" name="quyen">
+                    <option value="khachhang">Khách hàng</option>
+                    <option value="nhanvien">Nhân viên</option>
+                </select>
+                
+               
+                <button class="button-submitt">Tạo tài khoản</button> 
+    
+            
+            </form>
+        </div>
+    </div>
+    <script src="/src/public/js/signup.js"></script>
+
+</body>
+</html>
