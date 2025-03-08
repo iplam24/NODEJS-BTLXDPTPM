@@ -245,7 +245,7 @@
         
             <!-- Khu vực hiển thị xe -->
             <div class="car-displayy">
-                <img id="carImagee" class="car-image" src="/src/public/image/VF9-red.png" alt="Xe">
+                <img id="carImagee" class="car-image" src="/src/public/image/VF9-img-red.png" alt="Xe">
                 <div class="color-buttonss">
                     <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/red.webp" onclick="changeCarColor('red')">
                     <img class="color-btnn" src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/color/gray.webp" onclick="changeCarColor('gray')">
@@ -257,7 +257,8 @@
                 <div class="Buy-car">
                     <button class="btn-buy">Thêm vào giỏ hàng</button>
                     <button class="btn-buy">Đặt xe</button>
-                    <button class="btn-buy">Tải brochure</button>
+                    <button class="btn-buy" onclick="downloadBrochure()">Tải brochure</button>
+
                 </div>
             </div>
 
@@ -350,6 +351,15 @@
                     carImage.src = "/src/public/image/VF9-red.png";
             }
         }
+
+        function downloadBrochure() {
+    const link = document.createElement("a");
+    link.href = "VF9_Brochure_VN.pdf"; // Đường dẫn đến file PDF
+    link.download = "VF9_Brochure_VN.pdf"; // Tên file tải về
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
 
 

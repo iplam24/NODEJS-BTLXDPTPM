@@ -136,7 +136,7 @@
                 </div>
                 <div class="button-car-container">
                         <a class="car-button-deposit" href="#">Đặt Cọc</a>
-                        <a class="car-button-details" href="/src/views/VF9.html">Xem Chi Tiết</a>
+                        <a class="car-button-details" >Xem Chi Tiết</a>
                     </div>
             </div>        
         </div>
@@ -292,6 +292,27 @@
             document.querySelector(".menu-toggle").addEventListener("click", function() {
             document.querySelector(".menu-nav").classList.toggle("active");
         });
+            const carDetailsLinks = [
+                "/src/views/VF3.html",
+                "/src/views/VF5.html",
+                "/src/views/VF6.html",
+                "/src/views/VF7.html",
+                "/src/views/VF8.html",
+                "/src/views/VF9.html"
+            ];
+
+            function updateCarDetailsLink(index) {
+                const detailsButton = document.querySelector(".car-button-details");
+                if (detailsButton) {
+                    detailsButton.href = carDetailsLinks[index];
+                }
+            }
+            function changeCar(index) {
+                updateCarDetailsLink(index);
+                
+            }
+                
+
 
             </script>
             

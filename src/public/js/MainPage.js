@@ -1,31 +1,94 @@
-   // Khởi tạo Swiper cho carousel ô tô
-   var carSwiper = new Swiper(".carSwiper", {
+// Khởi tạo Swiper cho carousel ô tô
+var carSwiper = new Swiper(".carSwiper", {
     loop: true,
     navigation: false,
-    pagination: false
+    pagination: false,
+    speed: 600, // Tốc độ mượt hơn
+    on: {
+        slideChange: function () {
+            let realIndex = carSwiper.realIndex; // Lấy index thực tế từ Swiper
+            changeCar(realIndex);
+            currentIndex = realIndex; // Cập nhật vị trí hiện tại
+        }
+    }
 });
+
+// Lưu vị trí hiện tại
+let currentIndex = 0;
 
 // Hàm chuyển slide theo icon được click
 function changeCarSlide(index) {
-    carSwiper.slideTo(index);
+    let totalSlides = carData.length;
+    let diff = index - currentIndex;
+
+    // Xác định hướng đi ngắn nhất
+    if (Math.abs(diff) > totalSlides / 2) {
+        diff = diff > 0 ? diff - totalSlides : diff + totalSlides;
+    }
+
+    // Tạo hiệu ứng chuyển slide từng bước
+    let step = diff > 0 ? 1 : -1;
+    let steps = Math.abs(diff);
+    let delay = 150; // Thời gian giữa mỗi bước
+
+    function animateSlide(stepCount) {
+        if (stepCount === 0) return; // Dừng khi hoàn thành
+
+        currentIndex += step;
+        if (currentIndex < 0) currentIndex = totalSlides - 1;
+        if (currentIndex >= totalSlides) currentIndex = 0;
+
+        carSwiper.slideTo(currentIndex);
+        setTimeout(() => animateSlide(stepCount - 1), delay);
+    }
+
+    animateSlide(steps);
 }
-//----------------------------Dữ liệu test, sau lấy từ DB------------------------------
+
+// Dữ liệu xe
 const carData = [
-{ type: "D-SUV", seats: "5 chỗ", range: "471 km", price: "970.000.000 VNĐ" },
-{ type: "Hatchback", seats: "4 chỗ", range: "400 km", price: "600.000.000 VNĐ" },
-{ type: "Sedan", seats: "5 chỗ", range: "450 km", price: "750.000.000 VNĐ" },
-{ type: "Crossover", seats: "5 chỗ", range: "500 km", price: "800.000.000 VNĐ" },
-{ type: "SUV", seats: "7 chỗ", range: "550 km", price: "1.200.000.000 VNĐ" },
-{ type: "Luxury SUV", seats: "7 chỗ", range: "600 km", price: "1.500.000.000 VNĐ" }
+    { type: "MiniCar", seats: "4 chỗ", range: "210 km", price: "299.000.000 VNĐ" },
+    { type: "A-SUV", seats: "5 chỗ", range: "326,4 km", price: "529.000.000 VNĐ" },
+    { type: "B-SUV", seats: "5 chỗ", range: "480 km", price: "689.000.000 VNĐ" },
+    { type: "C-SUV", seats: "5 chỗ", range: "431 km", price: "790.000.000 VNĐ" },
+    { type: "D-SUV", seats: "5 chỗ", range: "471 km", price: "1.019.000.000 VNĐ" },
+    { type: "E-SUV", seats: "6-7 chỗ", range: "626 km", price: "1.499.000.000 VNĐ" }
 ];
 
-//Hàm chuyển TT xe
-function changeCar(index) {
-document.getElementById("car-type").textContent = carData[index].type;
-document.getElementById("car-seats").textContent = carData[index].seats;
-document.getElementById("car-range").textContent = carData[index].range;
-document.getElementById("car-price").textContent = carData[index].price;
+// Khởi tạo Swiper
+var carSwiper = new Swiper(".carSwiper", {
+    loop: true,
+    speed: 600,
+    navigation: false,
+    pagination: false,
+    on: {
+        slideChange: function () {
+            let realIndex = carSwiper.realIndex;
+            updateCarInfo(realIndex);
+        }
+    }
+});
+
+// Hàm cập nhật thông tin xe
+function updateCarInfo(index) {
+    if (index >= 0 && index < carData.length) {
+        document.getElementById("car-type").textContent = carData[index].type;
+        document.getElementById("car-seats").textContent = carData[index].seats;
+        document.getElementById("car-range").textContent = carData[index].range;
+        document.getElementById("car-price").textContent = carData[index].price;
+    }
 }
+
+// Khi nhấn vào icon để đổi xe
+function changeCar(index) {
+    carSwiper.slideToLoop(index); // Chuyển slide tới xe tương ứng
+    updateCarInfo(index);
+}
+
+// Cập nhật thông tin xe ban đầu
+updateCarInfo(carSwiper.realIndex);
+
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {

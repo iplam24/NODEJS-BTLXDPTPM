@@ -1,56 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
-    <link rel="stylesheet" href="/src/public/css/admin.css">
-    <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
-      integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #222;
+      color: #fff;
+      transition: width 0.3s;
+      overflow: hidden;
+    }
+    .sidebar.collapsed {
+      width: 60px;
+    }
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background-color: #111;
+    }
+    .sidebar-header h2 {
+      font-size: 20px;
+      margin-left: 10px;
+      transition: opacity 0.3s;
+    }
+    .sidebar.collapsed .sidebar-header h2 {
+      opacity: 0;
+    }
+    .toggle-btn {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .toggle-btn:focus {
+      outline: none;
+    }
+    .sidebar ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+    .sidebar ul li {
+      padding: 15px;
+      transition: background-color 0.3s;
+    }
+    .sidebar ul li a {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .sidebar ul li a i {
+      width: 30px;
+      text-align: center;
+      font-size: 18px;
+    }
+    .sidebar ul li a span {
+      margin-left: 10px;
+      transition: opacity 0.3s;
+    }
+    .sidebar.collapsed ul li a span {
+      opacity: 0;
+    }
+    .sidebar ul li:hover {
+      background-color: #444;
+    }
+    /* Content */
+.content {
+    flex: 1;
+    padding: 20px;
+    transition: all 0.3s ease;
+    width: calc(100% - 250px); /* Khi sidebar chưa thu nhỏ */
+}
+
+.sidebar.collapsed ~ .content {
+    width: calc(100% - 60px); /* Khi sidebar thu nhỏ */
+}
+  </style>
 </head>
 <body>
-    
-    <!-- Sidebar -->
-<div class="sidebar">
-    <h2>Admin Panel</h2>
-    <ul>
-        <li><a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-        <li><a href="/src/views/admin/cars.html"><i class="fas fa-car"></i> Quản lý xe</a></li>
-        <li><a href="/src/views/admin/orders.html"><i class="fas fa-shopping-cart"></i> Quản lý đơn hàng</a></li>
-        <li><a href="/src/views/users.html"><i class="fas fa-users"></i> Quản lý nhân viên</a></li>
-        <li><a href="/src/views/users.html"><i class="fa-solid fa-user"></i> Quản lý khách hàng</a></li>
-        <li><a href="/src/views/users.html"><i class="fa-solid fa-house"></i> Quản lý kho hàng</a></li>
-        <li><a href="/src/views/users.html"><i class="fa-solid fa-credit-card"></i> Quản lý thanh toán và hóa đơn</a></li>
-        <li><a href="/src/views/users.html"><i class="fa-solid fa-square-poll-vertical"></i> Báo cáo và thống kê</a></li>
-        <li><a href="#"><i class="fas fa-cog"></i> Cài đặt</a></li>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a></li>
-    </ul>
-</div>
-
-<!-- Content -->
-<div class="main-content">
-    <h1>Dashboard</h1>
-    <div class="cards">
-        <div class="card">
-            <h3>100+</h3>
-            <p>Xe đang bán</p>
-        </div>
-        <div class="card">
-            <h3>250+</h3>
-            <p>Đơn hàng</p>
-        </div>
-        <div class="card">
-            <h3>1,200+</h3>
-            <p>Người dùng</p>
-        </div>
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <button class="toggle-btn" id="toggleBtn"><i class="fas fa-bars"></i></button>
+      <h2>Admin Panel</h2>
     </div>
-</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-tachometer-alt"></i><span> Dashboard</span></a></li>
+      <li><a href="/src/views/admin/cars.html"><i class="fas fa-car"></i><span> Quản lý xe</span></a></li>
+      <li><a href="/src/views/admin/orders.html"><i class="fas fa-shopping-cart"></i><span> Quản lý đơn hàng</span></a></li>
+      <li><a href="/src/views/users.html"><i class="fas fa-users"></i><span> Quản lý nhân viên</span></a></li>
+      <li><a href="/src/views/customers.html"><i class="fa-solid fa-user"></i><span> Quản lý khách hàng</span></a></li>
+      <li><a href="/src/views/warehouse.html"><i class="fa-solid fa-house"></i><span> Quản lý kho hàng</span></a></li>
+      <li><a href="/src/views/payments.html"><i class="fa-solid fa-credit-card"></i><span> Quản lý thanh toán</span></a></li>
+      <li><a href="/src/views/reports.html"><i class="fa-solid fa-square-poll-vertical"></i><span> Báo cáo</span></a></li>
+      <li><a href="#"><i class="fas fa-cog"></i><span> Cài đặt</span></a></li>
+      <li><a href="#"><i class="fas fa-sign-out-alt"></i><span> Đăng xuất</span></a></li>
+    </ul>
+  </div>
+  <div class="content" id="content">
+    <h1>Chào mừng đến với trang quản trị</h1>
+    <p>Nội dung quản trị sẽ hiển thị ở đây.</p>
+  </div>
+
+  <script>
+    // Nút mở/đóng sidebar
+    document.getElementById('toggleBtn').addEventListener('click', function() {
+      document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+
+    // Lắng nghe sự kiện click vào các liên kết trong menu
+    document.querySelectorAll('.sidebar ul li a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault(); // Ngăn không cho trình duyệt tải lại trang
+
+        let pageUrl = this.getAttribute('href'); // Lấy URL từ thẻ <a>
+
+        // Kiểm tra nếu không phải "#" thì mới tải nội dung
+        if (pageUrl !== "#") {
+          fetch(pageUrl)
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Lỗi khi tải trang');
+              }
+              return response.text();
+            })
+            .then(data => {
+              document.getElementById('content').innerHTML = data; // Tải nội dung trang vào #content
+            })
+            .catch(error => {
+              document.getElementById('content').innerHTML = '<h1>Lỗi tải trang</h1>';
+            });
+        }
+      });
+    });
+  </script>
 </body>
-<script src="/src/public/js/admin.js"></script>
 </html>

@@ -1,152 +1,71 @@
-/* Reset chung */
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-
-.fixed-header {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    height: 60px; 
-}
-
-
-
-.content {
-    margin-top: 80px; 
-    padding: 20px;
-}
-
-
-
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center; 
-}
-
-.logo img {
-    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
-    width: auto; /* Giữ nguyên tỷ lệ ảnh */
-    max-height: 50px; /* Giới hạn chiều cao tối đa */
-    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
-    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
-}
-
-
-
-
-/* Menu điều hướng */
-.menu-nav {
-    flex: 1; /* Chiếm phần còn lại của header */
-    padding-left: 50px;
-}
-
-.menu-list {
+    text-decoration: none;
     list-style: none;
+}
+body {
     display: flex;
-    margin: 0;
-    padding: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
 }
-
-.menu-item {
-    margin-right: 50px;
-}
-
-.menu-item a {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-/* Nút đăng nhập và đăng ký */
-.btn-nav {
-    display: flex;
-    gap: 15px;
-    padding-right: 20px;
-}
-
-.btn-login, .btn-signup {
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-    white-space: nowrap;
-}
-
-.btn-login:hover, .btn-signup:hover {
-    opacity: 0.8;
-}
-
-/* Sidebar */
 .sidebar {
     width: 250px;
-    height: 100vh;
-    background: #343a40;
-    position: fixed;
+    background-color: #222;
     color: white;
-    padding-top: 20px;
+    transition: width 0.3s;
+    overflow: hidden;
+    position: relative;
 }
-
 .sidebar h2 {
     text-align: center;
+    padding: 15px;
+    background-color: #111;
 }
-
 .sidebar ul {
-    list-style: none;
-    padding: 0;
+    padding: 10px 0;
 }
-
 .sidebar ul li {
     padding: 15px;
+    display: flex;
+    align-items: center;
 }
-
 .sidebar ul li a {
-    text-decoration: none;
     color: white;
     display: flex;
     align-items: center;
-    gap: 10px;
+    width: 100%;
 }
-
-.sidebar ul li:hover {
-    background: #495057;
-}
-
-/* Main content */
-.main-content {
-    margin-left: 260px;
-    padding: 20px;
-    margin-top: 80px;
-}
-
-.cards {
-    display: flex;
-    gap: 20px;
-}
-
-.card {
-    background: #007bff;
-    color: white;
-    padding: 20px;
-    width: 200px;
-    border-radius: 8px;
+.sidebar ul li a i {
+    width: 30px;
     text-align: center;
+}
+.sidebar ul li:hover {
+    background-color: #444;
+}
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    left: 100%;
+    background-color: #111;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: left 0.3s;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+.collapsed {
+    width: 60px;
+}
+.collapsed .toggle-btn {
+    left: 60px;
+}
+.collapsed h2, .collapsed span {
+    display: none;
 }
