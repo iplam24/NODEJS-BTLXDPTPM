@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quản lý nhân viên</title>
+    <link rel="stylesheet" href="/src/public/css/themTK.css">
+
+</head>
+<body>
+    <div class="main-content">
+        <h1>Quản Lý Tài Khoản</h1>
+        <button id="openModalBtn" class="openModal">Thêm Tài Khoản</button>
+
+
+        <button class="btn btn-primary">Danh sách tài khoản nhân viên</button>
+        <button class="btn btn-primary">Danh sách tài khoản khách hàng</button>
+        <input type="text">
+        <button class="btn btn-primary">Tìm kiếm</button>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>Tên tài khoản</th>
+                    <th>Mật khẩu</th>
+                    <th>Email</th>
+                    <th>Số ĐT</th>
+                    <th>Địa chỉ</th>
+                    <th>Quyền</th>
+                    <th>Sửa</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+            
+                    <td>
+                        <button class="btn btn-warning">Sửa</button>
+                        <button class="btn btn-danger">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+       
+    <!-- Modal Form -->
+    <!-- Modal Form -->
+<div id="modalForm" class="modal">
+    <div class="register-container">
+        <h2>Thêm TK</h2>
+        <form action="/dangky-taikhoan" class="signup-form" method="post">
+            <label>Tài khoản</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tên tài khoản" name="username">
+            </div>
+
+            <label>Mật khẩu</label>
+            <div class="inputForm">
+                <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="password">
+                <span class="togglePassword"></span>
+            </div>
+
+            <label>Nhập lại mật khẩu</label>
+            <div class="inputForm">
+                <input type="password" class="input" placeholder="Nhập lại mật khẩu" name="repassword">
+                <span class="togglePassword"></span>
+            </div>
+
+            <label>Họ và tên</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Họ và tên" name="myname">
+            </div>
+
+            <label>Email</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào email" name="email">
+            </div>
+
+            <label>Số điện thoại</label>
+            <div class="inputForm">
+                <input type="number" class="input" placeholder="Số điện thoại" name="phone">
+            </div>
+
+            <label>Địa chỉ</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào địa chỉ" name="address">
+            </div>
+            <div class="inputForm">
+            <label for="quyen">Chọn quyền:</label>
+
+            <select id="quyen" name="quyen" >
+                <option value="khachhang" >Khách hàng</option>
+                <option value="nhanvien">Nhân viên</option>
+            </select>
+            </div>
+            <button class="button-submitt">Tạo tài khoản</button>
+
+        
+        </form>
+    </div>
+</div>
+
+   
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modalForm");
+    const openBtn = document.getElementById("openModalBtn");
+
+    // Khi nhấn "Thêm Tài Khoản" -> Hiện modal
+    openBtn.addEventListener("click", function () {
+        modal.style.display = "flex";
+    });
+
+    // Khi nhấn ngoài modal -> Ẩn modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+</script>
+
+</html>
