@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quản lý tài khoản</title>
-    <link rel="stylesheet" href="/src/public/css/themTK.css">
+    <link rel="stylesheet" href="/css/themTK.css">
 
 </head>
 <body>
@@ -18,12 +18,14 @@
         <input type="text">
         <button class="btn btn-primary">Tìm kiếm</button>
         <table class="table table-bordered mt-3">
+            
             <thead>
                 <tr>
                     <th>Tên tài khoản</th>
                     <th>Mật khẩu</th>
+                    <th>Họ và tên</th>
                     <th>Email</th>
-                    <th>Số ĐT</th>
+                    <th>Số điện thoại</th>
                     <th>Địa chỉ</th>
                     <th>Quyền</th>
                     <th>Sửa</th>
@@ -31,19 +33,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-            
-                    <td>
-                        <button class="btn btn-warning">Sửa</button>
-                        <button class="btn btn-danger">Xóa</button>
-                    </td>
-                </tr>
+                <% listUser.forEach(function(user){ %>
+                    <tr>
+                        <td><%= user.UserName %></td>
+                        <td><%= user.PassWord %></td>
+                        <td><%= user.Full_name %></td>
+                        <td><%= user.Email %></td>
+                        <td><%= user.Phone %></td>
+                        <td><%= user.Address %></td>
+                        <td><%= user.Role %></td>
+                        <td>
+                            <button class="btn btn-warning">Sửa</button>
+                            <button class="btn btn-danger">Xóa</button>
+                        </td>
+                    </tr>
+                    <% }); %>
             </tbody>
         </table>
 
@@ -53,7 +57,7 @@
 <div id="modalForm" class="modal">
     <div class="register-container">
         <h2>Thêm TK</h2>
-        <form action="/dangky-taikhoan" class="signup-form" method="post">
+        <form action="/them-taikhoan" class="signup-form" method="post">
             <label>Tài khoản</label>
             <div class="inputForm">
                 <input type="text" class="input" placeholder="Nhập vào tên tài khoản" name="username">
@@ -98,6 +102,7 @@
                 <option value="nhanvien">Nhân viên</option>
             </select>
             </div>
+            
             <button class="button-submitt">Tạo tài khoản</button>
 
         

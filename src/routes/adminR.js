@@ -1,5 +1,5 @@
 const express = require('express');
-const {getAdmin,getAccount} =require('../models/adminDAO');
+const {getAdmin,getAccount,postCreateNewUserAdmin} =require('../controllers/adminController');
 const router = express.Router();
 
 // Route trang dashboard admin
@@ -12,5 +12,7 @@ router.get('/admin/account',getAccount);
 router.get('/settings', (req, res) => {
     res.render('admin/settings', { title: 'Admin Settings' });
 });
+
+router.post('/them-taikhoan',postCreateNewUserAdmin);
 
 module.exports = router;

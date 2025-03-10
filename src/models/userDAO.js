@@ -21,7 +21,7 @@ const checkUser = async(username)=>{
 }
 
 // Thêm người dùng mới vào database
-const createUser= async(username, password, myname, email, phone, address)=>{
+const createUser= async(username, password, myname, email, phone, address,role)=>{
     let pool = await connectDB();
     let request = pool.request();
     
@@ -39,7 +39,7 @@ const createUser= async(username, password, myname, email, phone, address)=>{
     
     await request
         .input("UsernameRole", username)
-        .input("RoleRole", 2)
+        .input("RoleRole", role)
         .query("INSERT INTO tbl_role (UserName, Role) VALUES (@UsernameRole, @RoleRole)");
 }
 //Kiểm tra vai trò của tài khoản trong bảng tbl_Role

@@ -87,7 +87,7 @@ const logInserver=async(req,res)=>{
             });
         }
          // Tạo người dùng mới
-         await createUser(username, password, myname, email, phone, address);
+         await createUser(username, password, myname, email, phone, address,2);
          console.log("✅ Đăng ký thành công người dùng mới:", username);
  
          return res.send(`<script>

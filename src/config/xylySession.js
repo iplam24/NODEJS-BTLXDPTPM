@@ -6,6 +6,8 @@ const configBody =(app)=>{
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+
+
 // Cấu hình session
 app.use(session({
     secret: "supersecretkey",  
