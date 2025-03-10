@@ -2,7 +2,7 @@ const sql = require('mssql');
 
 const config = {
     user: 'sa',
-    password: '',
+    password: '123456aA@$',
     server: 'localhost',
     database: 'thunghiem',
     port: 1433,  // Đảm bảo đúng cổng

@@ -4,103 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quản lý nhân viên</title>
-    <style>
-        /* Reset một số style mặc định */
-body, h1, table, th, td, button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Style cho phần main-content */
-.main-content {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Style cho tiêu đề */
-.main-content h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Style cho các nút */
-.btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: #000;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-}
-
-/* Style cho bảng */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.table-bordered th, .table-bordered td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-}
-
-.table thead th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: #333;
-}
-
-.table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Margin top utility class */
-.mt-3 {
-    margin-top: 16px;
-}
-    </style>
+    <link rel="stylesheet" href="/src/public/css/themTK.css">
 </head>
 <body>
     <div class="main-content">
         <h1>Quản Lý Nhân Sự</h1>
-        <button class="btn btn-primary">Thêm nhân viên</button>
+        <button id="openModalBtn" class="openModal">Thêm nhân viên</button>
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
@@ -133,7 +42,69 @@ body, h1, table, th, td, button {
                 </tr>
             </tbody>
         </table>
-    </div>
     
+
+        <div id="modalForm" class="modal">
+            <div class="register-container">
+                <h2>Thêm nhân sự</h2>
+                <form action="/dangky-taikhoan" class="signup-form" method="post">
+                    <label>Mã người dùng</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào mã người dùng" name="userID">
+                    </div>
+        
+                    <label>Mã nhân viên</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào mã nhân viên" name="staffID">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Họ tên nhân sự</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào họ tên" name="fullname">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Số điện thoại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào số điện thoại" name="SDT">
+                    </div>
+        
+                    <label>Email</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào email" name="email">
+                    </div>
+        
+                    <label>Vị trí công việc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào vị trí công việc" name="vtcv">
+                    </div>
+                    <div class="inputForm">
+                    
+                    <button class="button-submitt">Thêm</button>
+        
+                
+                </form>
+            </div>
+        </div>
+        
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("modalForm");
+        const openBtn = document.getElementById("openModalBtn");
+    
+        // Khi nhấn "Thêm Tài Khoản" -> Hiện modal
+        openBtn.addEventListener("click", function () {
+            modal.style.display = "flex";
+        });
+    
+        // Khi nhấn ngoài modal -> Ẩn modal
+        window.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    });
+    </script>
 </html>

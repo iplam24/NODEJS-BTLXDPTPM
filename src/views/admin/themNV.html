@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm NV</title>
+    <link rel="stylesheet" href="/src/public/css/signup.css">
+    
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+       <h2>Thêm nhân viên</h2>
+            <form action="/dangky-taikhoan" class="signup-form" method="post">
+                
+                
+                <label>Mã người dùng</label>
+                <div class="inputForm">
+                    <input type="text" class="input" placeholder="Nhập vào mã người dùng"  name="userID">
+                </div>
+    
+                <label>Mã nhân viên</label>
+                <div class="inputForm">
+                    <input type="password" class="input" placeholder="Nhập vào mã nhân viên" name="staffID" id="staffID">
+                    <span class="togglePassword"></span>
+                </div>
+
+                <label>Họ và tên</label>
+                <div class="inputForm">
+                    <input type="password" class="input" placeholder="Nhập vào tên nhân viên" name="repassword" id="name">
+                    <span class="togglePassword"></span>
+                </div>
+
+                <label>Số điện thoại</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="Phonenummber" placeholder="Nhập số điện thoại"  name="myname">
+                    
+                </div>
+
+                <label>Email</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="email" placeholder="Nhập vào email"  name="email">
+                    
+                </div>
+    
+
+                <label>Vị trí công việc</label>
+                <div class="inputForm">
+                    <input type="text" class="input" id="job" placeholder="Nhập vào vị trí công việc"  name="job">
+                </div>
+                
+               
+                <button class="button-submitt">Thêm nhân viên</button> 
+    
+            
+            </form>
+        </div>
+    </div>
+    <script src="/src/public/js/signup.js"></script>
+
+</body>
+</html>
