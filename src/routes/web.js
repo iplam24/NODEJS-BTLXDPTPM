@@ -1,8 +1,6 @@
 const express=require('express');
-const {getHomePage}=require('../controllers/homeController');
-const {logInserver,postCreateNewUser}=require('../models/userDAO');
-const {getSignup,logOutUser,getLogin} =require('../routes/authRoute');
-const getLoginUser =require('../routes/userRoute');
+const {logInserver,getHomePage,postCreateNewUser}=require('../controllers/homeController');
+const {getSignup,logOutUser,getLogin,getLoginUser} =require('../migration/oldData');
 const router =express.Router();
 
 
