@@ -1,0 +1,200 @@
+body, h1, table, th, td, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style cho phần main-content */
+.main-content {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Style cho tiêu đề */
+.main-content h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Style cho các nút */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Style cho bảng */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+.table thead th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+.table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Margin top utility class */
+.mt-3 {
+    margin-top: 16px;
+}
+
+/* Ban đầu ẨN form đi */
+#modalForm {
+    display: none; /* Đảm bảo form ẩn mặc định */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Form đăng ký */
+.register-container {
+    background-color: #fff;
+    width: 400px;
+    max-height: 80vh; /* Giữ form trong màn hình */
+    overflow-y: auto; /* Cuộn nội dung nếu quá dài */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+
+    /* Đảm bảo không bị dính vào mép màn hình trên mobile */
+    max-width: 90%;
+}
+
+/* Tiêu đề */
+.register-container h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Input container */
+.register-container .inputForm {
+    position: relative;
+    margin-bottom: 12px;
+    margin: 10px;
+    padding-left: 15px;  /* Cách viền bên trái */
+    padding-right: 25px; /* Cách viền bên phải */
+}
+
+/* Input field */
+.register-container .inputForm input {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Toggle password visibility */
+.togglePassword {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* Button */
+.button-submitt {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button-submitt:hover {
+    background-color: #0056b3;
+}
+
+/* Link đăng nhập */
+.register-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.register-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Nút mở form */
+.openModal {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.openModal:hover {
+    background-color: #0056b3;
+}

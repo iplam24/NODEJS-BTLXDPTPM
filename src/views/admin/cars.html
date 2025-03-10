@@ -4,103 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quản lý xe</title>
-    <style>
-        /* Reset một số style mặc định */
-body, h1, table, th, td, button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Style cho phần main-content */
-.main-content {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Style cho tiêu đề */
-.main-content h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Style cho các nút */
-.btn {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-.btn-warning {
-    background-color: #ffc107;
-    color: #000;
-}
-
-.btn-warning:hover {
-    background-color: #e0a800;
-}
-
-.btn-danger {
-    background-color: #dc3545;
-    color: #fff;
-}
-
-.btn-danger:hover {
-    background-color: #c82333;
-}
-
-/* Style cho bảng */
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.table-bordered th, .table-bordered td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-}
-
-.table thead th {
-    background-color: #f8f9fa;
-    font-weight: bold;
-    color: #333;
-}
-
-.table tbody tr:nth-child(odd) {
-    background-color: #f9f9f9;
-}
-
-.table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* Margin top utility class */
-.mt-3 {
-    margin-top: 16px;
-}
-    </style>
+    <link rel="stylesheet" href="/src/public/css/themXe.css">
+    
 </head>
 <body>
     <div class="main-content">
         <h1>Quản lý xe</h1>
-        <button class="btn btn-primary">Thêm xe mới</button>
+        <button id="openModalBtn" class="openModal">Thêm xe mới</button>
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
@@ -146,7 +56,110 @@ body, h1, table, th, td, button {
                 </tr>
             </tbody>
         </table>
-    </div>
+   
+        <div id="modalForm" class="modal">
+            <div class="register-container">
+                <h2>Thêm xe mới</h2>
+                <form action="/dangky-taikhoan" class="signup-form" method="post">
+                    <label>ID</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào ID xe" name="carID">
+                    </div>
+        
+                    <label>Tên xe</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào tên xe" name="carname">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Phiên bản</label>
+                    <div class="inputForm">
+                        <input type="password" class="input" placeholder="Nhập vào phiên bản xe" name="fullname">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Giá</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào giá" name="SDT">
+                    </div>
+        
+                    <label>Màu sắc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào màu sắc" name="email">
+                    </div>
+        
+                    <label>Hình ảnh</label>
+                    <div class="inputForm">
+                        <input type="file" class="input" name="hinhanh">
+                    </div>
+
+                    <label>Động cơ</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào loại động cơ" name="email">
+                    </div>
+
+                    <label>Công suất tối đa(kw)</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào công suất tối đa" name="email">
+                    </div>
+
+                    <label>Mô men xoắn cực đại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào mô men xoắn cực đaị" name="email">
+                    </div>
+
+                    <label>Tăng tốc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian tăng tốc (Từ 0-100km/h)" name="email">
+                    </div>
+
+                    <label>Quãng đường / lần sạc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào quãng đường di chuyển / lần sạc" name="email">
+                    </div>
+
+                    <label>Thời gian nạp pin nhanh nhất</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian sạc" name="email">
+                    </div>
+
+                    <label>Dẫn động</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào dẫn động xe" name="email">
+                    </div>
+
+
+
+                    <div class="inputForm">
+                    
+                    <button class="button-submitt">Thêm</button>
+        
+                
+                </form>
+            </div>
+        </div>
     
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modalForm");
+    const openBtn = document.getElementById("openModalBtn");
+
+    // Đảm bảo modal luôn ẩn khi load trang
+    modal.style.display = "none";
+
+    // Khi nhấn "Thêm xe mới" -> Hiện modal
+    openBtn.addEventListener("click", function () {
+        modal.style.display = "flex";
+    });
+
+    // Khi nhấn ngoài modal -> Ẩn modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+    </script>
 </html>
