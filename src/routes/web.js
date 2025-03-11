@@ -1,5 +1,5 @@
 const express=require('express');
-const {logInserver,getHomePage,postCreateNewUser}=require('../controllers/homeController');
+const {logInserver,getHomePage,postCreateNewUser,getCar}=require('../controllers/homeController');
 const {getSignup,logOutUser,getLogin,getLoginUser} =require('../migration/oldData');
 const router =express.Router();
 
@@ -15,6 +15,8 @@ router.get('/dangky',getSignup);
 router.get('/user-dangnhap',getLoginUser);
 
 router.get('/dangxuat',logOutUser);
+
+router.get('/sanpham',getCar);
 
 router.post('/dangnhap-user',logInserver);
 

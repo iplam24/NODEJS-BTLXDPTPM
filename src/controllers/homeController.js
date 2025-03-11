@@ -1,4 +1,5 @@
 const {switchRed} = require('../migration/userRole');
+const { addCarDB,getAllCar } = require('../models/productDAO');
 const {getUserAccount,checkUser,createUser,getUserRole} = require('../models/userDAO');
 //lay ve trang chu
 const getHomePage =async (req,res)=>{
@@ -102,4 +103,13 @@ const logInserver=async(req,res)=>{
     </script>`);
 }
 }
-module.exports={logInserver,getHomePage,postCreateNewUser}
+const getCar=async(req,res)=>{
+    try {
+        const cars = await getAllCar();
+        res.render("sanpham", { cars });  // 🟢 Truyền dữ liệu xe vào view
+    } catch (error) {
+        console.error("❌ Lỗi khi hiển thị danh sách xe:", error);
+        res.status(500).send("Lỗi khi hiển thị danh sách xe");
+    }
+}
+module.exports={logInserver,getHomePage,postCreateNewUser,getCar}

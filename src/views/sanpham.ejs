@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm</title>
+    <link rel="stylesheet" href="/css/sanpham.css">
+    <link rel="stylesheet" href="fonts/fontawesome-free-6.5.2-web/fontawesome-free-6.5.2-web/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&display=swap" rel="stylesheet">
+    <!-- UIkit CSS -->  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/css/uikit.min.css" />
+    <script>document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            let response = await fetch("/user-dangnhap");
+            let data = await response.json();
+    
+            if (data.loggedIn) {
+                let btnLogin = document.querySelector(".btn-login");
+                let btnSignup = document.querySelector(".btn-signup");
+    
+                btnLogin.textContent = `Xin chào, ${data.username}`;
+                btnSignup.textContent = "Đăng xuất";
+    
+                // Biến nút thành một link dẫn đến trang profile
+                btnLogin.style.cursor = "pointer"; 
+                btnLogin.addEventListener("click", () => {
+                    window.location.href = "/"; // Chuyển hướng đến trang profile
+                });
+    
+                // Xử lý đăng xuất
+                btnSignup.addEventListener("click", async (e) => {
+                    e.preventDefault();
+                    const confirmLogout = confirm("Bạn có muốn đăng xuất không?");
+                    if (confirmLogout) {
+                        await fetch("/dangxuat");
+                        location.reload(); // Tải lại trang sau khi đăng xuất
+                    }
+                });
+            }
+        } catch (error) {
+            console.error("Lỗi khi tải dữ liệu người dùng:", error);
+        }
+    });</script>
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.19.2/dist/js/uikit-icons.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header class="fixed-header">
+        <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+        <nav class="menu-nav">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="/">Trang chủ</a></li>
+                <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
+                <li class="menu-item"><a href="/lienhe">Liên hệ</a></li>
+            </ul>
+
+        </nav>
+        <nav class="btn-nav">
+            <a class="btn-login" href="/dangnhap">Đăng nhập</a>
+            <a class="btn-signup" href="/dangky">Đăng ký</a>
+        </nav>
+        
+    </header>
+
+
+    <!--footer và nội dung-->
+    <div class="container">
+        <div class="content">
+            <div class="main-content">
+                <div uk-filter="target: .js-filter">
+              
+                  <ul class="uk-navbar-nav">
+                      <li class="uk-active" uk-filter-control><a href="#">Dòng Xe Ô Tô</a></li>
+                      <li uk-filter-control="[data-num='1']"><a href="#">Động Cơ Điện</a></li>
+                      <li uk-filter-control="[data-num='2']"><a href="#">Động Cơ Xăng</a></li>
+                      <li uk-filter-control="[data-num='3']"><a href="#">Dòng Xe Dịch Vụ</a></li>
+                  </ul>
+              
+                  <ul class="img-gallery-container js-filter uk-child-width-1-2 uk-child-width-1-3@m uk-text-center" uk-grid>
+                      
+                     
+                      <% cars.forEach(car => { %>
+                         <!--Gym-->
+                      <li data-num=<%= car.Engine %>>
+                        <% if (car.ImagePaths.length > 0) { %>
+                            <img src="<%= car.ImagePaths[0] %>" width="100" alt="Ảnh xe" class="img-gal">
+                        <% } else { %>
+                            Không có ảnh
+                        <% } %>
+                        
+                      <div class="float-gallery-content">
+                            <div class="content uk-text-left">
+                                <span class="highlight uk-block"><%= car.Model %></span>
+                                <a href="chitietsanpham/sanphamchitiet1.html">Xem Chi Tiết</a>
+                            </div>
+                            <div class="content-btn">
+                                <button type="button">
+                                    &#8594;
+                                </button>
+                            </div>
+                        </div>
+                    </li>
+                        
+                    <% }); %>
+                  </ul>
+              
+              </div>
+            </div>
+        </div>
+    
+        <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+                    <p>Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast</p>
+                    <p><strong>MST/MSDN:</strong> 0108926276 do Sở KHĐT TP Hà Nội cấp lần đầu ngày 01/10/2019 và các lần thay đổi tiếp theo.</p>
+                    <p><strong>Địa chỉ trụ sở chính:</strong> Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+                </div>
+                
+                <div class="footer-middle">
+                    <h4>Hệ sinh thái</h4>
+                    <ul>
+                        <li><a href="#">Vinhomes</a></li>
+                        <li><a href="#">Vinpearl</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-right">
+                    <h4>DỊCH VỤ KHÁCH HÀNG</h4>
+                    <p>📞 1900 23 23 89</p>
+                    <p>📧 <a href="mailto:support.vn@vinfastauto.com">support.vn@vinfastauto.com</a></p>
+                    
+                    <h4>SPEAK-UP HOTLINE</h4>
+                    <p>📞 +84 24 4458 2193</p>
+                    <p>📧 <a href="mailto:v.speakup@vinfast.vn">v.speakup@vinfast.vn</a></p>
+        
+                    <h4>Kết nối với VinFast</h4>
+                    <div class="social-icons">
+                        <a href="#">
+                            <i src="facebook-icon.png" alt="Facebook" class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i src="youtube-icon.png" alt="YouTube" class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© Copyright 2025 | VinFast. All rights reserved.</p>
+                <!--<img src="bo-cong-thuong.png" alt="Đã thông báo Bộ Công Thương">-->
+            </div>
+        </footer>
+    </div>
+    
+</body>
+</html>

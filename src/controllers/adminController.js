@@ -121,7 +121,14 @@ const addCar = async (req, res) => {
         }
 
         const { carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain } = req.body;
-
+        let dongco;
+        if (engine === "xang") {
+            dongco = 1; 
+        }else if(engine==="dien"){
+            dongco=2;
+        }else{
+            dongco=3
+        }
         // 🟢 Chỉnh sửa đường dẫn ảnh (chỉ giữ `/upload/...`)
         let imagePaths;
         try {
@@ -142,7 +149,7 @@ const addCar = async (req, res) => {
         console.log("✅ Ảnh được lưu vào CSDL với đường dẫn:", imagePaths);
 
         try {
-            await addCarDB(carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
+            await addCarDB(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
             return res.send(`<script>
                 alert("Thêm xe thành công!");
                 window.location.href = "/admin/car"; 

@@ -56,7 +56,7 @@
                             <% } %>
                         </td>
                         <td>
-                            <a href="/admin/edit-car/<%= car.Car_ID %>">Sửa</a>
+                            <a href="/admin/edit-car/<%= car.Car_ID %>">Sửa</a> 
                         </td>
                         <td>
                             <a href="/admin/delete-car/<%= car.Car_ID %>" onclick="return confirm('Xóa xe này?')">Xóa</a>
@@ -99,7 +99,12 @@
 
                     <label>Động cơ</label>
                     <div class="inputForm">
-                        <input type="text" class="input" placeholder="Nhập vào loại động cơ" name="engine">
+                        <select name="engine">
+                            <option value="xang">Động cơ xăng</option>
+                            <option value="dien">Động cơ điện</option>
+                            <option value="khac">Loại khác</option>
+                        </select>
+                        <!-- <input type="text" class="input" placeholder="Nhập vào loại động cơ" name="engine"> -->
                     </div>
 
                     <label>Công suất tối đa(kw)</label>

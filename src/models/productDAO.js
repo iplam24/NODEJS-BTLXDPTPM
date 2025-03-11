@@ -12,7 +12,7 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
         Accel = parseFloat(Accel) || 0;
         Range_km = parseFloat(Range_km) || 0;
         FastCharge = parseFloat(FastCharge) || 0;
-
+        Engine=parseFloat(Engine) || 0;
         const imagePathsFormatted = imagePaths.map(img => `/upload/${img.split('/').pop()}`);
 
         // 🟢 Chuyển danh sách ảnh thành JSON để lưu vào CSDL
@@ -25,7 +25,7 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
             .input('Version', sql.NVarChar(20), Version)
             .input('Price', sql.Decimal(15,2), Price)
             .input('Color', sql.NVarChar(50), Color)
-            .input('Engine', sql.NVarChar(100), Engine)
+            .input('Engine', sql.Decimal(10,2), Engine)
             .input('Cap_KW', sql.Decimal(10,2), Cap_KW)
             .input('Torque_NM', sql.Decimal(10,2), Torque_NM)
             .input('Accel', sql.Decimal(5,2), Accel)
