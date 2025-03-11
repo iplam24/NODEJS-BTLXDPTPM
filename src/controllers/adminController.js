@@ -1,5 +1,5 @@
 const  {getAllUser} = require('../models/adminDAO');
-const {checkUser,createUser} = require('../models/userDAO');
+const {checkUser,createUser,getUserUpDate,updateUser,deleteUser} = require('../models/userDAO');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
 }
@@ -58,4 +58,37 @@ const postCreateNewUserAdmin = async(req,res)=>{
     </script>`);
 }
 }
-module.exports ={getAdmin,getAccount,postCreateNewUserAdmin}
+const getUpDateUser=async(req,res)=>{
+    const userName = req.params.username;
+    let result = await getUserUpDate(userName);
+    res.render("admin/suaTK", { userEdit: result });
+}
+
+const postUpDateUserAdmin=async(req,res)=>{
+    let { username, password, myname, email, phone, address,quyen } = req.body;
+    let role = 2; // Mặc định khách hàng
+    if (quyen === "nhanvien") {
+        role = 1; // Nhân viên
+    }
+    await updateUser(username, password, myname, email, phone, address,role);
+    console.log(`Bạn vừa thực hiện sửa dữ liệu của user ${username}`);
+    return res.send(`<script>
+        alert("Sửa tài khoản thành công!");
+        window.location.href = "/admin/account"; 
+    </script>`);
+}
+const postDeleteUser=async(req,res)=>{
+    const userName = req.params.username;
+    try {
+        await deleteUser(userName);
+        
+        console.log(`Xoá thành công user ${userName}`);
+        return res.send(`<script>
+            alert("✅Xóa tài khoản thành công!");
+            window.location.href = "/admin/account"; 
+        </script>`);
+    } catch (error) {
+        res.status(500).send("❌ Lỗi khi xóa tài khoản!");
+    }
+}
+module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser}

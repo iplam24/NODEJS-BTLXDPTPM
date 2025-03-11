@@ -52,4 +52,66 @@ const getUserRole = async (username) => {
     return result.recordset.length > 0 ? result.recordset[0].Role : null;
 };
 
-module.exports={getUserAccount,checkUser,createUser,getUserRole}
+const getUserUpDate = async (username) => {
+    let pool = await connectDB();
+    let result = await pool.request()
+        .input('username', username)
+        .query(`SELECT u.*, r.Role 
+            FROM tbl_users u
+            JOIN tbl_role r ON u.UserName = r.UserName
+            WHERE u.UserName = @username`);
+    return result.recordset.length > 0 ? result.recordset[0] : null;
+};
+const updateUser = async (username, password, myname, email, phone, address, role) => {
+    let pool = await connectDB();
+    let request = pool.request();
+
+    // Cập nhật thông tin trong bảng tbl_users
+    await request
+        .input("UserName", username)
+        .input("PassWord", password)
+        .input("Full_name", myname)
+        .input("Email", email)
+        .input("Phone", phone)
+        .input("Address", address)
+        .query(`
+            UPDATE tbl_users 
+            SET PassWord = @PassWord, Full_name = @Full_name, Email = @Email, 
+                Phone = @Phone, Address = @Address
+            WHERE UserName = @UserName
+        `);
+
+    // Cập nhật quyền trong bảng tbl_role
+    await request
+        .input("UsernameRole", username)
+        .input("RoleRole", role)
+        .query(`
+            UPDATE tbl_role 
+            SET Role = @RoleRole 
+            WHERE UserName = @UsernameRole
+        `);
+};
+const deleteUser = async (username) => {
+    let pool = await connectDB(); // Kết nối database
+
+    try {
+        // Xóa quyền trong bảng tbl_role
+        await pool.request()
+            .input('username', username)
+            .query(`DELETE FROM tbl_role WHERE UserName = @username`);
+
+        // Xóa user trong bảng tbl_users
+        await pool.request()
+            .input('username', username)
+            .query(`DELETE FROM tbl_users WHERE UserName = @username`);
+
+        return { message: "✅ Xóa người dùng thành công!" };
+    } catch (error) {
+        console.error("❌ Lỗi khi xóa user:", error);
+        return { message: "⚠️ Xóa người dùng thất bại!" };
+    }
+};
+
+
+
+module.exports={getUserAccount,checkUser,createUser,getUserRole,getUserUpDate,updateUser,deleteUser}

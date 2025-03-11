@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Biến nút thành một link dẫn đến trang profile
             btnLogin.style.cursor = "pointer"; 
             btnLogin.addEventListener("click", () => {
-                window.location.href = "/abc"; // Chuyển hướng đến trang profile
+                window.location.href = "/"; // Chuyển hướng đến trang profile
             });
 
             // Xử lý đăng xuất
