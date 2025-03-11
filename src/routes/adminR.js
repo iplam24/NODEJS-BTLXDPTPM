@@ -1,21 +1,31 @@
 const express = require('express');
-const {getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser} =require('../controllers/adminController');
+const {getAdmin,
+    getAccount,
+    postCreateNewUserAdmin,
+    getUpDateUser,
+    postUpDateUserAdmin,
+    postDeleteUser,
+    getCar,
+    addCar} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
+// Áp dụng checkRole([0]) cho tất cả các route bắt đầu bằng '/admin'
+router.use('/admin', checkRole([0]));
 // Route trang dashboard admin
-router.get('/admin',checkRole([0]),getAdmin);
+router.get('/admin',getAdmin);
 
 // Route quản lý users
-router.get('/admin/account',checkRole([0]),getAccount);
+router.get('/admin/account',getAccount);
+router.get('/admin/update-user::username',getUpDateUser);
+router.post('/admin/delete-user::username',postDeleteUser);
+router.post('/admin/them-taikhoan',postCreateNewUserAdmin);
+router.post('/admin/sua-taikhoan',postUpDateUserAdmin);
 
-router.get('/admin/update-user::username',checkRole([0]),getUpDateUser);
-// Route settings admin
-router.post('/admin/delete-user::username',checkRole([0]),postDeleteUser);
-router.get('/settings', (req, res) => {
-    res.render('admin/settings', { title: 'Admin Settings' });
-});
+// route quản lý cars
 
-router.post('/them-taikhoan',checkRole([0]),postCreateNewUserAdmin);
-router.post('/sua-taikhoan',checkRole([0]),postUpDateUserAdmin);
+router.get('/admin/car',getCar);
+
+
+router.post('/admin/addcar',addCar);
 module.exports = router;

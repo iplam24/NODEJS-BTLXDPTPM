@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quản lý xe</title>
+    <link rel="stylesheet" href="/css/themXe.css">
+    
+</head>
+<body>
+    <div class="main-content">
+        <h1>Quản lý xe</h1>
+        <button id="openModalBtn" class="openModal">Thêm xe mới</button>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên xe</th>
+                    <th>Phiên bản</th>
+                    <th>Giá</th>
+                    <th>Màu sắc</th>
+                    <th>Động cơ</th>
+                    <th>Công suất tối đa (kW)</th>
+                    <th>Mô men xoắn cực đại</th>
+                    <th>Tăng tốc</th>
+                    <th>Quãng đường / 1 lần sạc</th>
+                    <th>Thời gian nạp pin nhanh nhất</th>
+                    <th>Dẫn động</th>
+                    <th>Hình ảnh</th>
+                    <th>Chỉnh sửa</th>
+                    <th>Xoá</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% cars.forEach(car => { %>
+                    <tr>
+                        <td><%= car.Car_ID %></td>
+                        <td><%= car.Model %></td>
+                        <td><%= car.Version %></td>
+                        <td><%= car.Price.toLocaleString() %></td>
+                        <td><%= car.Color %></td>
+                        <td><%= car.Engine %></td>
+                        <td><%= car.Cap_KW %> </td>
+                        <td><%= car.Torque_NM %> </td>
+                        <td><%= car.Accel %> </td>
+                        <td><%= car.Range_KM %> </td>
+                        <td><%= car.FastCharge %> </td>
+                        <td><%= car.Drivertrain %></td>
+                        <td style="display: flex;">
+                            <% if (car.ImageFolder) { %>
+                                <% JSON.parse(car.ImageFolder).forEach(img => { %>
+                                    <img src="<%= img %>" width="100" alt="Ảnh xe">
+                                <% }) %>
+                            <% } else { %>
+                                <p>Không có ảnh</p>
+                            <% } %>
+                        </td>
+                        <td>
+                            <a href="/admin/edit-car/<%= car.Car_ID %>">Sửa</a>
+                        </td>
+                        <td>
+                            <a href="/admin/delete-car/<%= car.Car_ID %>" onclick="return confirm('Xóa xe này?')">Xóa</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+   
+        <div id="modalForm" class="modal">
+            <div class="register-container">
+                <h2>Thêm xe mới</h2>
+                <form action="/admin/addcar" class="signup-form" method="post" enctype="multipart/form-data">
+                    <label>ID</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào ID xe" name="carID">
+                    </div>
+        
+                    <label>Tên xe</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào tên xe" name="model">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Phiên bản</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào phiên bản xe" name="version">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Giá</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào giá" name="price">
+                    </div>
+        
+                    <label>Màu sắc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào màu sắc" name="color">
+                    </div>
+
+                    <label>Động cơ</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào loại động cơ" name="engine">
+                    </div>
+
+                    <label>Công suất tối đa(kw)</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào công suất tối đa" name="capkw">
+                    </div>
+
+                    <label>Mô men xoắn cực đại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào mô men xoắn cực đaị" name="torquenm">
+                    </div>
+
+                    <label>Tăng tốc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian tăng tốc (Từ 0-100km/h)" name="accel">
+                    </div>
+
+                    <label>Quãng đường / lần sạc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào quãng đường di chuyển / lần sạc" name="rangekm">
+                    </div>
+
+                    <label>Thời gian nạp pin nhanh nhất</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian sạc" name="fastcharge">
+                    </div>
+
+                    <label>Dẫn động</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào dẫn động xe" name="drivertrain">
+                    </div>
+                    <label>Hình ảnh</label>
+                    <div class="inputForm">
+                        <input type="file" class="input" placeholder="Nhập vào dẫn động xe" name="carImages"  multiple>
+                    </div>
+
+                    <div class="inputForm">
+                        <button class="button-submitt">Thêm</button>
+                </form>
+            </div>
+        </div>
+    
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modalForm");
+    const openBtn = document.getElementById("openModalBtn");
+
+    // Đảm bảo modal luôn ẩn khi load trang
+    modal.style.display = "none";
+
+    // Khi nhấn "Thêm xe mới" -> Hiện modal
+    openBtn.addEventListener("click", function () {
+        modal.style.display = "flex";
+    });
+
+    // Khi nhấn ngoài modal -> Ẩn modal
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+    </script>
+</html>
