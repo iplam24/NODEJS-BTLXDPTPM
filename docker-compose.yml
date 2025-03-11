@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    restart: always
+    environment:
+      SA_PASSWORD: "YourPassword123!"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+
+  nodeapp:
+    build: .
+    container_name: nodeapp
+    restart: always
+    depends_on:
+      - sqlserver
+    environment:
+      DB_USER: "sa"
+      DB_PASSWORD: "YourPassword123!"
+      DB_SERVER: "sqlserver"
+      DB_DATABASE: "mydatabase"
+      DB_PORT: "1433"
+    ports:
+      - "3333:3333"
+    volumes:
+      - .:/app
+      - /app/node_modules
