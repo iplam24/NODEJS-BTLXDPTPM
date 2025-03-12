@@ -472,7 +472,6 @@ ul li a:hover {
     cursor: pointer;
     overflow: hidden;
     transition: color 0.4s ease-in-out;
-    text-decoration: none;
 }
 
 /* Nền đen xuất hiện từ trái */
@@ -563,5 +562,4 @@ ul li a:hover {
     border-top: 1px solid #ccc;  /* Đường kẻ với màu xám nhạt */
   }
 
-  
 
