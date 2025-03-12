@@ -1,6 +1,8 @@
 const {switchRed} = require('../migration/userRole');
 const { addCarDB,getAllCar } = require('../models/productDAO');
-const {getUserAccount,checkUser,createUser,getUserRole} = require('../models/userDAO');
+const {getUserAccount,checkUser,createUser,getUserRole
+    ,checkUserEmail,getRepassCode,guiEmail,pullCode,
+    setNewPass} = require('../models/userDAO');
 //lay ve trang chu
 const getHomePage =async (req,res)=>{
     // try {
@@ -112,4 +114,47 @@ const getCar=async(req,res)=>{
         res.status(500).send("Lỗi khi hiển thị danh sách xe");
     }
 }
-module.exports={logInserver,getHomePage,postCreateNewUser,getCar}
+const getQuenMK =(req,res)=>{
+    res.render("quenmk", { message: null });
+}
+const rePassWord =async(req,res)=>{
+    const {usernameRepass,emailRepass} = req.body;
+    let result=await checkUserEmail(usernameRepass,emailRepass);
+    if(!result){
+        console.log("❌ Tài khoản hoặc email không chính xác!");
+        return res.render("quenmk", { message: "⚠️ Tài khoản hoặc email không chính xác!" });
+    }
+    // Tạo mã xác nhận và gửi email
+    let secretCode = await pullCode(usernameRepass, emailRepass);
+    let emailResult = await guiEmail(emailRepass, secretCode);
+    
+    res.render("nhapcode", { emailRepass,message:null});
+}
+
+const postGuiCode =async(req,res)=>{
+    const  {emailRepass,code} = req.body;
+    let result = await getRepassCode(emailRepass,code);
+    if(!result){
+        res.render("nhapcode",{ emailRepass,message: "⚠️ Mã xác nhận không chính xác!" })
+    }
+    res.render("datlaiMK",{emailRepass,message:null});
+
+}
+const postDatMK=async(req,res)=>{
+    const {emailRepass,password,repassword} = req.body;
+    if(password=="" || repassword==""){
+        res.render("datlaimk",{emailRepass,message:"⚠️ Không được để trống mật khẩu!"});
+    }else if(repassword != password){
+        res.render("datlaimk",{emailRepass,message:"⚠️ 2 mật khẩu chưa giống nhau!"});
+    }else if(password==repassword){
+        await setNewPass(emailRepass,password);
+        console.log(`Đổi mật khẩu email ${emailRepass} thành ${password} thành công!` );
+        return res.send(`<script>
+            alert("Đổi mật khẩu thành công!");
+            window.location.href = "/dangnhap"; 
+        </script>`);
+    }
+
+
+}
+module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,rePassWord,postGuiCode,postDatMK}

@@ -1,5 +1,7 @@
 const connectDB =require('../config/connectDB');
-
+const nodemailer = require('nodemailer');
+const crypto = require('crypto');
+const { hostname } = require('os');
 // Hàm kiểm tra tài khoản và mật khẩu trong tbl_users
 const getUserAccount = async (username, password) => {
     let pool = await connectDB();
@@ -127,5 +129,91 @@ const getAllUser = async () => {
     }
 };
 
+const checkUserEmail = async (username, email) => {
+    let pool = await connectDB();
+    
+    let result = await pool.request()
+        .input('username', username)
+        .input('email', email)
+        .query(`SELECT UserName FROM tbl_users WHERE UserName = @username AND Email = @email`);
 
-module.exports={getUserAccount,checkUser,createUser,getUserRole,getUserUpDate,updateUser,deleteUser,getAllUser}
+    return result.recordset.length > 0; // Trả về true nếu tìm thấy, ngược lại là false
+};
+
+
+const pullCode = async (username, email) => {
+    let pool = await connectDB();
+    // Tạo mã bí mật 6 số bất kì
+    let secretCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+    
+    // Lưu mã vào bảng tbl_repass
+    await pool.request()
+        .input('username', username)
+        .input('email', email)
+        .input('code', secretCode)
+        .query(`INSERT INTO tbl_repass (UserName, Email, Code) VALUES (@username, @email, @code)`);
+        return secretCode;
+};
+
+const guiEmail = async (email, secretCode) => {
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'lam.cu.14304@gmail.com', 
+            pass: 'bckb fbqr endv hqbw'
+        }
+    });
+
+    let mailOptions = {
+        from: 'lam.cu.14304@gmail.com',
+        to: email,
+        subject: "🔑 Đặt lại mật khẩu",
+        text: `Mã xác nhận của bạn là: ${secretCode}. Vui lòng nhập mã này để đặt lại mật khẩu.`
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        console.log("Đã gửi mã xác nhận tới email: ",email);
+    } catch (error) {
+        console.error("❌ Lỗi gửi email:", error);
+        return { message: "⚠️ Không thể gửi email!" };
+    }
+};
+
+const getRepassCode = async (email,code) => {
+    let pool = await connectDB();
+
+    let result = await pool.request()
+        .input('emailRe', email)
+        .input('codeRe', code)
+        .query(`
+            SELECT Email, Code 
+            FROM tbl_repass 
+            WHERE Email = @emailRe And Code = @codeRe
+        `);
+
+    return result.recordset.length > 0 ? result.recordset[0] : null;
+};
+
+const setNewPass = async (email, newPassword) => {
+    let pool = await connectDB();
+    try {
+        await pool.request()
+            .input('email', email)
+            .input('newPassword', newPassword)
+            .query(`
+                UPDATE tbl_users 
+                SET PassWord = @newPassword 
+                WHERE Email = @email
+            `);
+        return { success: true, message: "✅ Mật khẩu đã được cập nhật thành công!" };
+    } catch (error) {
+        console.error("❌ Lỗi khi cập nhật mật khẩu:", error);
+        return { success: false, message: "⚠️ Cập nhật mật khẩu thất bại!" };
+    }
+};
+
+module.exports={getUserAccount,checkUser,createUser,getUserRole,getUserUpDate,updateUser,deleteUser,getAllUser,getRepassCode,checkUserEmail,guiEmail,pullCode,
+    setNewPass
+}

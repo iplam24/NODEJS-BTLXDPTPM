@@ -126,7 +126,7 @@ const addCar = async (req, res) => {
             dongco = 1; 
         }else if(engine==="dien"){
             dongco=2;
-        }else{
+        }else if(engine==="khac"){
             dongco=3
         }
         // 🟢 Chỉnh sửa đường dẫn ảnh (chỉ giữ `/upload/...`)
