@@ -43,7 +43,9 @@
                       <input type="email" class="input" placeholder="Nhập vào email của bạn" name="emailRepass">
                     </div>
                   
-             
+                    <% if (message) { %>
+                      <p style="color: red;"><%= message %></p>
+                  <% } %>
                   <button class="button-submit">Lấy lại mật khẩu</button>
                   <p class="p">Bạn không có tài khoản? <a href="/dangky" class="span">Đăng ký</a>
                     
