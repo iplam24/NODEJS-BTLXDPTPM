@@ -15,8 +15,10 @@
 
         <button class="btn btn-primary">Danh sách tài khoản nhân viên</button>
         <button class="btn btn-primary">Danh sách tài khoản khách hàng</button>
-        <input type="text">
+        <form action="/admin/search-account" method="post">
+        <input type="text" name="timkiem">
         <button class="btn btn-primary">Tìm kiếm</button>
+        </form>
         <table class="table table-bordered mt-3">
             
             <thead>
