@@ -162,7 +162,12 @@ const addCar = async (req, res) => {
 };
 
 
+//Tìm kiếm 
+const searchAccount=async(req,res)=>{
+    const {timkiem} = req.body;
+    let result = await getUserUpDate(timkiem);
+    res.render("admin/account", { listUser: result });
+    console.log("Tìm kiếm thành công user: ",timkiem);
+}
 
-
-
-module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar}
+module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount}
