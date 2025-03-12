@@ -157,4 +157,10 @@ const postDatMK=async(req,res)=>{
 
 
 }
-module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,rePassWord,postGuiCode,postDatMK}
+
+const getLienHe=(req,res)=>{
+    res.render("lienhe");
+}
+module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,
+    rePassWord,postGuiCode,postDatMK,
+    getLienHe}
