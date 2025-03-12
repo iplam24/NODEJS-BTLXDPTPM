@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <script>
+        function applyMobileCSS() {
+            let isMobile = window.matchMedia("(max-width: 430px)").matches;
+    
+            if (isMobile) {
+                console.log("🚀 Đang sử dụng giao diện mobile");
+    
+                // Xóa CSS dành cho PC
+                document.querySelectorAll("link[rel='stylesheet']").forEach(link => {
+                    if (link.href.includes("css_test.css") || link.href.includes("VF99.css")) {
+                        link.remove();
+                    }
+                });
+    
+                // Load file CSS dành riêng cho mobile
+                let mobileCss = document.createElement("link");
+                mobileCss.rel = "stylesheet";
+                mobileCss.href = "/src/public/css/VF9-mobile.css";
+                document.head.appendChild(mobileCss);
+            } else {
+                console.log("🖥 Đang sử dụng giao diện PC");
+            }
+        }
+    
+        // Kiểm tra khi trang tải xong
+        document.addEventListener("DOMContentLoaded", applyMobileCSS);
+    
+        // Kiểm tra lại nếu cửa sổ thay đổi kích thước
+        window.addEventListener("resize", applyMobileCSS);
+    </script>
+    
     <link rel="stylesheet" href="/src/public/css/css_test.css">
     <link rel="stylesheet" href="/src/public/css/VF99.css">
+    
+    
+    
+   
+
     <link
 		rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
@@ -37,22 +75,29 @@
     <body>
         <!--header-->
         <header class="fixed-header">
-            <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+            <div class="logo">
+                <img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt="Logo">
+            </div>
+        
+            <div class="menu-toggle">☰</div> <!-- Nút mở menu -->
+        
             <nav class="menu-nav">
                 <ul class="menu-list">
-                    <li  class="menu-item"><a href="/src/views/MainPage.html" style="color: white;">Trang chủ</a></li>
-                    <li class="menu-item"><a href="/src/views/sanpham.html" style="color: white;">Sản phẩm</a></li>
-                    <li class="menu-item"><a href="/src/views/lienhe.html" style="color: white;">Liên hệ</a></li>
+                    <li class="menu-item"><a href="#">Trang chủ</a></li>
+                    <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
+                    <li class="menu-item"><a href="/src/views/lienhe.html">Liên hệ</a></li>
+                    <li class="menu-item mobile-only"><a href="/dangnhap">Đăng nhập</a></li>
+                    <li class="menu-item mobile-only"><a href="/dangky">Đăng ký</a></li>
                 </ul>
-
             </nav>
-            <nav class="btn-nav">
-                <a class ="btn-login " style="color: white; font-family: Arial, Helvetica, sans-serif;">Đăng Nhập</a>
-                <a class ="btn-signup" style="color: white; font-family: Arial, Helvetica, sans-serif;">Đăng Ký</a>
+        
+            <nav class="btn-nav"> 
+                <a class="btn-login" href="/dangnhap">Đăng nhập</a>
+                <a class="btn-signup" href="/dangky">Đăng ký</a>
             </nav>
-            
         </header>
-    
+        
+
          <!-- Thân trang -->
     <div class="video-container">
         <video id="adVideo" autoplay loop muted playsinline>
@@ -182,14 +227,14 @@
             </div>
             
             <div class="image-grid" id="ngoaithat" style="display: none;">
-                <img src="ngoaithat1.jpg" alt="Ngoại thất 1" class="image-itemn">
-                <img src="ngoaithat2.jpg" alt="Ngoại thất 2" class="image-itemn">
-                <img src="ngoaithat3.jpg" alt="Ngoại thất 3" class="image-itemn">
-                <img src="ngoaithat4.jpg" alt="Ngoại thất 4" class="image-itemn">
-                <img src="ngoaithat5.jpg" alt="Ngoại thất 5" class="image-itemn">
-                <img src="ngoaithat6.jpg" alt="Ngoại thất 6" class="image-itemn">
-                <img src="ngoaithat7.jpg" alt="Ngoại thất 7" class="image-itemn">
-                <img src="ngoaithat8.jpg" alt="Ngoại thất 8" class="image-itemn">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-8-798x466.jpg" alt="Nội thất 1" class="image-itemn">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-7-798x466.jpg" alt="Nội thất 2" class="image-itemn">
+                <img src="https://vinfastotominhdao.vn/wp-content/uploads/vf9-2023-1-798x466.jpg" alt="Nội thất 3" class="image-itemn">
+                <img src="https://storage.googleapis.com/vinfast-data-01/noi-that-vinfast-vf-9_1653891117.png" alt="Nội thất 4" class="image-itemn">
+                <img src="https://img1.oto.com.vn/2022/07/12/OpzfnMD2/vf9-3-1ba6.png" alt="Nội thất 5" class="image-itemn">
+                <img src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/interior-4.webp" alt="Nội thất 6" class="image-itemn">
+                <img src="https://vinfastauto.us/themes/custom/vinfast_v2/images/v3/vf-9/interior-ambient.webp" alt="Nội thất 7" class="image-itemn">
+                <img src="https://thegioiphuongtien.vn/uploaded/files/7408548abf70360b77ba9a48c1eed2bd.jpg" alt="Nội thất 8" class="image-itemn">
             </div>
         </div>
     </div>
@@ -272,94 +317,117 @@
     
 
         <!---------footer------------->
-            <footer>
-                <div class="footer-container">
-                    <div class="footer-left">
-                        <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
-                        <p>Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast</p>
-                        <p><strong>MST/MSDN:</strong> 0108926276 do Sở KHĐT TP Hà Nội cấp lần đầu ngày 01/10/2019 và các lần thay đổi tiếp theo.</p>
-                        <p><strong>Địa chỉ trụ sở chính:</strong> Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+        <footer>
+            <div class="custom-footer-container">
+                <div class="custom-footer-left">
+                    <div class="custom-logo">
+                        <img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt="VinFast Logo">
                     </div>
+                    <p>Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast</p>
+                    <p><strong>MST/MSDN:</strong> 0108926276 do Sở KHĐT TP Hà Nội cấp lần đầu ngày 01/10/2019 và các lần thay đổi tiếp theo.</p>
+                    <p><strong>Địa chỉ trụ sở chính:</strong> Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+                </div>
+                
+                <div class="custom-footer-middle">
+                    <h4>Hệ sinh thái</h4>
+                    <ul>
+                        <li><a href="#">Vinhomes</a></li>
+                        <li><a href="#">Vinpearl</a></li>
+                    </ul>
+                </div>
+        
+                <div class="custom-footer-right">
+                    <h4>DỊCH VỤ KHÁCH HÀNG</h4>
+                    <p>📞 1900 23 23 89</p>
+                    <p>📧 <a href="mailto:support.vn@vinfastauto.com">support.vn@vinfastauto.com</a></p>
                     
-                    <div class="footer-middle">
-                        <h4>Hệ sinh thái</h4>
-                        <ul>
-                            <li><a href="#">Vinhomes</a></li>
-                            <li><a href="#">Vinpearl</a></li>
-                        </ul>
-                    </div>
-            
-                    <div class="footer-right">
-                        <h4>DỊCH VỤ KHÁCH HÀNG</h4>
-                        <p>📞 1900 23 23 89</p>
-                        <p>📧 <a href="mailto:support.vn@vinfastauto.com">support.vn@vinfastauto.com</a></p>
-                        
-                        <h4>SPEAK-UP HOTLINE</h4>
-                        <p>📞 +84 24 4458 2193</p>
-                        <p>📧 <a href="mailto:v.speakup@vinfast.vn">v.speakup@vinfast.vn</a></p>
-            
-                        <h4>Kết nối với VinFast</h4>
-                        <div class="social-icons">
-                            <a href="#">
-                                <i src="facebook-icon.png" alt="Facebook" class="fa-brands fa-facebook"></i>
-                            </a>
-                            <a href="#">
-                                <i src="youtube-icon.png" alt="YouTube" class="fa-brands fa-youtube"></i>
-                            </a>
-                        </div>
+                    <h4>SPEAK-UP HOTLINE</h4>
+                    <p>📞 +84 24 4458 2193</p>
+                    <p>📧 <a href="mailto:v.speakup@vinfast.vn">v.speakup@vinfast.vn</a></p>
+        
+                    <h4>Kết nối với VinFast</h4>
+                    <div class="custom-social-icons">
+                        <a href="#">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
                     </div>
                 </div>
-            
-                <div class="footer-bottom">
-                    <p>© Copyright 2025 | VinFast. All rights reserved.</p>
-         
-                </div>
-            </footer>
+            </div>
+        
+            <div class="custom-footer-bottom">
+                <p>© Copyright 2025 | VinFast. All rights reserved.</p>
+            </div>
+        </footer>
+        
         </div>
         
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+      document.querySelector(".menu-toggle").addEventListener("click", function() {
+    document.querySelector(".menu-nav").classList.toggle("active");
+});
+
+document.addEventListener("DOMContentLoaded", function() {
     let video = document.getElementById("adVideo");
     video.addEventListener("loadedmetadata", function() {
         console.log("Video đã tải xong và bắt đầu phát.");
-            });
-        });
+    });
 
-        function changeCarColor(color) {
-            let carImage = document.getElementById("carImagee");
+});
 
-            // Cập nhật đường dẫn ảnh theo màu
-            switch (color) {
-                case "red":
-                    carImage.src = "/src/public/image/VF9-red.png";
-                    break;
-                case "gray":
-                    carImage.src = "/src/public/image/VF9-gray.png";
-                    break;
-                case "blue":
-                    carImage.src = "/src/public/image/VF9-Blue.png";
-                    break;
-                case "white":
-                    carImage.src = "/src/public/image/VF9-white.png";
-                    break;
-                case "black":
-                    carImage.src = "/src/public/image/VF9-black.png";
-                    break;
-                case "silver":
-                    carImage.src = "/src/public/image/VF9-silver.png";
-                    break;
-                default:
-                    carImage.src = "/src/public/image/VF9-red.png";
-            }
-        }
+// Hàm thay đổi màu xe
+function changeCarColor(color) {
+    let carImage = document.getElementById("carImagee");
 
-        function downloadBrochure() {
+    switch (color) {
+        case "red":
+            carImage.src = "/src/public/image/VF9-red.png";
+            break;
+        case "gray":
+            carImage.src = "/src/public/image/VF9-gray.png";
+            break;
+        case "blue":
+            carImage.src = "/src/public/image/VF9-Blue.png";
+            break;
+        case "white":
+            carImage.src = "/src/public/image/VF9-white.png";
+            break;
+        case "black":
+            carImage.src = "/src/public/image/VF9-black.png";
+            break;
+        case "silver":
+            carImage.src = "/src/public/image/VF9-silver.png";
+            break;
+        default:
+            carImage.src = "/src/public/image/VF9-red.png";
+    }
+}
+
+// Hàm tải brochure
+function downloadBrochure() {
     const link = document.createElement("a");
-    link.href = "/files/VF9_Brochure_VN.pdf"; // Đường dẫn đến file trên máy bạn
-    link.download = "VF9_Brochure_VN.pdf"; // Tên file tải về
+    link.href = "/files/VF9_Brochure_VN.pdf";
+    link.download = "VF9_Brochure_VN.pdf"; 
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+function showImages(type, btn) {
+    // Ẩn tất cả nhóm ảnh
+    document.getElementById('noithat').style.display = 'none';
+    document.getElementById('ngoaithat').style.display = 'none';
+
+    // Hiển thị nhóm ảnh được chọn theo dạng hàng ngang
+    let selectedGrid = document.getElementById(type);
+    selectedGrid.style.display = 'flex';
+    selectedGrid.style.flexDirection = 'row'; // Đảm bảo hiển thị ngang
+    
+    // Cập nhật trạng thái nút
+    document.querySelectorAll('.btnn').forEach(button => button.classList.remove('active'));
+    btn.classList.add('active');
 }
 
 
@@ -368,6 +436,9 @@
     </script>
 
     </body>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
     <script src="/src/public/js/VF9.js"></script>
     <script src="/src/public/js/VF9-version.js"></script>
 </html>

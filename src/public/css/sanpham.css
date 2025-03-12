@@ -1,35 +1,32 @@
-/* Reset chung */
+/* ========================= Reset chung ========================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* 📌 Giới hạn chiều rộng toàn trang & ngăn kéo ngang */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Không cho cuộn ngang */
+    font-family: Arial, sans-serif;
+}
 
+/* ========================= HEADER ========================= */
 .fixed-header {
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    background-color: white;
+    height: 60px; /* Giữ chiều cao cố định */
+    background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 15px 20px;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
-    height: 60px; 
 }
-
-
-
-.content {
-    margin-top: 60px; 
-    padding: 20px;
-}
-
-
-
 
 /* Logo */
 .logo {
@@ -38,31 +35,24 @@
 }
 
 .logo img {
-    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
-    width: auto; /* Giữ nguyên tỷ lệ ảnh */
-    max-height: 50px; /* Giới hạn chiều cao tối đa */
-    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
-    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
+    height: 50px;
+    width: auto;
+    object-fit: contain;
 }
 
-
-
-
-/* Menu điều hướng */
+/* ========================= MENU ========================= */
 .menu-nav {
-    flex: 1; /* Chiếm phần còn lại của header */
+    flex: 1;
     padding-left: 50px;
 }
 
 .menu-list {
     list-style: none;
     display: flex;
-    margin: 0;
-    padding: 0;
 }
 
 .menu-item {
-    margin-right: 50px;
+    margin-right: 30px;
 }
 
 .menu-item a {
@@ -72,25 +62,115 @@
     transition: color 0.3s;
 }
 
-/* Nút đăng nhập và đăng ký */
+.menu-item a:hover {
+    color: gray;
+}
+
+/* Nút đăng nhập & đăng ký */
 .btn-nav {
     display: flex;
     gap: 15px;
     padding-right: 20px;
+    align-items: center;
 }
 
 .btn-login, .btn-signup {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s;
-    white-space: nowrap;
+    transition: all 0.3s;
 }
 
 .btn-login:hover, .btn-signup:hover {
+    background-color: rgba(0, 0, 0, 0.1);
     opacity: 0.8;
+}
+
+/* ========================= MENU MOBILE ========================= */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-login {
+    display: none;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+/* 📌 Mobile Responsive */
+/* ========================= MENU MOBILE ========================= */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px;
+        background: none;
+        border: none;
+    }
+
+    .menu-nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+    .menu-nav.active {
+        display: block;
+        transform: translateY(0);
+    }
+
+    .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa menu */
+    }
+
+    .menu-item {
+        width: 100%; /* Đảm bảo căn giữa */
+        padding: 15px 0;
+        font-size: 18px;
+        text-align: center; /* Căn giữa chữ */
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        display: block;
+        width: 100%; /* Đảm bảo chữ căn giữa */
+    }
+
+    /* Ẩn nút đăng nhập & đăng ký trên mobile */
+    .btn-nav {
+        display: none;
+    }
+
+
+
+    /* Hiển thị icon đăng nhập trên mobile */
+    .mobile-login {
+        display: block;
+        font-size: 30px;
+    }
 }
 
 html, body {
