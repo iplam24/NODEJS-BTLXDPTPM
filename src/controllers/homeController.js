@@ -161,6 +161,11 @@ const postDatMK=async(req,res)=>{
 const getLienHe=(req,res)=>{
     res.render("lienhe");
 }
+
+const postLienHe=(req,res)=>{
+    const {name,email,message}=req.body;
+}
 module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,
     rePassWord,postGuiCode,postDatMK,
-    getLienHe}
+    getLienHe,
+    postLienHe}
