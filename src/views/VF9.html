@@ -257,7 +257,8 @@
                 <div class="Buy-car">
                     <button class="btn-buy">Thêm vào giỏ hàng</button>
                     <button class="btn-buy">Đặt xe</button>
-                    <button class="btn-buy" onclick="downloadBrochure()">Tải brochure</button>
+                    <a href="https://vinfasthaugiang.com/files/files/VF9_Brochure_VN.pdf" target="_blank" class="btn-buy" style="font-family: Arial, Helvetica, sans-serif;">Tải brochure</a>
+
 
                 </div>
             </div>
@@ -354,12 +355,13 @@
 
         function downloadBrochure() {
     const link = document.createElement("a");
-    link.href = "VF9_Brochure_VN.pdf"; // Đường dẫn đến file PDF
+    link.href = "/files/VF9_Brochure_VN.pdf"; // Đường dẫn đến file trên máy bạn
     link.download = "VF9_Brochure_VN.pdf"; // Tên file tải về
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 }
+
 
 
 
