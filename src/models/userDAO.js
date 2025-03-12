@@ -1,3 +1,4 @@
+require('dotenv').config();
 const connectDB =require('../config/connectDB');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
@@ -160,16 +161,17 @@ const guiEmail = async (email, secretCode) => {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'lam.cu.14304@gmail.com', 
-            pass: 'bckb fbqr endv hqbw'
+            user: process.env.HOST_EMAIL, 
+            pass: process.env.EMAIL_PASS
         }
     });
 
     let mailOptions = {
-        from: 'lam.cu.14304@gmail.com',
+        from: process.env.HOST_EMAIL,
         to: email,
         subject: "🔑 Đặt lại mật khẩu",
-        text: `Mã xác nhận của bạn là: ${secretCode}. Vui lòng nhập mã này để đặt lại mật khẩu.`
+        text: `
+        Mã xác nhận của bạn là: ${secretCode}. Vui lòng nhập mã này để đặt lại mật khẩu.`
     };
 
     try {
