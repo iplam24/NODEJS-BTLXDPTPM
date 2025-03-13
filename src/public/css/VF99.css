@@ -104,6 +104,9 @@
     text-decoration: none;
     color: black;
 }
+.mobile-only {
+    display: none;
+}
 
 /* Mobile Responsive */
 @media screen and (max-width: 768px) {
@@ -146,6 +149,9 @@
         font-size: 30px;
         text-decoration: none;
         color: black;
+    }
+    .mobile-only {
+        display: block;
     }
 }
 

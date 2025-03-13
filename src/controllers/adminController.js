@@ -152,7 +152,7 @@ const addCar = async (req, res) => {
             await addCarDB(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
             return res.send(`<script>
                 alert("Thêm xe thành công!");
-                window.location.href = "/admin/car"; 
+                window.location.href = "/admin"; 
             </script>`);
         } catch (dbError) {
             console.error("❌ Lỗi khi lưu vào database:", dbError);

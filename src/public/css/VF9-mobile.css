@@ -102,6 +102,10 @@ html, body {
     text-decoration: none;
     color: black;
 }
+.mobile-only {
+    display: none;
+}
+
 
 /* 📌 Mobile Responsive */
 /* ========================= MENU MOBILE ========================= */
