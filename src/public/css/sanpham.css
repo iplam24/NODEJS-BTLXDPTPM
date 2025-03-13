@@ -230,7 +230,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 8px;
+    margin-top: 20px;
 }
 
 ul li a {
@@ -307,7 +307,7 @@ body {
     padding: 0;
 }
 .uk-navbar-nav > li {
-    padding: 0;
+    padding: 20px;
     min-width: 140px;
     text-align: center;
 }

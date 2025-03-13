@@ -438,7 +438,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 ul li a {
