@@ -124,3 +124,18 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
+// Hàm tìm kiếm xe
+function searchFunction() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let items = document.querySelectorAll(".swiper-slide"); // Chọn tất cả các xe trong danh sách
+
+    items.forEach(item => {
+        let carName = item.querySelector("img").alt.toLowerCase();
+        if (carName.includes(input)) {
+            item.style.display = "block";
+        } else {
+            item.style.display = "none";
+        }
+    });
+}
+

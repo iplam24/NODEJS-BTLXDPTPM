@@ -144,6 +144,36 @@
     }
 }
 
+/*----------------------- search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    border-radius: 20px;
+    padding: 5px 20px;
+    width: 250px;
+    margin-left: 30px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px;
+    width: 100%;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.search-bar button i {
+    font-size: 16px;
+    color: #333;
+}
+
 
 /*----------------------- footer */
 html, body {
@@ -203,7 +233,7 @@ ul {
 }
 
 ul li {
-    margin-bottom: 8px;
+    margin-bottom: 0;
 }
 
 ul li a {
