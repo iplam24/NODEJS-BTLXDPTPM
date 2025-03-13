@@ -164,6 +164,7 @@ const getLienHe=(req,res)=>{
 
 const postLienHe=(req,res)=>{
     const {name,email,message}=req.body;
+    console.log("check>>>>",req.body);
 }
 module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,
     rePassWord,postGuiCode,postDatMK,
