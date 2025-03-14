@@ -171,6 +171,27 @@ html, body {
         display: block;
         font-size: 30px;
     }
+
+    .uk-navbar-nav {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 0 5px;
+    }
+
+    .uk-navbar-nav > li {
+        flex: 1;
+        max-width: 24%;
+        text-align: center;
+    }
+
+    .uk-navbar-nav > li > a {
+        display: block;
+        font-size: 10px;
+        padding: 5px;
+        white-space: nowrap;
+    }
 }
 
 html, body {
@@ -436,4 +457,4 @@ button {
    }
 }
 
-/* footer */
+/*  */
