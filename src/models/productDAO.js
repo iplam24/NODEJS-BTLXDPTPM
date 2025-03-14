@@ -5,7 +5,7 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
     try {
         let pool = await connectDB();
 
-        // 🟢 Ép kiểu số để tránh lỗi dữ liệu
+        //Ép kiểu số để tránh lỗi dữ liệu
         Price = parseFloat(Price) || 0;
         Cap_KW = parseFloat(Cap_KW) || 0;
         Torque_NM = parseFloat(Torque_NM) || 0;
@@ -15,10 +15,10 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
         Engine=parseFloat(Engine) || 0;
         const imagePathsFormatted = imagePaths.map(img => `/upload/${img.split('/').pop()}`);
 
-        // 🟢 Chuyển danh sách ảnh thành JSON để lưu vào CSDL
+        //Chuyển danh sách ảnh thành JSON để lưu vào CSDL
         const imageFolderString = JSON.stringify(imagePathsFormatted);
 
-        // 🟢 Thêm xe vào bảng Cars
+        //Thêm xe vào bảng Cars
         const result = await pool.request()
             .input('CarID', sql.NVarChar(10), CarID)
             .input('Model', sql.NVarChar(50), Model)
@@ -41,7 +41,7 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
 
         const insertedCarID = result.recordset[0].Car_ID;
 
-        // 🟢 Thêm ảnh vào bảng CarImages
+        //Thêm ảnh vào bảng CarImages
         for (let imgPath of imagePaths) {
             await pool.request()
                 .input('CarID', sql.NVarChar(10), insertedCarID)
@@ -66,7 +66,7 @@ const getAllCar = async () => {
             FROM tbl_cars c
         `);
 
-        // 🟢 Xử lý ảnh thành mảng thay vì chuỗi
+        //Xử lý ảnh thành mảng thay vì chuỗi
         const cars = result.recordset.map(car => {
             return {
                 ...car,
