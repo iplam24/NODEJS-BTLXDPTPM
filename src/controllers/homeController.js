@@ -1,5 +1,6 @@
+const session = require('express-session');
 const {switchRed} = require('../migration/userRole');
-const { addCarDB,getAllCar } = require('../models/productDAO');
+const { addCarDB,getAllCar,searchCar } = require('../models/productDAO');
 const {getUserAccount,checkUser,createUser,getUserRole
     ,checkUserEmail,getRepassCode,guiEmail,pullCode,
     setNewPass} = require('../models/userDAO');
@@ -51,8 +52,12 @@ const logInserver=async(req,res)=>{
         //lưu session
         req.session.user={usernameLogin,role};
         
-        switchRed(role,usernameLogin,res);
-        
+        req.session.save(() => {
+            switchRed(role, usernameLogin, res);
+        });
+
+       
+
         } catch (err) {
             console.error("⚠ Lỗi hệ thống:", err);
             return res.send(`<script>
@@ -166,7 +171,16 @@ const postLienHe=(req,res)=>{
     const {name,email,message}=req.body;
     console.log("check>>>>",req.body);
 }
+
+const timKiemSanPham = async (req, res) => {
+    const tenSP = req.body.tenSP;
+    const cars = await searchCar(tenSP);
+  
+    res.render("timkiem", { cars }); 
+};
+
 module.exports={logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,
     rePassWord,postGuiCode,postDatMK,
     getLienHe,
-    postLienHe}
+    postLienHe,
+    timKiemSanPham}

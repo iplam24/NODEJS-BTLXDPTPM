@@ -124,7 +124,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 });
 
-// Hàm tìm kiếm xe
+//Hàm tìm kiếm xe
 function searchFunction() {
     let input = document.getElementById("searchInput").value.toLowerCase();
     let items = document.querySelectorAll(".swiper-slide"); // Chọn tất cả các xe trong danh sách

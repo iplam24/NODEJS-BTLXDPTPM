@@ -81,5 +81,27 @@ const getAllCar = async () => {
     }
 };
 
+const searchCar = async (nameSP) => {
+    let pool = await connectDB();
+    let result = await pool.request()
+        .input('nameSP', sql.NVarChar, `%${nameSP}%`)
+        .query(`
+            SELECT c.*, 
+       (SELECT STRING_AGG(i.ImagePath, ',') 
+        FROM tbl_carimages i 
+        WHERE i.Car_ID = c.Car_ID) AS ImagePaths
+        FROM tbl_cars c
+        WHERE c.Model LIKE @nameSP;
 
-module.exports = { addCarDB,getAllCar };
+        `);
+
+    // Chuyển chuỗi ImagePaths thành mảng
+    return result.recordset.map(car => ({
+        ...car,
+        ImagePaths: car.ImagePaths ? car.ImagePaths.split(',') : []  
+    }));
+};
+
+
+
+module.exports = { addCarDB,getAllCar,searchCar };

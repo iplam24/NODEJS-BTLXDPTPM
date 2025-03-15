@@ -1,7 +1,8 @@
 const express=require('express');
 const {logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,rePassWord,
     postGuiCode,postDatMK,
-    getLienHe,postLienHe}=require('../controllers/homeController');
+    getLienHe,postLienHe,
+    timKiemSanPham}=require('../controllers/homeController');
 const {getSignup,logOutUser,getLogin,getLoginUser} =require('../migration/oldData');
 const router =express.Router();
 
@@ -16,7 +17,7 @@ router.get('/dangky',getSignup);
 
 router.get('/user-dangnhap',getLoginUser);
 
-router.get('/dangxuat',logOutUser);
+router.post('/dangxuat',logOutUser);
 
 router.get('/sanpham',getCar);
 
@@ -35,4 +36,7 @@ router.post('/gui-lien-he',postLienHe);
 //dat lai mk
 router.post('/dat-lai-mk',postDatMK);
 router.post('/dangky-taikhoan',postCreateNewUser);
+
+
+router.post('/timkiem-sanpham',timKiemSanPham);
 module.exports = router

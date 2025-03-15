@@ -16,17 +16,29 @@ const getSignup = (req, res) => {
 };
 
 //Đăng xuất tài khoản khỏi server, xoá session
-const logOutUser= (req, res) => {
-    console.log("User đã đăng xuất:",req.session.user.usernameLogin);
+const logOutUser = (req, res) => {
+    if (!req.session.user) {
+        return res.status(400).json({ message: "Bạn chưa đăng nhập!" });
+    }
+
+    console.log("✅ User đã đăng xuất:", req.session.user.usernameLogin);
+
     req.session.destroy((err) => {
         if (err) {
-            return res.status(500).json({ message: "Đăng xuất thất bại" });
+            console.error("❌ Lỗi khi đăng xuất:", err);
+            return res.status(500).json({ message: "Đăng xuất thất bại!" });
         }
-        
-        res.clearCookie("connect.sid"); // Xóa cookie session (quan trọng)
-        res.json({ loggedOut: true });
+
+        res.clearCookie("connect.sid"); // Xóa session cookie
+        res.status(200).json({ loggedOut: true }); // Trả về JSON để client xử lý
     });
 };
+
+
+
+
+
+
 const getLogin =(req,res)=>{
     if (!req.session) {
         return res.render("login", { oldData: {}, message: "" });

@@ -15,5 +15,10 @@ app.use(session({
     saveUninitialized: true,   // Lưu session ngay cả khi chưa có dữ liệu
     cookie: { secure: false }  // Nếu dùng HTTPS, đổi thành `true`
 }));
+
+app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+});
 }
 module.exports=configBody;
