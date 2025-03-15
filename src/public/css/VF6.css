@@ -1,0 +1,509 @@
+/* ========================= Reset chung ========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 📌 Giới hạn chiều rộng toàn trang & ngăn kéo ngang */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Không cho cuộn ngang */
+    font-family: Arial, sans-serif;
+}
+
+/* ========================= HEADER ========================= */
+.fixed-header {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Giữ chiều cao cố định */
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center; 
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* ========================= MENU ========================= */
+.menu-nav {
+    flex: 1;
+    padding-left: 50px;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+}
+
+.menu-item {
+    margin-right: 30px;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.menu-item a:hover {
+    color: gray;
+}
+
+/* Nút đăng nhập & đăng ký */
+.btn-nav {
+    display: flex;
+    gap: 15px;
+    padding-right: 20px;
+    align-items: center;
+}
+
+.btn-login, .btn-signup {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.btn-login:hover, .btn-signup:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    opacity: 0.8;
+}
+
+/* ========================= MENU MOBILE ========================= */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.mobile-login {
+    display: none;
+    font-size: 30px;
+    text-decoration: none;
+    color: black;
+}
+
+/* 📌 Mobile Responsive */
+/* ========================= MENU MOBILE ========================= */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        font-size: 30px;
+        cursor: pointer;
+        padding: 10px;
+        background: none;
+        border: none;
+    }
+
+    .menu-nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 0;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+        text-align: center; /* Căn giữa nội dung */
+    }
+
+    .menu-nav.active {
+        display: block;
+        transform: translateY(0);
+    }
+
+    .menu-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Căn giữa menu */
+    }
+
+    .menu-item {
+        width: 100%; /* Đảm bảo căn giữa */
+        padding: 15px 0;
+        font-size: 18px;
+        text-align: center; /* Căn giữa chữ */
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        display: block;
+        width: 100%; /* Đảm bảo chữ căn giữa */
+    }
+
+    /* Ẩn nút đăng nhập & đăng ký trên mobile */
+    .btn-nav {
+        display: none;
+    }
+
+
+
+    /* Hiển thị icon đăng nhập trên mobile */
+    .mobile-login {
+        display: block;
+        font-size: 30px;
+    }
+}
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+footer {
+    width: 100%;
+    background: #f8f8f8;
+    padding: 20px 50px;
+    font-family: Arial, sans-serif;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: auto; /* Giúp footer luôn dính dưới */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-middle,
+.footer-right {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+}
+
+.footer-left .logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #0073e6;
+}
+
+ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-icons a {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.footer-bottom img {
+    width: 120px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center; /* Căn giữa logo theo chiều dọc */
+}
+
+.logo img {
+    height: 80%; /* Giảm kích thước ảnh xuống còn 80% chiều cao header */
+    width: auto; /* Giữ nguyên tỷ lệ ảnh */
+    max-height: 50px; /* Giới hạn chiều cao tối đa */
+    object-fit: contain; /* Đảm bảo ảnh không bị cắt mất phần nào */
+    padding: 5px 0; /* Tạo khoảng cách giữa ảnh và viền trên/dưới */
+}
+
+
+/*----------VIDEO------------*/
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%; /* Chiều cao video */
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+/* Video Full-width không bị cắt */
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*-------------ĐẶT CỌC----------------*/
+.container_datcoc{
+    margin-top: 50px;
+    
+    
+}
+.container_datcoc h4{
+    text-align: center;
+    font-family: 'Mulish', sans-serif;
+    font-size: 48px;
+    color: #3C3C3C;
+}
+.dat-coc {
+    width: 540px;
+    height: 150px;
+    border: 3px solid black;
+    margin: 0 auto; /* Căn giữa theo chiều ngang */
+    display: flex;
+    margin-top: 30px;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung theo chiều ngang */
+    justify-content: center; /* Căn giữa nội dung theo chiều dọc */
+    text-align: center;
+}
+
+.dat-coc h2 {
+    font-size: 30px;
+    font-family: 'Mulish', sans-serif;
+    color: #3C3C3C;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: flex;
+
+    gap: 5px; /* Khoảng cách giữa số và chữ VNĐ */
+}
+
+.price p {
+    font-size: 24px;
+    font-family: 'Mulish', sans-serif;
+    color: #3C3C3C;
+    margin: 0; /* Xóa margin để tránh bị xuống dòng */
+}
+
+
+
+/*-----------BANNER-----------*/
+.content{
+    margin-top: 30px;
+}
+.content h4{
+    font-size: 50px;
+    font-family: 'Mulish', sans-serif;
+    color: #3C3C3C;
+    margin-left: 10%;
+   
+}
+.content p{
+    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+    color: #3C3C3C;
+    margin-left: 10%;
+    margin-right: 10%
+}
+
+.banner-vf3 {
+    margin-top: 20px;
+    margin-left: 10%;
+    max-width: 80vw;
+    max-height: 100vh;
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    display: block; /* Loại bỏ khoảng trống dưới ảnh */
+   
+}
+
+/*---------------------*/
+.VF3-in4{
+    background-color: rgb(227, 227, 227);
+    margin-top: 100px;
+    height: 1100px;
+}
+
+.VF3-in4 h4{
+    margin-top: 50px;
+    margin-left: 20%;
+    font-size: 32px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 600;
+}
+.in4{
+    display: flex;
+    justify-content: space-between; /* Căn đều các phần tử */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+.in4-1{
+    margin-left: 20%;
+    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+}
+.in4-2 {
+    font-size: 20px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    text-align: left;  /* Chữ căn trái */
+    width: 40%;        /* Để phần tử cách lề phải 40% */
+    margin-left: auto; /* Đẩy nó về bên phải nhưng vẫn giữ căn trái */
+}
+
+.custom-hr {
+    border: none; /* Xóa viền mặc định */
+    height: 2px; /* Độ dày của đường kẻ */
+    background-color: #A9A9A9; /* Màu xám sang trọng */
+    width: 60%; /* Độ dài đường kẻ (cách viền 10% mỗi bên) */
+    margin: 10px auto; /* Căn giữa và tạo khoảng cách trên dưới */
+}
+
+.xemthem {
+    margin-left: 20%;
+    width: 300px;
+    height: 50px;
+    border: 2px solid blue; /* Viền màu xanh */
+    position: relative;
+    z-index: 1; /* Chữ nằm trên cùng */
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    transition: color 0.4s ease-in-out;
+    margin-top: 30px;
+}
+.xemthem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: left 0.4s ease-in-out;
+    z-index: -1; /* Đặt nền ở dưới chữ */
+}
+
+/* Khi hover, nền đen tràn vào */
+.xemthem:hover::before {
+    left: 0;
+}
+
+/* Đảm bảo chữ chuyển thành trắng khi nền đen xuất hiện */
+.xemthem:hover {
+    color: white;
+}
+
+.vf3-nguoc{
+    max-width:70%;
+    margin-left: 15%;
+    margin-top: 60px;
+}
+
+.xemthemm {
+    width: 300px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.4s ease-in-out;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Giữ chữ trên nền */
+    text-decoration: none;
+}
+
+.xemthemm::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: left 0.4s ease-in-out;
+    z-index: -1; /* Nền đen nằm dưới chữ */
+}
+
+.xemthemm:hover::before {
+    left: 0;
+}
+
+.xemthemm:hover {
+    color: white; /* Chữ đổi thành màu trắng khi hover */
+}
+
