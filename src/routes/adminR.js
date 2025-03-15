@@ -12,7 +12,7 @@ const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
 // Áp dụng checkRole([0]) cho tất cả các route bắt đầu bằng '/admin'
-//router.use('/admin', checkRole([0]));
+router.use('/admin', checkRole([0]));
 // Route trang dashboard admin
 router.get('/admin',getAdmin);
 
