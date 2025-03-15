@@ -301,6 +301,13 @@ ul li a:hover {
     height: 100%;
     object-fit: cover;
 }
+/* Khi ở mobile (max-width: 768px), đặt chiều cao là 100vh */
+@media (max-width: 768px) {
+    .video-container {
+        height: 100vh;
+        margin-top: 0; /* Loại bỏ margin-top nếu cần */
+    }
+}
 /*-------------ĐẶT CỌC----------------*/
 .container_datcoc{
     margin-top: 50px;
@@ -312,10 +319,11 @@ ul li a:hover {
     font-family: 'Mulish', sans-serif;
     font-size: 48px;
     color: #3C3C3C;
+    margin-left: 1%;
 }
 .dat-coc {
-    width: 540px;
-    height: 150px;
+    width: 40%;
+    height: 170px;
     border: 3px solid black;
     margin: 0 auto; /* Căn giữa theo chiều ngang */
     display: flex;
@@ -331,19 +339,29 @@ ul li a:hover {
     font-family: 'Mulish', sans-serif;
     color: #3C3C3C;
     margin-bottom: 10px;
+    max-width: 90%;
 }
 
 .price {
     display: flex;
-
-    gap: 5px; /* Khoảng cách giữa số và chữ VNĐ */
+    max-width: 100%;
+    gap: 5px; 
+    
 }
 
 .price p {
     font-size: 24px;
+    max-width: 80%;
     font-family: 'Mulish', sans-serif;
     color: #3C3C3C;
-    margin: 0; /* Xóa margin để tránh bị xuống dòng */
+    margin-right: 10px;
+
+}
+@media screen and (max-width: 480px) {
+    .price {
+        flex-direction: column; /* Chuyển sang dạng cột khi nhỏ */
+        align-items: center; /* Căn giữa */
+    }
 }
 
 
