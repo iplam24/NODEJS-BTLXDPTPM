@@ -65,7 +65,9 @@ const postCreateNewUserAdmin = async(req,res)=>{
 const getUpDateUser=async(req,res)=>{
     const userName = req.params.username;
     let result = await getUserUpDate(userName);
-    res.render("admin/suaTK", { userEdit: result });
+    console.log("result>>>>",result);
+    res.render("admin/suaTK", { ListUsers: result });
+    
 }
 
 const postUpDateUserAdmin=async(req,res)=>{

@@ -63,7 +63,7 @@ const getUserUpDate = async (username) => {
             FROM tbl_users u
             JOIN tbl_role r ON u.UserName = r.UserName
             WHERE u.UserName = @username`);
-        return result.recordset; // Chỉ trả về danh sách user 
+        return result.recordset; 
 };
 const updateUser = async (username, password, myname, email, phone, address, role) => {
     let pool = await connectDB();

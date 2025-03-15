@@ -34,8 +34,7 @@ const logOutUser = (req, res) => {
     });
 };
 
-
-
+// Thay đổi route để chỉ chấp nhận POST request
 
 
 

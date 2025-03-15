@@ -9,45 +9,52 @@
 <body>
     <div id="modalForm" class="modal">
         <div class="register-container">
+            <% if (ListUsers) { %>
+                
+                <p>✅ Dữ liệu user: <%=JSON.stringify(ListUsers) %></p>
+            <% } else { %>
+                <p>❌ Không có dữ liệu user!</p>
+            <% } %>
+            
             <h2>Sửa tài khoản</h2>
             <form action="/admin/sua-taikhoan" class="signup-form" method="post">
                 <label>Tài khoản</label>
                 <div class="inputForm">
-                    <input type="text" class="input" placeholder="Nhập vào tên tài khoản" name="username" value="<%= userEdit ? userEdit.UserName : '' %>" readonly>>
+                    <input type="text" class="input" placeholder="Nhập vào tên tài khoản" name="username" value="<%=ListUsers.UserName%>" readonly>
                 </div>
-    
+                
                 <label>Mật khẩu</label>
                 <div class="inputForm">
-                    <input type="text" class="input" placeholder="Nhập vào mật khẩu" name="password" value="<%= userEdit ? userEdit.PassWord : '' %>">
+                    <input type="text" class="input" placeholder="Nhập vào mật khẩu" name="password" value="<%= ListUsers ? ListUsers.PassWord : '' %>">
                     <span class="togglePassword"></span>
                 </div>
     
                
                 <label>Họ và tên</label>
                 <div class="inputForm">
-                    <input type="text" class="input" placeholder="Họ và tên" name="myname" value="<%= userEdit ? userEdit.Full_name : '' %>">
+                    <input type="text" class="input" placeholder="Họ và tên" name="myname" value="<%= ListUsers ? ListUsers.Full_name : '' %>">
                 </div>
     
                 <label>Email</label>
                 <div class="inputForm">
-                    <input type="text" class="input" placeholder="Nhập vào email" name="email" value="<%= userEdit ? userEdit.Email : '' %>">
+                    <input type="text" class="input" placeholder="Nhập vào email" name="email" value="<%= ListUsers ? ListUsers.Email : '' %>">
                 </div>
     
                 <label>Số điện thoại</label>
                 <div class="inputForm">
-                    <input type="number" class="input" placeholder="Số điện thoại" name="phone" value="<%= userEdit ? userEdit.Phone : '' %>">
+                    <input type="number" class="input" placeholder="Số điện thoại" name="phone" value="<%= ListUsers ? ListUsers.Phone : '' %>">
                 </div>
     
                 <label>Địa chỉ</label>
                 <div class="inputForm">
-                    <input type="text" class="input" placeholder="Nhập vào địa chỉ" name="address" value="<%= userEdit ? userEdit.Address : '' %>">
+                    <input type="text" class="input" placeholder="Nhập vào địa chỉ" name="address" value="<%= ListUsers ? ListUsers.Address : '' %>">
                 </div>
                 <div class="inputForm">
                     <label for="quyen">Chọn quyền:</label>
                     <select id="quyen" name="quyen">
-                        <option value="khachhang" <%= userEdit && userEdit.Role === 2 ? 'selected' : '' %>>Khách hàng</option>
-                        <option value="nhanvien" <%= userEdit && userEdit.Role === 1 ? 'selected' : '' %>>Nhân viên</option>
-                        <option value="nhanvien" <%= userEdit && userEdit.Role === 0 ? 'selected' : '' %>>------</option>
+                        <option value="khachhang" <%= ListUsers && ListUsers.Role === 2 ? 'selected' : '' %>>Khách hàng</option>
+                        <option value="nhanvien" <%= ListUsers && ListUsers.Role === 1 ? 'selected' : '' %>>Nhân viên</option>
+                        <option value="nhanvien" <%= ListUsers && ListUsers.Role === 0 ? 'selected' : '' %>>------</option>
                     </select>
                     
                 </div>
