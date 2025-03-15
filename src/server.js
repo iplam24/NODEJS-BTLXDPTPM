@@ -9,8 +9,8 @@ const adminRoutes =require('./routes/adminR');
 
 const app = express();
 const port = process.env.PORT || 3000;//port
-const hostname=process.env.HOST_NAME || 'localhost';
-
+//const hostname=process.env.HOST_NAME || 'localhost';
+const hostname=process.env.HOST_NAME || '0.0.0.0';
 
 configViewEngine(app);
 configBody(app);

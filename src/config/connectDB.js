@@ -9,7 +9,8 @@ const dbConfig = {
     database: process.env.DB_DATABASE,
     port:Number(process.env.DB_PORT),  // Đảm bảo đúng cổng
     options: {
-        encrypt: false, // Không mã hóa (nếu chưa cấu hình SSL)
+        encrypt: true, 
+        enableArithAbort: true,
         trustServerCertificate: true
     }
 };
