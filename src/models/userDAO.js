@@ -3,7 +3,7 @@ const connectDB =require('../config/connectDB');
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
 const { hostname } = require('os');
-// Hàm kiểm tra tài khoản và mật khẩu trong tbl_users
+
 const getUserAccount = async (username, password) => {
     let pool = await connectDB();
     let result = await pool.request()
@@ -55,7 +55,8 @@ const getUserRole = async (username) => {
     return result.recordset.length > 0 ? result.recordset[0].Role : null;
 };
 
-const getUserUpDate = async (username) => {
+
+const get1UserUpDate = async (username) => {
     let pool = await connectDB();
     let result = await pool.request()
         .input('username', username)
@@ -63,8 +64,10 @@ const getUserUpDate = async (username) => {
             FROM tbl_users u
             JOIN tbl_role r ON u.UserName = r.UserName
             WHERE u.UserName = @username`);
-        return result.recordset; 
+        return result.recordset.length > 0 ? result.recordset[0] : null; 
 };
+
+
 const updateUser = async (username, password, myname, email, phone, address, role) => {
     let pool = await connectDB();
     let request = pool.request();
@@ -216,6 +219,6 @@ const setNewPass = async (email, newPassword) => {
     }
 };
 
-module.exports={getUserAccount,checkUser,createUser,getUserRole,getUserUpDate,updateUser,deleteUser,getAllUser,getRepassCode,checkUserEmail,guiEmail,pullCode,
-    setNewPass
+module.exports={getUserAccount,checkUser,createUser,getUserRole,updateUser,deleteUser,getAllUser,getRepassCode,checkUserEmail,guiEmail,pullCode,
+    setNewPass,get1UserUpDate
 }

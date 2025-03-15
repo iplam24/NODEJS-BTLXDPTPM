@@ -1,5 +1,5 @@
 const upload = require('../middleware/upload');
-const {checkUser,createUser,getUserUpDate,updateUser,deleteUser,getAllUser} = require('../models/userDAO');
+const {checkUser,createUser,getUserUpDate,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
 const {addCarDB,getAllCar} = require('../models/productDAO');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
@@ -64,7 +64,7 @@ const postCreateNewUserAdmin = async(req,res)=>{
 //lấy về  dữ liệu của user 
 const getUpDateUser=async(req,res)=>{
     const userName = req.params.username;
-    let result = await getUserUpDate(userName);
+    let result = await get1UserUpDate(userName);
     console.log("result>>>>",result);
     res.render("admin/suaTK", { ListUsers: result });
     
