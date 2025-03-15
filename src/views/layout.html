@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/public/css/login.css">
+
     <link rel="stylesheet" href="/src/public/css/layout.css">
     <link
 		rel="stylesheet"
@@ -33,62 +33,8 @@
             </nav>
             
         </header>
-        <div class="content">
-            <div class="container">
-                
-                
-                <h2>Đăng ký</h2>
-                <form action="/dangky-taikhoan" class="signup-form" method="post">
-                    
-                    
-                    <label>Tài khoản</label>
-                    <div class="inputForm">
-                        <input type="text" class="input" placeholder="Nhập vào tên tài khoản" value="<%= oldData?.username || '' %>" name="username">
-                    </div>
-        
-                    <label>Mật khẩu</label>
-                    <div class="inputForm">
-                        <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="password" id="password">
-                        <span class="togglePassword">👁</span>
-                    </div>
-
-                    <label>Nhập lại mật khẩu</label>
-                    <div class="inputForm">
-                        <input type="password" class="input" placeholder="Nhập vào mật khẩu" name="repassword" id="password">
-                        <span class="togglePassword">👁</span>
-                    </div>
-
-                    <label>Họ và tên</label>
-                    <div class="inputForm">
-                        <input type="text" class="input" id="Fullname" placeholder="Họ và tên" value="<%= oldData.myname || '' %>" name="myname">
-                        
-                    </div>
-
-                    <label>Email</label>
-                    <div class="inputForm">
-                        <input type="text" class="input" id="email" placeholder="Nhập vào email" value="<%= oldData.email || '' %>" name="email">
-                        
-                    </div>
-        
-                    <label>Số điện thoại</label>
-                    <div class="inputForm">
-                        <input type="number" class="input" id="Phone" placeholder="Số điện thoại" value="<%= oldData.phone || '' %>" name="phone">
-                    </div>
-
-                    <label>Địa chỉ</label>
-                    <div class="inputForm">
-                        <input type="text" class="input" id="Address" placeholder="Nhập vào địa chỉ" value="<%= oldData.address || '' %>" name="address">
-                    </div>
-                    <% if (message) { %>
-                        <p style="color: red;"><%= message %></p>
-                    <% } %>
-                    <button class="button-submitt">Đăng ký</button> 
-        
-                    <p>Bạn đã có tài khoản? <a href="/dangnhap">Đăng nhập</a></p>
-                </form>
-            </div>
-        </div>
-
+  
+            
        
         
     
@@ -138,6 +84,12 @@
                 </div>
             </footer>
         </div>
+
+        <script>
+            document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".menu-nav").classList.toggle("active");
+        });
+        </script>
         
     </body>
 </html>
