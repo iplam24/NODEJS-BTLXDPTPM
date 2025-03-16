@@ -67,9 +67,10 @@
 
                     <label>Email</label>
                     <div class="inputForm">
-                        <input type="text" class="input" id="email" placeholder="Nhập vào email" value="<%= oldData.email || '' %>" name="email">
-                        
+                        <input type="text" class="input" id="email" placeholder="Nhập vào email" 
+                            value="<%= oldData.email || '' %>" name="email">
                     </div>
+                    <p id="error" style="color:red;"></p>
         
                     <label>Số điện thoại</label>
                     <div class="inputForm">
@@ -90,6 +91,22 @@
             </div>
         </div>
 
+
+        <script>
+            document.querySelector(".signup-form").addEventListener("submit", function(event) {
+                var email = document.getElementById("email").value;
+                var regex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+                var errorElement = document.getElementById("error");
+            
+                if (!regex.test(email)) {
+                    errorElement.innerText = "Email không hợp lệ! Vui lòng nhập đúng địa chỉ địa chỉ Gmail.";
+                    event.preventDefault(); // Chặn form gửi đi
+                } else {
+                    errorElement.innerText = "";
+                }
+            });
+            </script>
+            
        
         
     
