@@ -1,6 +1,6 @@
 const upload = require('../middleware/upload');
-const {checkUser,createUser,getUserUpDate,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
-const {addCarDB,getAllCar} = require('../models/productDAO');
+const {checkUser,createUser,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
+const {addCarDB,getAllCar,addMoTa} = require('../models/productDAO');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
 }
@@ -123,6 +123,7 @@ const addCar = async (req, res) => {
         }
 
         const { carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain } = req.body;
+       
         let dongco;
         if (engine === "xang") {
             dongco = 1; 
@@ -170,6 +171,10 @@ const searchAccount=async(req,res)=>{
     let result = await getUserUpDate(timkiem);
     res.render("admin/account", { listUser: result });
     console.log("Tìm kiếm thành công user: ",timkiem);
+}
+
+const themMoTa =async(req,res)=>{
+    
 }
 
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount}

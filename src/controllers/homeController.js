@@ -17,6 +17,7 @@ const getHomePage =async (req,res)=>{
     res.render('MainPage');
 }
 
+//api dung de dang nhap
 const logInserver=async(req,res)=>{
     let usernameLogin = req.body.usernameLogin;
     let passwordLogin = req.body.passwordLogin;

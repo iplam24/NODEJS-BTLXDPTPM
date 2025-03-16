@@ -1,6 +1,6 @@
 
 const connectDB = require('../config/connectDB');
-const sql = require('mssql'); // Import sql để sử dụng sql.Decimal
+const sql = require('mssql');
 const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Torque_NM, Accel, Range_km, FastCharge, Drivertrain, imagePaths) => {
     try {
         let pool = await connectDB();
@@ -102,6 +102,9 @@ const searchCar = async (nameSP) => {
     }));
 };
 
+const addMoTa=async(req,res)=>{
+    let pool = await connectDB();
 
+}
 
-module.exports = { addCarDB,getAllCar,searchCar };
+module.exports = { addCarDB,getAllCar,searchCar,addMoTa };
