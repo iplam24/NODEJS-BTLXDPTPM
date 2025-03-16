@@ -1,34 +1,42 @@
-const express = require('express');
-const { getSanPham, logInserver, getHomePage, postCreateNewUser, getCar, getQuenMK, 
-        rePassWord, postGuiCode, postDatMK, getLienHe, postLienHe, timKiemSanPham 
-} = require('../controllers/homeController');  // 🟢 Import tất cả controllers lên trước
+const express=require('express');
+const {logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,rePassWord,
+    postGuiCode,postDatMK,
+    getLienHe,postLienHe,
+    timKiemSanPham}=require('../controllers/homeController');
+const {getSignup,logOutUser,getLogin,getLoginUser} =require('../migration/oldData');
+const router =express.Router();
 
-const { getSignup, logOutUser, getLogin, getLoginUser } = require('../migration/oldData');
 
-const router = express.Router();
+router.get('/',getHomePage);
 
-router.get('/', getHomePage);
 
-// Route đăng nhập
-router.get('/dangnhap', getLogin);
-router.get('/dangky', getSignup);
-router.get('/user-dangnhap', getLoginUser);
-router.post('/dangxuat', logOutUser);
+//route dang nhap
+router.get('/dangnhap',getLogin);
 
-// Route sản phẩm
-router.get('/sanpham', getCar);
-router.get('/sanpham/:id', getSanPham);  // 🟢 Đảm bảo route này gọi đúng hàm
+router.get('/dangky',getSignup);
 
-// Route tìm kiếm sản phẩm
-router.post('/timkiem-sanpham', timKiemSanPham);
+router.get('/user-dangnhap',getLoginUser);
 
-// Các route khác
-router.get('/lienhe', getLienHe);
-router.post('/gui-lien-he', postLienHe);
-router.get('/quenmatkhau', getQuenMK);
-router.post('/quen-mat-khau', rePassWord);
-router.post('/nhap-ma-xacnhan', postGuiCode);
-router.post('/dat-lai-mk', postDatMK);
-router.post('/dangky-taikhoan', postCreateNewUser);
+router.post('/dangxuat',logOutUser);
 
-module.exports = router;
+router.get('/sanpham',getCar);
+
+router.get('/lienhe',getLienHe);
+
+router.post('/dangnhap-user',logInserver);
+
+router.post('/nhap-ma-xacnhan',postGuiCode);
+
+router.get('/quenmatkhau',getQuenMK);
+
+router.post('/quen-mat-khau',rePassWord);
+
+router.post('/gui-lien-he',postLienHe);
+
+//dat lai mk
+router.post('/dat-lai-mk',postDatMK);
+router.post('/dangky-taikhoan',postCreateNewUser);
+
+
+router.post('/timkiem-sanpham',timKiemSanPham);
+module.exports = router

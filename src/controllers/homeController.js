@@ -172,56 +172,15 @@ const postLienHe=(req,res)=>{
     console.log("check>>>>",req.body);
 }
 
-const timKiemSanPham = (req, res) => {
-    const searchQuery = req.body.tenSP;
-
-    const danhSachSanPham = [
-        { id: 1, ten: "VF3", link: "/sanpham/1" },
-        { id: 2, ten: "VF5", link: "/sanpham/2" },
-        { id: 3, ten: "VF6", link: "/sanpham/3" },
-        { id: 4, ten: "VF7", link: "/sanpham/4" },
-        { id: 5, ten: "VF8", link: "/sanpham/5" },
-        { id: 6, ten: "VF9", link: "/sanpham/6" },
-    ];
-
-    const ketQua = danhSachSanPham.filter(sp => 
-        sp.ten.toLowerCase().includes(searchQuery.toLowerCase())
-    );
-
-    res.json(ketQua); 
+const timKiemSanPham = async(req, res) => {
+    const tenSP = req.body.tenSP;
+    const cars = await searchCar(tenSP);
+  
+    res.render("timkiem", { cars }); 
 };
-
-
-const getSanPham = (req, res) => {
-    const id = req.params.id;
-
-    const danhSachSanPham = [
-        { id: 1, ten: "VF3", view: "VF3" },
-        { id: 2, ten: "VF5", view: "VF5" },
-        { id: 3, ten: "VF6", view: "VF6" },
-        { id: 4, ten: "VF7", view: "VF7" },
-        { id: 5, ten: "VF8", view: "VF8" },
-        { id: 6, ten: "VF9", view: "VF9" },
-    ];
-
-    const sanPham = danhSachSanPham.find(sp => sp.id == id);
-    if (!sanPham) {
-        return res.status(404).send(" Sản phẩm không tồn tại!");
-    }
-
-    res.render(sanPham.view, { sanPham });  
-};
-
-module.exports = { getSanPham };
-
-
-
-
-module.exports = { timKiemSanPham };
 
 
 module.exports = { 
-    getSanPham, 
     logInserver, 
     getHomePage, 
     postCreateNewUser, 

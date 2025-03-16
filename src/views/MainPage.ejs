@@ -36,17 +36,12 @@
         
             <nav class="menu-nav">
                 <ul class="menu-list">
-                    <li class="menu-items">
-                        <form onsubmit="return false;">
-                            <div class="search-bar">
-                                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." name="tenSP" autocomplete="off">
-                                <button id="searchButton" type="button"><i class="fas fa-search"></i></button>
-                            </div>
-                            <div id="searchResults" class="search-results"></div>
-                        </form>
-                        
-                    </li>
-                    
+                    <li class="menu-items"><form action="/timkiem-sanpham" method="post">
+                        <div class="search-bar">
+                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." onkeyup="searchFunction()" name="tenSP">
+                            <button type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                        </form></li>
                     <li class="menu-item"><a href="/">Trang chủ</a></li>
                     <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
                     <li class="menu-item"><a href="/lienhe">Liên hệ</a></li>
@@ -331,77 +326,6 @@
                 updateCarDetailsLink(index);
                 
             }
-
-            document.getElementById("searchInput").addEventListener("keyup", function(event) {
-    let searchQuery = this.value;
-    let resultBox = document.getElementById("searchResults");
-
-    if (searchQuery.length < 1) {
-        resultBox.innerHTML = "";
-        resultBox.style.display = "none";
-        return;
-    }
-
-    fetch("/timkiem-sanpham", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tenSP: searchQuery })
-    })
-    .then(response => response.json())
-    .then(data => {
-        resultBox.innerHTML = "";
-        resultBox.style.display = "block";
-
-        if (data.length > 0) {
-            data.forEach(item => {
-                let div = document.createElement("div");
-                div.innerHTML = `<a href="${item.link}" style="display: block; width: 100%; height: 100%; padding: 10px; text-decoration: none;">${item.ten}</a>`;
-                div.classList.add("search-item");
-                div.onclick = () => window.location.href = item.link; // 🔥 Click được cả khoảng trống
-                resultBox.appendChild(div);
-            });
-        } else {
-            resultBox.innerHTML = "<p>Không tìm thấy sản phẩm</p>";
-        }
-    })
-    .catch(error => console.error("Lỗi tìm kiếm:", error));
-});
-
-           
-
-        // Ẩn danh sách khi click ra ngoài
-        document.addEventListener("click", function (e) {
-            if (!document.getElementById("searchInput").contains(e.target)) {
-                document.getElementById("searchResults").style.display = "none";
-            }
-        });
-        document.getElementById("searchInput").addEventListener("input", function() {
-            document.getElementById("searchResults").innerHTML = ""; // Xóa kết quả cũ ngay khi nhập mới
-            document.getElementById("searchResults").style.display = "none";
-        });
-
-        document.getElementById("searchButton").addEventListener("click", function() {
-    let searchQuery = document.getElementById("searchInput").value.trim();
-
-    if (searchQuery.length > 0) {
-        fetch("/timkiem-sanpham", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ tenSP: searchQuery })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.length > 0) {
-                window.location.href = data[0].link; // Chuyển đến trang của sản phẩm đầu tiên
-            } else {
-                alert("❌ Không tìm thấy sản phẩm!");
-            }
-        })
-        .catch(error => console.error("Lỗi tìm kiếm:", error));
-    }
-});
-
-
                 
 
           
