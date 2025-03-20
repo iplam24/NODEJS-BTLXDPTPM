@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Dung lượng pin (kWh): 92 hoặc 123",
                 "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
-            image: "/src/public/image/VF9-img-red.png"
+            image: "/image/VF9-img-red.png"
         },
         "VF9 Plus(tuỳ chọn 7 chỗ)": {
             title: "VF9 Plus (7 chỗ)",
@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Dung lượng pin (kWh): 92 hoặc 123",
                 "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
-            image: "/src/public/image/VF9-img-black.png"
+            image: "/image/VF9-img-black.png"
         },
         "VF9 Plus(ghế cơ trưởng)": {
             title: "VF9 Plus (ghế cơ trưởng)",
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 "Dung lượng pin (kWh): 123 Kwh",
                 "Thời gian tăng tốc từ 0-100Km/h: ~6,5 giây",
             ],
-            image: "/src/public/image/VF9-Img.png"
+            image: "/image/VF9-Img.png"
             
         }
     };

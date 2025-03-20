@@ -38,11 +38,13 @@
                 <ul class="menu-list">
                     <li class="menu-items">
                         <form action="/timkiem-sanpham" method="post">
-                        <div class="search-bar">
-                            <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." onkeyup="searchFunction()" name="tenSP">
-                            <button type="submit"><i class="fas fa-search"></i></button>
-                        </div>
-                        </form></li>
+                            <div class="search-bar">
+                                <input type="text" id="searchInput" placeholder="Tìm kiếm sản phẩm..." onkeyup="searchFunction()" name="tenSP" autocomplete="off">
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </li>
+                    
                     <li class="menu-item"><a href="/">Trang chủ</a></li>
                     <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
                     <li class="menu-item"><a href="/lienhe">Liên hệ</a></li>
@@ -327,9 +329,58 @@
                 updateCarDetailsLink(index);
                 
             }
-                
 
-          
+            const productLinks = {
+                "VF3": "/VF3",
+                "VF5": "/VF5",
+                "VF6": "/VF6",
+                "VF7": "/VF7",
+                "VF8": "/VF8",
+                "VF9": "/VF9"
+            };
+
+            function searchFunction() {
+                const input = document.getElementById("searchInput").value.trim();
+                let suggestions = document.getElementById("suggestions");
+
+                if (!suggestions) {
+                    suggestions = document.createElement("div");
+                    suggestions.id = "suggestions";
+                    suggestions.className = "suggestions";
+                    document.querySelector(".search-bar").appendChild(suggestions);
+                }
+
+                if (input === "") {
+                    suggestions.innerHTML = "";
+                    suggestions.style.display = "none";
+                    return;
+                }
+
+                // Lọc gợi ý theo input
+                const filteredSuggestions = Object.keys(productLinks).filter(product =>
+                    product.toLowerCase().includes(input.toLowerCase())
+                );
+
+                if (filteredSuggestions.length === 0) {
+                    suggestions.innerHTML = "<div class='suggestion-item'>Không tìm thấy sản phẩm</div>";
+                } else {
+                    suggestions.innerHTML = filteredSuggestions.map(product =>
+                        `<div class='suggestion-item' onclick="selectSuggestion('${product}')">${product}</div>`
+                    ).join("");
+                }
+
+                suggestions.style.display = "block";
+            }
+
+            function selectSuggestion(product) {
+                // Chuyển hướng đến link tương ứng
+                if (productLinks[product]) {
+                    window.location.href = productLinks[product];
+                } else {
+                    alert("Không tìm thấy trang cho sản phẩm này.");
+                }
+            }
+
             </script>
             
     

@@ -21,3 +21,19 @@ app.use('/',adminRoutes);
 app.listen(port,hostname,()=>{
     console.log(`Server running at http://${hostname}:${port}`);
 })
+
+//Phần tìm kiếm t viết :)
+// Thêm route tìm kiếm
+app.get('/:page', (req, res) => {
+    const { page } = req.params;
+    const allowedPages = ['VF3', 'VF5', 'VF6', 'VF7', 'VF8', 'VF9'];
+
+    if (allowedPages.includes(page)) {
+        res.render(page);
+    } else {
+        res.status(404).send('Trang không tồn tại!');
+    }
+});
+
+app.use('/', webRoutes);
+app.use('/', adminRoutes);
