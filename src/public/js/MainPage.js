@@ -47,12 +47,12 @@ function changeCarSlide(index) {
 
 // Dữ liệu xe
 const carData = [
-    { type: "MiniCar", seats: "4 chỗ", range: "210 km", price: "299.000.000 VNĐ" },
-    { type: "A-SUV", seats: "5 chỗ", range: "326,4 km", price: "529.000.000 VNĐ" },
-    { type: "B-SUV", seats: "5 chỗ", range: "480 km", price: "689.000.000 VNĐ" },
-    { type: "C-SUV", seats: "5 chỗ", range: "431 km", price: "790.000.000 VNĐ" },
-    { type: "D-SUV", seats: "5 chỗ", range: "471 km", price: "1.019.000.000 VNĐ" },
-    { type: "E-SUV", seats: "6-7 chỗ", range: "626 km", price: "1.499.000.000 VNĐ" }
+    { type: "MiniCar", seats: "4 chỗ", range: "210 km", price: "299.000.000 VNĐ", link: "/VF3" },
+    { type: "A-SUV", seats: "5 chỗ", range: "326,4 km", price: "529.000.000 VNĐ", link: "/VF5" },
+    { type: "B-SUV", seats: "5 chỗ", range: "480 km", price: "689.000.000 VNĐ", link: "/VF6" },
+    { type: "C-SUV", seats: "5 chỗ", range: "431 km", price: "790.000.000 VNĐ", link: "/VF7" },
+    { type: "D-SUV", seats: "5 chỗ", range: "471 km", price: "1.019.000.000 VNĐ", link: "/VF8" },
+    { type: "E-SUV", seats: "6-7 chỗ", range: "626 km", price: "1.499.000.000 VNĐ", link: "/VF9" }
 ];
 
 // Khởi tạo Swiper
@@ -76,6 +76,9 @@ function updateCarInfo(index) {
         document.getElementById("car-seats").textContent = carData[index].seats;
         document.getElementById("car-range").textContent = carData[index].range;
         document.getElementById("car-price").textContent = carData[index].price;
+
+        // Thêm link cho nút Xem Chi Tiết
+        document.getElementById("car-detail-button").href = carData[index].link;
     }
 }
 
@@ -87,7 +90,6 @@ function changeCar(index) {
 
 // Cập nhật thông tin xe ban đầu
 updateCarInfo(carSwiper.realIndex);
-
 
 
 
