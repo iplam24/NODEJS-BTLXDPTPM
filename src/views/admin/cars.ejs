@@ -11,7 +11,7 @@
     <div class="main-content">
         <h1>Quản lý xe</h1>
         <button class="openModal1">Mở Form 1</button>
-<button class="openModal2">Mở Form 2</button>
+        <button class="openModal2">Mở Form 2</button>
         <table class="table table-bordered mt-3">
             <thead>
                 <tr>
@@ -66,7 +66,8 @@
                 <% }); %>
             </tbody>
         </table>
-   
+        
+    </div>
         <div id="modalForm1" class="modal">
             <div class="register-container">
                 <span class="closeModal1 close">&times;</span>
@@ -148,21 +149,143 @@
                 </form>
             </div>
         </div>
+    </div>
+
+    <div id="modalForm2" class="modal2">
+        <div class="register-container">
+            <span class="closeModal2 close">&times;</span>
+            <h2>Thêm chi tiết xe</h2>
+            
+            <label>Video mở đầu</label>
+            <div class="inputForm">
+           <input type="file" class="input" placeholder="" name="carImages"  multiple>
+            </div>
+
+            <label>Tile 1</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 1" name="rangekm">
+            </div>
+
+            <label>Describe 1</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 1" name="rangekm">
+            </div>
+
+            <label>Tile 2</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 2" name="rangekm">
+            </div>
+
+            <label>Describe 2</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 2" name="rangekm">
+            </div>
+
+            <label>Tile 3</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 3" name="rangekm">
+            </div>
+
+            <label>Describe 3</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 3" name="rangekm">
+            </div>
+
+            <label>Tile 4</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 4" name="rangekm">
+            </div>
+
+            <label>Describe 4</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 4" name="rangekm">
+            </div>
+
+            <label>Tile 5</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 5" name="rangekm">
+            </div>
+
+            <label>Describe 5</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 5" name="rangekm">
+            </div>
+
+            <label>Hình ảnh</label>
+            <div class="inputForm">
+            <input type="file" class="input" placeholder="" name="carImages"  multiple>
+            </div>
+
+
+            
+
+
+            
+            
+        </div>
+    </div>
+    
+
 
 
         <!------>
 
-        <div id="modalForm2" class="modal">
-            <div class="register-container">
-                <span class="closeModal2 close">&times;</span>
-                <h2>Cửa sổ mới</h2>
-                <p>Đây là nội dung của cửa sổ mới</p>
-            </div>
-        </div>
+        
         
    
         <script>
-      
+            // Đảm bảo DOM đã tải xong
+window.addEventListener('DOMContentLoaded', function () {
+    const modal1 = document.getElementById('modalForm1');
+    const modal2 = document.getElementById('modalForm2');
+
+    // Nút mở và đóng form 1
+    const btnOpen1 = document.querySelector('.openModal1');
+    const btnClose1 = document.querySelector('.closeModal1');
+    
+    // Nút mở và đóng form 2
+    const btnOpen2 = document.querySelector('.openModal2');
+    const btnClose2 = document.querySelector('.closeModal2');
+
+    // Kiểm tra và mở form 1
+    if (btnOpen1 && modal1) {
+        btnOpen1.addEventListener('click', function () {
+            modal1.style.display = 'flex';
+            modal2.style.display = 'none'; // Đảm bảo form 2 ẩn
+        });
+    }
+
+    if (btnClose1 && modal1) {
+        btnClose1.addEventListener('click', function () {
+            modal1.style.display = 'none';
+        });
+    }
+
+    // Kiểm tra và mở form 2
+    if (btnOpen2 && modal2) {
+        btnOpen2.addEventListener('click', function () {
+            modal2.style.display = 'flex';
+            modal1.style.display = 'none'; // Đảm bảo form 1 ẩn
+        });
+    }
+
+    if (btnClose2 && modal2) {
+        btnClose2.addEventListener('click', function () {
+            modal2.style.display = 'none';
+        });
+    }
+
+    // Đóng modal khi click ra ngoài
+    window.addEventListener('click', function (event) {
+        if (event.target === modal1) {
+            modal1.style.display = 'none';
+        }
+        if (event.target === modal2) {
+            modal2.style.display = 'none';
+        }
+    });
+});
+
 
         </script>
 </body>
