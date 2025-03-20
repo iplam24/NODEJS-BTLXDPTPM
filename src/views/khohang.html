@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Kho Hàng - Bán Ô Tô</title>
+    <link rel="stylesheet" href="/src/public/css/khohang.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Quản Lý Kho Hàng</h2>
+
+        <!-- Form thêm xe vào kho -->
+        <div class="add-form">
+            <input type="text" id="carName" placeholder="Tên xe" required>
+            <input type="number" id="carPrice" placeholder="Giá xe (VNĐ)" required>
+            <input type="number" id="carStock" placeholder="Số lượng" required>
+            <button onclick="addCar()">Thêm Xe</button>
+        </div>
+
+        <!-- Danh sách xe trong kho -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã Xe</th>
+                    <th>Tên Xe</th>
+                    <th>Giá (VNĐ)</th>
+                    <th>Số Lượng</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody id="inventory-list">
+                <!-- Danh sách xe sẽ hiển thị bằng JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/src/public/js/khohang.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán Hóa Đơn - Bán Ô Tô</title>
+    <link rel="stylesheet" href="/src/public/css/thanhtoan.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Thanh Toán Hóa Đơn</h2>
+
+        <!-- Danh sách xe -->
+        <div class="cart">
+            <h3>Xe đã chọn:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên xe</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Tổng</th>
+                        <th>Hủy</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Dữ liệu xe sẽ được thêm bằng JavaScript -->
+                </tbody>
+            </table>
+            <h3>Tổng tiền: <span id="total-price">0</span> VNĐ</h3>
+        </div>
+
+        <!-- Form nhập thông tin khách hàng -->
+        <form id="payment-form">
+            <h3>Thông tin khách hàng</h3>
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" required>
+
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="address">Địa chỉ nhận xe:</label>
+            <input type="text" id="address" required>
+
+            <!-- Chọn phương thức thanh toán -->
+            <h3>Phương thức thanh toán</h3>
+            <label>
+                <input type="radio" name="payment-method" value="Chuyển khoản" checked> Chuyển khoản
+            </label>
+            <label>
+                <input type="radio" name="payment-method" value="Tiền mặt"> Tiền mặt
+            </label>
+
+            <button type="submit">Xác nhận thanh toán</button>
+        </form>
+    </div>
+
+    <script src="/src/public/js/thanhtoan.js"></script>
+</body>
+</html>
