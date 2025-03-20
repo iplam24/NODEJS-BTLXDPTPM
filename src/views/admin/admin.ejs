@@ -125,6 +125,7 @@
     });
 
     // Lắng nghe sự kiện click vào các liên kết trong menu
+    // Lắng nghe sự kiện click vào các liên kết trong menu
 document.querySelectorAll('.sidebar ul li a').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault(); // Ngăn chặn load trang
@@ -142,7 +143,7 @@ document.querySelectorAll('.sidebar ul li a').forEach(link => {
                 .then(data => {
                     document.getElementById('content').innerHTML = data;
 
-                    // Chờ nội dung render xong rồi mới gọi sự kiện
+                    // Gọi lại setupModalEvents để nhận diện modal mới trong cars.ejs
                     setTimeout(setupModalEvents, 500);
                 })
                 .catch(error => {
@@ -152,28 +153,72 @@ document.querySelectorAll('.sidebar ul li a').forEach(link => {
     });
 });
 
-// Hàm thiết lập lại sự kiện cho modal
+// Hàm nhận diện modal trong cars.ejs
 function setupModalEvents() {
-    const modal = document.getElementById("modalForm");
-    if (!modal) return; // Nếu modal không tồn tại, thoát luôn
+    console.log("Setup modal events lại sau khi load trang");
+    
+    const modal1 = document.getElementById("modalForm1");
+    const modal2 = document.getElementById("modalForm2");
 
-    document.addEventListener("click", function(event) {
-        // Mở modal khi nhấn vào nút có class "openModal"
-        if (event.target.matches(".openModal")) {
-            modal.style.display = "flex"; // Hiển thị modal khi nhấn nút
+    if (!modal1 || !modal2) {
+        console.log("Không tìm thấy modal 1 hoặc modal 2");
+        return;
+    }
+
+    // Đặt modal ẩn ngay khi tải xong
+    modal1.style.display = "none";
+    modal2.style.display = "none";
+
+    // Lắng nghe sự kiện mở Form 1
+    const btnOpen1 = document.querySelector(".openModal1");
+    if (btnOpen1) {
+        btnOpen1.addEventListener("click", function () {
+            console.log("Mở Form 1");
+            modal1.style.display = "flex";
+            modal2.style.display = "none"; // Đảm bảo Form 2 ẩn
+        });
+    }
+
+    // Lắng nghe sự kiện mở Form 2
+    const btnOpen2 = document.querySelector(".openModal2");
+    if (btnOpen2) {
+        btnOpen2.addEventListener("click", function () {
+            console.log("Mở Form 2");
+            modal2.style.display = "flex";
+            modal1.style.display = "none"; // Đảm bảo Form 1 ẩn
+        });
+    }
+
+    // Lắng nghe sự kiện đóng Form 1
+    const btnClose1 = document.querySelector(".closeModal1");
+    if (btnClose1) {
+        btnClose1.addEventListener("click", function () {
+            console.log("Đóng Form 1");
+            modal1.style.display = "none";
+        });
+    }
+
+    // Lắng nghe sự kiện đóng Form 2
+    const btnClose2 = document.querySelector(".closeModal2");
+    if (btnClose2) {
+        btnClose2.addEventListener("click", function () {
+            console.log("Đóng Form 2");
+            modal2.style.display = "none";
+        });
+    }
+
+    // Đóng modal khi nhấn ra ngoài
+    window.addEventListener("click", function (event) {
+        if (event.target === modal1) {
+            modal1.style.display = "none";
         }
-
-        // Đóng modal khi nhấn vào nút close
-        if (event.target.matches(".close")) {
-            modal.style.display = "none";
-        }
-
-        // Đóng modal khi nhấn ra ngoài
-        if (event.target === modal) {
-            modal.style.display = "none";
+        if (event.target === modal2) {
+            modal2.style.display = "none";
         }
     });
-  }
+}
+
+
 
 
     

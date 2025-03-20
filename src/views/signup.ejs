@@ -6,6 +6,10 @@
     
     <link rel="stylesheet" href="/css/signup.css">
     <link rel="stylesheet" href="/js/signup.js">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Đăng Nhập</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Login</title>
 </head>
 
@@ -84,6 +88,7 @@
                     <% if (message) { %>
                         <p style="color: red;"><%= message %></p>
                     <% } %>
+                    <div class="g-recaptcha" data-sitekey="6LdghPkqAAAAAPMG7h_IriVYUNB6RWCYv4dh1N4d"></div>
                     <button class="button-submitt">Đăng ký</button> 
         
                     <p>Bạn đã có tài khoản? <a href="/dangnhap">Đăng nhập</a></p>
@@ -105,6 +110,14 @@
                     errorElement.innerText = "";
                 }
             });
+            document.querySelector(".signup-form").addEventListener("submit", function(event) {
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        alert("Vui lòng xác minh CAPTCHA!");
+        event.preventDefault();
+    }
+});
+
             </script>
             
        

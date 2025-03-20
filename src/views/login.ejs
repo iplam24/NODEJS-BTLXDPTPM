@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/login.css">
-   
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <title>Đăng nhập</title>
 </head>
 
@@ -60,6 +60,7 @@
                   <% if (message) { %>
                     <p style="color: red;"><%= message %></p>
                 <% } %>
+                <div class="g-recaptcha" data-sitekey="6LdghPkqAAAAAPMG7h_IriVYUNB6RWCYv4dh1N4d"></div>
                 
                   <button class="button-submit">Đăng Nhập</button>
                   <p class="p">Bạn không có tài khoản? <a href="/dangky" class="span">Đăng ký</a>
@@ -93,6 +94,16 @@
                       
               </button></div></form>
         </div>
+
+        <script>
+           document.querySelector(".signup-form").addEventListener("submit", function(event) {
+    var response = grecaptcha.getResponse();
+    if (response.length === 0) {
+        alert("Vui lòng xác minh CAPTCHA!");
+        event.preventDefault();
+    }
+});
+        </script>
     </body>
     <script src="/js/login.js"></script>
     <script src="/js/lam.js"></script>
