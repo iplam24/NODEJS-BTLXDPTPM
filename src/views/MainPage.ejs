@@ -158,6 +158,71 @@
                     </div>
             </div>        
         </div>
+
+        <!-- Modal Form Đặt Cọc -->
+        <div id="depositModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDepositForm()">&times;</span>
+                <h2>Đặt Cọc</h2>
+                <form action="/dat-coc" class="signup-form" method="post">
+                    <label>Phiên bản</label>
+                    <div  class="inputForm">
+                    <select id="car-model" name="iphone" class="car-model">
+                        <option value="" style="text-align: center;">VF3 tiêu chuẩn</option>  
+                    </select>
+                    </div>
+                    <br>
+                    <label>Màu sắc</label>
+                    <div  class="inputForm">
+                    <select id="car-model" name="iphone" class="car-model">
+                        <option value="" style="text-align: center;">Vàng</option>  
+                    </select>
+                    </div>
+                    <br>
+
+                    <label>Họ Tên</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào họ và tên" name="fullName">
+                    </div>
+
+                    <label>Số điện thoại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập số điện thoại" name="phoneNumber">
+                    </div>
+
+                    <label>Email</label>
+                    <div class="inputForm">
+                        <input type="email" class="input" placeholder="Nhập vào email" name="email">
+                    </div>
+
+                    <label>Số tiền đặt cọc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" value="15.000.000 VNĐ" readonly>
+                    </div>
+
+               
+                    <label class="location" for="province">Chọn Tỉnh/Thành phố:</label>
+                    <br>
+                    <select id="province" onchange="loadDistricts()">
+                        <option value="" disabled selected>Chọn tỉnh/thành</option>
+                    </select>
+
+                    <label class="location" for="district">Chọn Huyện/Thị xã:</label>
+                    <select id="district" onchange="loadWards()" disabled>
+                        <option value="" disabled selected>Chọn huyện/thị xã</option>
+                    </select>
+
+                    <label class="location" for="ward">Chọn Xã/Phường:</label>
+                    <br>
+                    <select id="ward" disabled>
+                        <option value="" disabled selected>Chọn xã/phường</option>
+                    </select>
+
+
+                    <button class="button-submitt">Xác nhận đặt cọc</button>
+                </form>
+            </div>
+        </div>
         
         
         <!-----Phần Thân Trang-->
@@ -383,8 +448,36 @@
                 }
             }
 
+                        // Mở form Đặt Cọc
+            function openDepositForm() {
+                const modal = document.getElementById('depositModal');
+                modal.style.display = 'block';
+            }
+
+            // Đóng form Đặt Cọc
+            function closeDepositForm() {
+                const modal = document.getElementById('depositModal');
+                modal.style.display = 'none';
+            }
+
+            // Đóng form khi click bên ngoài modal
+            window.onclick = function(event) {
+                const modal = document.getElementById('depositModal');
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            }
+
+            // Gán sự kiện cho nút Đặt Cọc
+            const depositButton = document.querySelector('.car-button-deposit');
+            depositButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Ngăn chặn hành động mặc định
+                openDepositForm();
+            });
+
+        
             </script>
-            
+            <script src="/src/public/js/dstinhthanh.js"></script>
     
     </body>
 </html>
