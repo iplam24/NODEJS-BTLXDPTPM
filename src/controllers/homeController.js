@@ -1,6 +1,8 @@
 const session = require('express-session');
 const {switchRed} = require('../migration/userRole');
-const { addCarDB,getAllCar,searchCar } = require('../models/productDAO');
+const { addCarDB,getAllCar,searchCar,getOneDetails,getOneCar } = require('../models/productDAO');
+
+
 const {getUserAccount,checkUser,createUser,getUserRole
     ,checkUserEmail,getRepassCode,guiEmail,pullCode,
     setNewPass} = require('../models/userDAO');
@@ -181,8 +183,11 @@ const timKiemSanPham = async(req, res) => {
 };
 
 
-const getChiTietSanPham=(req,res)=>{
-
+const getChiTietSanPham=async(req,res)=>{
+    const carid = req.params.carid;
+    let detail = await getOneDetails(carid);
+    let car = await getOneCar(carid);
+    res.render("chitietsp",{detail,car});
 }
 
 module.exports = { 

@@ -8,7 +8,8 @@ const {getAdmin,
     getCar,
     addCar,
     searchAccount,
-    postDetail} =require('../controllers/adminController');
+    postDetail,
+    getDetail} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
@@ -29,7 +30,7 @@ router.post('/admin/search-account',searchAccount);
 router.post('/admin/addDetail',postDetail);
 
 router.get('/admin/car',getCar);
-
+router.get('/admin/detail',getDetail);
 
 router.post('/admin/addcar',addCar);
 module.exports = router;

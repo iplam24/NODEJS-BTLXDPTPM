@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quản lý xe</title>
+    <link rel="stylesheet" href="/css/themXe.css">
+    
+</head>
+<body>
+    <div class="main-content">
+        <h1>Chi tiet xe</h1>
+        <button class="openModal1">Mở Form 1</button>
+        <button class="openModal2">Mở Form 2</button>
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title1</th>
+                    <th>Describe1</th>
+                    <th>Title2</th>
+                    <th>Describe2</th>
+                    <th>Title3</th>
+                    <th>Describe3</th>
+                    <th>Title4</th>
+                    <th>Describe4</th>
+                    <th>Title5</th>
+                    <th>Describe5</th>
+                    <th>Chỉnh sửa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% Listdetails.forEach(function(detail){ %>
+                    <tr>
+                        <td><%= detail.Car_ID %></td>
+                        <td><%= detail.Title1 %></td>
+                        <td><%= detail.Describe1 %></td>
+                        <td><%= detail.Title2 %></td>
+                        <td><%= detail.Describe2 %></td>
+                        <td><%= detail.Title3 %></td>
+                        <td><%= detail.Describe3 %></td>
+                        <td><%= detail.Title4 %></td>
+                        <td><%= detail.Describe4 %></td>
+                        <td><%= detail.Title5 %></td>
+                        <td><%= detail.Describe5 %></td>
+                        <td>
+                            <form action="" method="GET">
+                                <button class="btn btn-warning">Sửa</button>
+                            </form>
+                            <form action="" method="post">
+                                <button class="btn btn-danger">Xóa</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+        
+    </div>
+        <div id="modalForm1" class="modal">
+            <div class="register-container">
+                <span class="closeModal1 close">&times;</span>
+                <h2>Thêm xe mới</h2>
+                <form action="/admin/addcar" class="signup-form" method="post" enctype="multipart/form-data">
+                    <label>ID</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào ID xe" name="carID">
+                    </div>
+        
+                    <label>Tên xe</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào tên xe" name="model">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Phiên bản</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào phiên bản xe" name="version">
+                        <span class="togglePassword"></span>
+                    </div>
+        
+                    <label>Giá</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào giá" name="price">
+                    </div>
+        
+                    <label>Màu sắc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào màu sắc" name="color">
+                    </div>
+
+                    <label>Động cơ</label>
+                    <div class="inputForm">
+                        <select name="engine">
+                            <option value="xang">Động cơ xăng</option>
+                            <option value="dien">Động cơ điện</option>
+                            <option value="khac">Loại khác</option>
+                        </select>
+                        <!-- <input type="text" class="input" placeholder="Nhập vào loại động cơ" name="engine"> -->
+                    </div>
+
+                    <label>Công suất tối đa(kw)</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào công suất tối đa" name="capkw">
+                    </div>
+
+                    <label>Mô men xoắn cực đại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào mô men xoắn cực đaị" name="torquenm">
+                    </div>
+
+                    <label>Tăng tốc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian tăng tốc (Từ 0-100km/h)" name="accel">
+                    </div>
+
+                    <label>Quãng đường / lần sạc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào quãng đường di chuyển / lần sạc" name="rangekm">
+                    </div>
+
+                    <label>Thời gian nạp pin nhanh nhất</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào thời gian sạc" name="fastcharge">
+                    </div>
+
+                    <label>Dẫn động</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào dẫn động xe" name="drivertrain">
+                    </div>
+                    <label>Hình ảnh</label>
+                    <div class="inputForm">
+                        <input type="file" class="input" placeholder="Nhập vào dẫn động xe" name="carImages"  multiple>
+                    </div>
+
+                    <div class="inputForm">
+                        <button class="button-submitt">Thêm</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalForm2" class="modal2">
+        <div class="register-container">
+            <span class="closeModal2 close">&times;</span>
+            <h2>Thêm chi tiết xe</h2>
+            <form action="/admin/addDetail" method="post">
+            <label>Ma xe</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 1" name="carID">
+            </div>
+            <label>Tile 1</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 1" name="title1">
+            </div>
+
+            <label>Describe 1</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 1" name="ds1">
+            </div>
+
+            <label>Tile 2</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 2" name="title2">
+            </div>
+
+            <label>Describe 2</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 2" name="ds2">
+            </div>
+
+            <label>Tile 3</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 3" name="title3">
+            </div>
+
+            <label>Describe 3</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 3" name="ds3">
+            </div>
+
+            <label>Tile 4</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 4" name="title4">
+            </div>
+
+            <label>Describe 4</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 4" name="ds4">
+            </div>
+
+            <label>Tile 5</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào tiêu đề 5" name="title5">
+            </div>
+
+            <label>Describe 5</label>
+            <div class="inputForm">
+                <input type="text" class="input" placeholder="Nhập vào mô tả 5" name="ds5">
+            </div>
+
+            <button>Them</button>
+        </form>
+        </div>
+    </div>
+    
+
+
+
+        <!------>
+
+        
+        
+   
+        <script>
+            // Đảm bảo DOM đã tải xong
+window.addEventListener('DOMContentLoaded', function () {
+    const modal1 = document.getElementById('modalForm1');
+    const modal2 = document.getElementById('modalForm2');
+
+    // Nút mở và đóng form 1
+    const btnOpen1 = document.querySelector('.openModal1');
+    const btnClose1 = document.querySelector('.closeModal1');
+    
+    // Nút mở và đóng form 2
+    const btnOpen2 = document.querySelector('.openModal2');
+    const btnClose2 = document.querySelector('.closeModal2');
+
+    // Kiểm tra và mở form 1
+    if (btnOpen1 && modal1) {
+        btnOpen1.addEventListener('click', function () {
+            modal1.style.display = 'flex';
+            modal2.style.display = 'none'; // Đảm bảo form 2 ẩn
+        });
+    }
+
+    if (btnClose1 && modal1) {
+        btnClose1.addEventListener('click', function () {
+            modal1.style.display = 'none';
+        });
+    }
+
+    // Kiểm tra và mở form 2
+    if (btnOpen2 && modal2) {
+        btnOpen2.addEventListener('click', function () {
+            modal2.style.display = 'flex';
+            modal1.style.display = 'none'; // Đảm bảo form 1 ẩn
+        });
+    }
+
+    if (btnClose2 && modal2) {
+        btnClose2.addEventListener('click', function () {
+            modal2.style.display = 'none';
+        });
+    }
+
+    // Đóng modal khi click ra ngoài
+    window.addEventListener('click', function (event) {
+        if (event.target === modal1) {
+            modal1.style.display = 'none';
+        }
+        if (event.target === modal2) {
+            modal2.style.display = 'none';
+        }
+    });
+});
+
+
+        </script>
+</body>
+
+</html>

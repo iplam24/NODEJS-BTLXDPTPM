@@ -101,7 +101,26 @@ const searchCar = async (nameSP) => {
         ImagePaths: car.ImagePaths ? car.ImagePaths.split(',') : []  
     }));
 };
+const getOneCar = async (carid) => {
+    let pool = await connectDB();
+    let result = await pool.request()
+        .input('carid',carid )
+        .query(`
+            SELECT c.*, 
+       (SELECT STRING_AGG(i.ImagePath, ',') 
+        FROM tbl_carimages i 
+        WHERE i.Car_ID = c.Car_ID) AS ImagePaths
+        FROM tbl_cars c
+        WHERE c.Car_ID LIKE @carid;
 
+        `);
+
+    // Chuyển chuỗi ImagePaths thành mảng
+    return result.recordset.map(car => ({
+        ...car,
+        ImagePaths: car.ImagePaths ? car.ImagePaths.split(',') : []  
+    }));
+};
 const addMoTa=async(req,res)=>{
     let pool = await connectDB();
 
@@ -112,8 +131,8 @@ const addDetail =async(car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5
     let request = pool.request();
     
     await request
-        .input("card_id", car_id)
-        .input("title2", title1)
+        .input("car_id", car_id)
+        .input("title1", title1)
         .input("ds1", ds1)
         .input("title2", title2)
         .input("ds2", ds2)
@@ -129,4 +148,23 @@ const addDetail =async(car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5
         `);
 }
 
-module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail };
+const getAllDetails=async(req,res)=>{
+    let pool = await connectDB();
+    let result = await pool.request().query(`
+        SELECT * from tbl_detail
+    `);
+    return result.recordset;
+}
+const getOneDetails=async(carid)=>{
+    let pool = await connectDB();
+    let result = await pool.request();
+
+    await request
+    .input("carid",carid)
+    .query(`SELECT * FROM tbl_detail where Car_ID=@carid`);
+
+    return result.recordset.length > 0 ? result.recordset[0] : null; 
+   
+}
+
+module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail,getAllDetails,getOneDetails,getOneCar };

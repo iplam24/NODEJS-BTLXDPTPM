@@ -38,6 +38,6 @@ router.post('/gui-lien-he',postLienHe);
 router.post('/dat-lai-mk',postDatMK);
 router.post('/dangky-taikhoan',postCreateNewUser);
 
-router.get('/chitietsanpham',getChiTietSanPham);
+router.get('/chitietsanpham:carid',getChiTietSanPham);
 router.post('/timkiem-sanpham',timKiemSanPham);
 module.exports = router

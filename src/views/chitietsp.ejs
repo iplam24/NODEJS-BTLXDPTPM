@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/VF3.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	/>
+    <title>VF3</title>
+</head>
+
+<body>
+    <div class="container">
+        <!--header-->
+        <header class="fixed-header">
+            <div class="logo">
+                <img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt="Logo">
+            </div>
+        
+            <div class="menu-toggle">☰</div> <!-- Nút mở menu -->
+        
+            <nav class="menu-nav">
+                <ul class="menu-list">
+                    <li class="menu-item"><a href="/M">Trang chủ</a></li>
+                    <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
+                    <li class="menu-item"><a href="/lienhe">Liên hệ</a></li>
+                    <li class="menu-item mobile-only" style="margin-left: auto;"><a href="/dangnhap">Đăng nhập</a></li>
+                    <li class="menu-item mobile-only"><a href="/dangky">Đăng ký</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Nội dung chính -->
+        <div class="video-container">
+            <video id="adVideo" autoplay loop muted playsinline>
+                <source src="/video/VF3.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video.
+            </video>
+        </div>
+
+
+        <!-- Đặt cọc -->
+         <div class="container_datcoc">
+         <h4>Tùy chọn cho ngân sách của bạn.</h4>
+         <div class="dat-coc">
+            <h2>Giá bán</h2> 
+            <div class="price">
+                <p>299.000.000</p>
+                <p class="vnd">VNĐ</p>
+            </div>
+        </div> 
+        
+         <button class="xemthemm" onclick="openDepositForm()">Đặt cọc 15.000.000 VNĐ</button>
+        </div>
+
+        <!-- Modal Form Đặt Cọc -->
+        <div id="depositModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeDepositForm()">&times;</span>
+                <h2>Đặt Cọc</h2>
+                <form action="/dat-coc" class="signup-form" method="post">
+                    <label>Phiên bản</label>
+                    <div  class="inputForm">
+                    <select id="car-model" name="iphone" class="car-model">
+                        <option value="" style="text-align: center;">VF3 tiêu chuẩn</option>  
+                    </select>
+                    </div>
+                    <br>
+                    <label>Màu sắc</label>
+                    <div  class="inputForm">
+                    <select id="car-model" name="iphone" class="car-model">
+                        <option value="" style="text-align: center;">Vàng</option>  
+                    </select>
+                    </div>
+                    <br>
+
+                    <label>Họ Tên</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập vào họ và tên" name="fullName">
+                    </div>
+
+                    <label>Số điện thoại</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" placeholder="Nhập số điện thoại" name="phoneNumber">
+                    </div>
+
+                    <label>Email</label>
+                    <div class="inputForm">
+                        <input type="email" class="input" placeholder="Nhập vào email" name="email">
+                    </div>
+
+                    <label>Số tiền đặt cọc</label>
+                    <div class="inputForm">
+                        <input type="text" class="input" value="15.000.000 VNĐ" readonly>
+                    </div>
+
+               
+                    <label class="location" for="province">Chọn Tỉnh/Thành phố:</label>
+                    <br>
+                    <select id="province" onchange="loadDistricts()">
+                        <option value="" disabled selected>Chọn tỉnh/thành</option>
+                    </select>
+
+                    <label class="location" for="district">Chọn Huyện/Thị xã:</label>
+                    <select id="district" onchange="loadWards()" disabled>
+                        <option value="" disabled selected>Chọn huyện/thị xã</option>
+                    </select>
+
+                    <label class="location" for="ward">Chọn Xã/Phường:</label>
+                    <br>
+                    <select id="ward" disabled>
+                        <option value="" disabled selected>Chọn xã/phường</option>
+                    </select>
+
+
+                    <button class="button-submitt">Xác nhận đặt cọc</button>
+                </form>
+            </div>
+        </div>
+
+
+        <!-- QC1 -->
+        <div class="content">
+            <h4>VinFast VF 3 - Xe nhỏ, giá trị lớn.</h4>
+            <p>Với thiết kế tối giản, nhỏ gọn, cá tính à vnăng động, VinFast VF 3 sẽ luôn cùng bạn hoà nhịp với xu thế công nghệ di chuyển xanh toàn cầu, trải nghiệm giá trị trên mỗi hành trình, và tự do thể hiện phong cách sống.</p>
+            <img class="banner-vf3" src="/image/Vf3-banner.jpg" alt="">
+
+        </div>
+
+        <!-- QC2 -->
+        <div class="content">
+            <h4 style="margin-top: 50px;">La-zăng vượt trội về kích thước & phong cách.</h4>
+            <p>VF 3 là mẫu xe hiếm hoi trong phân khúc xe sở hữu la-zăng kích thước 16 inch, không chỉ tạo điểm nhấn về thiết kế mà còn góp phần gia tăng khả năng di chuyển trên địa hình đa dạng trong đô thị. Đặc biệt, VF 3 được trang bị tuỳ chọn ốp la-zăng, tăng thêm vẻ cá tính, sự sang trọng cho chiếc xe.
+            </p>
+            <img class="banner-vf3" src="/image/vf3-2.png" alt="">
+
+        </div>
+
+        <!-- QC3 -->
+        <div class="content">
+            <h4 style="margin-top: 50px;">VinFast VF 3 - Biểu tượng mới của cuộc sống đô thị.</h4>
+            <p>Vượt lên trên một phương tiện di chuyển thông thường, VinFast VF 3 là biểu tượng mới mang tính cách mạng trong cuộc sống đô thị. Với thiết kế hiện đại, hiệu suất vận hành linh hoạt, tính năng an toàn tiên tiến, cùng chi phí vận hành siêu rẻ, VF 3 sẽ mở ra một cách tiếp cận hoàn toàn mới trong việc lựa chọn phương tiện di chuyển hàng ngày, mang lại sự thuận tiện, dễ dàng và đặc biệt thoải mái cho tất cả mọi người.
+            </p>
+            <img class="banner-vf3" src="/image/vf3-3.jpg" alt="">
+
+        </div>
+
+         <!-- QC4 -->
+         <div class="content">
+            <h4 style="margin-top: 50px;">VF 3 không chỉ là một chiếc xe điện tiên tiến.</h4>
+            <p>Mà còn là một tác phẩm nghệ thuật kết hợp giữa công nghệ và sự sáng tạo trong thiết kế.
+            </p>
+            <img class="banner-vf3" src="/image/vf3-4.jpg" alt="">
+
+        </div>
+
+        <!-- QC5 -->
+        <div class="content">
+            <h4 style="margin-top: 50px;">VinFast VF 3 - Luôn đủ chỗ cho mọi người!</h4>
+            <p>Thiết kế thông minh và không gian nội thất tối ưu hóa của VF 3 mang lại trải nghiệm di chuyển tiện lợi, đảm bảo sự thoải mái và tiện nghi cho cả 4 chỗ ngồi. Màu sắc nội thất trang nhã, trẻ trung và cá tính, cùng chất liệu thân thiện tạo ra một không gian đặc biệt, nơi chứa đựng những kỷ niệm đáng nhớ trên mọi hành trình khám phá phong cách sống của riêng bạn! 
+            </p>
+            <img class="banner-vf3" src="/image/vf3-5.jpg" alt="">
+
+        </div>
+
+        <div class="VF3-in4">
+            <h4>Thông số kỹ thuật</h4>
+            <div class="in4">
+                <p class="in4-1">Động cơ</p>
+                <p class="in4-2">01 Motor</p>
+            </div>
+            <hr class="custom-hr">
+            
+            <!-- Dòng 2 -->
+            <div class="in4">
+                <p class="in4-1">Công suất tối đa (kW)</p>
+                <p class="in4-2">30 kW</p>
+            </div>
+            <hr class="custom-hr">
+
+            <!-- Dòng 3 -->
+            <div class="in4">
+                <p class="in4-1">Mô men xoắn cực đại (Nm)</p>
+                <p class="in4-2">110</p>
+            </div>
+            <hr class="custom-hr">
+            <!-- Dòng 4 -->
+            <div class="in4">
+                <p class="in4-1">Tăng tốc</p>
+                <p class="in4-2">5,3s (0-50 km/h)</p>
+            </div>
+            <hr class="custom-hr">
+            <!-- Dòng 5 -->
+            <div class="in4">
+                <p class="in4-1">Quãng đường chạy một lần sạc đầy (km)</p>
+                <p class="in4-2">215</p>
+            </div>
+            <hr class="custom-hr">
+
+            <!-- Dòng 6 -->
+            <div class="in4">
+                <p class="in4-1">Thời gian nạp pin nhanh nhất</p>
+                <p class="in4-2">36 phút (10% - 70%)</p>
+            </div>
+            <hr class="custom-hr">
+            <!-- Dòng 7 -->
+            <div class="in4">
+                <p class="in4-1">Dẫn động</p>
+                <p class="in4-2">RWD/Cầu sau</p>
+            </div>
+            <hr class="custom-hr">
+
+            <a href="https://shop.vinfastauto.com/on/demandware.static/-/Sites-app_vinfast_vn-Library/default/dwf8f185d0/Document/VF3_Brochure_VN_T10.pdf" target="_blank" class="xemthemm" style="font-family: Arial, Helvetica, sans-serif;">XEM THÊM</a>
+           <br>
+           <img class="vf3-nguoc" src="/image/Vf3_nguoc.png" alt="">
+           
+
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-left">
+                    <div class="logo"><img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt=""></div>
+                    <p>Công ty TNHH Kinh doanh Thương mại và Dịch vụ VinFast</p>
+                    <p><strong>MST/MSDN:</strong> 0108926276 do Sở KHĐT TP Hà Nội cấp lần đầu ngày 01/10/2019 và các lần thay đổi tiếp theo.</p>
+                    <p><strong>Địa chỉ trụ sở chính:</strong> Số 7, đường Bằng Lăng 1, Khu đô thị Vinhomes Riverside, Phường Việt Hưng, Quận Long Biên, Thành phố Hà Nội, Việt Nam</p>
+                </div>
+                
+                <div class="footer-middle">
+                    <h4>Hệ sinh thái</h4>
+                    <ul>
+                        <li><a href="#">Vinhomes</a></li>
+                        <li><a href="#">Vinpearl</a></li>
+                    </ul>
+                </div>
+        
+                <div class="footer-right">
+                    <h4>DỊCH VỤ KHÁCH HÀNG</h4>
+                    <p>📞 1900 23 23 89</p>
+                    <p>📧 <a href="mailto:support.vn@vinfastauto.com">support.vn@vinfastauto.com</a></p>
+                    
+                    <h4>SPEAK-UP HOTLINE</h4>
+                    <p>📞 +84 24 4458 2193</p>
+                    <p>📧 <a href="mailto:v.speakup@vinfast.vn">v.speakup@vinfast.vn</a></p>
+        
+                    <h4>Kết nối với VinFast</h4>
+                    <div class="social-icons">
+                        <a href="#">
+                            <i src="facebook-icon.png" alt="Facebook" class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="#">
+                            <i src="youtube-icon.png" alt="YouTube" class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="footer-bottom">
+                <p>© Copyright 2025 | VinFast. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function() {
+            document.querySelector(".menu-nav").classList.toggle("active");
+        });
+
+                // Mở modal đặt cọc
+        function openDepositForm() {
+            document.getElementById("depositModal").style.display = "flex";
+        }
+
+        // Đóng modal đặt cọc
+        function closeDepositForm() {
+            document.getElementById("depositModal").style.display = "none";
+        }
+
+        // Đóng modal khi click ra ngoài
+        window.onclick = function(event) {
+            let modal = document.getElementById("depositModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
+
+    </script>
+    <script src="/src/public/js/dstinhthanh.js"></script>
+</body>
+
+</html>

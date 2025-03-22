@@ -1,6 +1,8 @@
 const upload = require('../middleware/upload');
 const {checkUser,createUser,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
-const {addCarDB,getAllCar,addMoTa} = require('../models/productDAO');
+const {addCarDB,getAllCar,addMoTa, addDetail,
+        getAllDetails
+} = require('../models/productDAO');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
 }
@@ -101,7 +103,7 @@ const postDeleteUser=async(req,res)=>{
 const getCar =async(req,res)=>{
     try {
         const cars = await getAllCar();
-        res.render("admin/cars", { cars });  // 🟢 Truyền dữ liệu xe vào view
+        res.render("admin/cars", { cars }); 
     } catch (error) {
         console.error("❌ Lỗi khi hiển thị danh sách xe:", error);
         res.status(500).send("Lỗi khi hiển thị danh sách xe");
@@ -178,9 +180,21 @@ const themMoTa =async(req,res)=>{
 }
 
 const postDetail=async(req,res)=>{
-    console.log("check",req.body);
+    
+    const {carID,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5} = req.body;
+   let result = await addDetail(carID,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5);
+    console.log("Them thanh cong chi tiet san pham cho xe ma: ",carID);
+    return res.send(`<script>
+        alert("Thêm xe thành công!");
+        window.location.href = "/admin"; 
+    </script>`);
+
 }
 
+const getDetail=async(req,res)=>{
+    let details = await getAllDetails();
+    res.render("admin/details",{Listdetails:details});
+}
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
-    postDetail
+    postDetail,getDetail
 }
