@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Báo cáo & Thống kê</title>
+    <link rel="stylesheet" href="/src/public/css/baocao.css">
+    <link rel="icon" href="/src/public/image/Vinfast-logo.png" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Quản lý Báo cáo & Thống kê</h1>
+
+        <!-- Bảng tổng quan -->
+        <div class="dashboard">
+            <div class="card">
+                <h3>Tổng doanh thu</h3>
+                <p id="totalRevenue">0 VND</p>
+            </div>
+            <div class="card">
+                <h3>Số xe đã bán</h3>
+                <p id="totalCarsSold">0</p>
+            </div>
+            <div class="card">
+                <h3>Lợi nhuận</h3>
+                <p id="totalProfit">0 VND</p>
+            </div>
+        </div>
+
+        <!-- Biểu đồ doanh thu -->
+        <div class="chart-container">
+            <canvas id="revenueChart"></canvas>
+        </div>
+
+        <!-- Danh sách xe bán chạy -->
+        <h2>Xe bán chạy</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mẫu xe</th>
+                    <th>Số lượng bán</th>
+                </tr>
+            </thead>
+            <tbody id="bestSellingCars">
+                <!-- Dữ liệu sẽ được thêm bằng JS -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/src/public/js/baocao.js"></script>
+</body>
+</html>
