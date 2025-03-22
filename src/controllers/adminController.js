@@ -177,4 +177,10 @@ const themMoTa =async(req,res)=>{
     
 }
 
-module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount}
+const postDetail=async(req,res)=>{
+    console.log("check",req.body);
+}
+
+module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
+    postDetail
+}

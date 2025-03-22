@@ -7,7 +7,8 @@ const {getAdmin,
     postDeleteUser,
     getCar,
     addCar,
-    searchAccount} =require('../controllers/adminController');
+    searchAccount,
+    postDetail} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
@@ -24,6 +25,8 @@ router.post('/admin/them-taikhoan',postCreateNewUserAdmin);
 router.post('/admin/sua-taikhoan',postUpDateUserAdmin);
 router.post('/admin/search-account',searchAccount);
 // route quản lý cars
+
+router.post('/admin/addDetail',postDetail);
 
 router.get('/admin/car',getCar);
 

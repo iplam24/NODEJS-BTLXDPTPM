@@ -181,6 +181,10 @@ const timKiemSanPham = async(req, res) => {
 };
 
 
+const getChiTietSanPham=(req,res)=>{
+
+}
+
 module.exports = { 
     logInserver, 
     getHomePage, 
@@ -192,5 +196,6 @@ module.exports = {
     postDatMK, 
     getLienHe, 
     postLienHe, 
-    timKiemSanPham 
+    timKiemSanPham,
+    getChiTietSanPham
 };

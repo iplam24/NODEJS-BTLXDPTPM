@@ -107,4 +107,26 @@ const addMoTa=async(req,res)=>{
 
 }
 
-module.exports = { addCarDB,getAllCar,searchCar,addMoTa };
+const addDetail =async(car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5)=>{
+    let pool = await connectDB();
+    let request = pool.request();
+    
+    await request
+        .input("card_id", car_id)
+        .input("title2", title1)
+        .input("ds1", ds1)
+        .input("title2", title2)
+        .input("ds2", ds2)
+        .input("title3", title3)
+        .input("ds3", ds3)
+        .input("title4", title4)
+        .input("ds4", ds4)
+        .input("title5", title5)
+        .input("ds5", ds5)
+        .query(`
+            INSERT INTO tbl_detail (Car_ID,Title1, Describe1, Title2, Describe2, Title3, Describe3,Title4,Describe4,Title5,Describe5) 
+            VALUES (@car_id,@title1,@ds1,@title2,@ds2,@title3,@ds3,@title4,@ds4,@title5,@ds5)
+        `);
+}
+
+module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail };

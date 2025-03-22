@@ -2,7 +2,8 @@ const express=require('express');
 const {logInserver,getHomePage,postCreateNewUser,getCar,getQuenMK,rePassWord,
     postGuiCode,postDatMK,
     getLienHe,postLienHe,
-    timKiemSanPham}=require('../controllers/homeController');
+    timKiemSanPham,
+    getChiTietSanPham}=require('../controllers/homeController');
 const {getSignup,logOutUser,getLogin,getLoginUser} =require('../migration/oldData');
 const router =express.Router();
 
@@ -37,6 +38,6 @@ router.post('/gui-lien-he',postLienHe);
 router.post('/dat-lai-mk',postDatMK);
 router.post('/dangky-taikhoan',postCreateNewUser);
 
-
+router.get('/chitietsanpham',getChiTietSanPham);
 router.post('/timkiem-sanpham',timKiemSanPham);
 module.exports = router
