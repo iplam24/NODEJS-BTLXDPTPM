@@ -183,13 +183,21 @@ const timKiemSanPham = async(req, res) => {
 };
 
 
-const getChiTietSanPham=async(req,res)=>{
-    const carid = req.params.carid;
-    //let detail = await getOneDetails(carid);
-   //let car = await getOneCar(carid);
-   // res.render("chitietsp",{detail,car});
-    res.render("chitietsp");
-}
+const getChiTietSanPham = async (req, res) => {
+    let carid = req.params.carid;
+    
+    // Loại bỏ dấu `:` nếu có
+    if (carid.startsWith(":")) {
+        carid = carid.substring(1);
+    }
+
+    console.log("🔍 carid sau khi xử lý:", carid); // Debug
+
+    let detail = await getOneDetails(carid);
+    let car = await getOneCar(carid);
+    console.log("Thông tin chi tiết sản xe mã: ",carid);
+    res.render("chitietsp", { detail, car });
+};
 
 module.exports = { 
     logInserver, 

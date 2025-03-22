@@ -61,7 +61,10 @@
                             <a href="/admin/edit-car/<%= car.Car_ID %>">Sửa</a> 
                         </td>
                         <td>
-                            <a href="/admin/delete-car/<%= car.Car_ID %>" onclick="return confirm('Xóa xe này?')">Xóa</a>
+                            <form action="/admin/delete-car:<%= car.Car_ID %>" method="post">
+                                <button class="btn btn-danger">Xóa</button>
+                            </form>
+                        </td>
                         </td>
                     </tr>
                 <% }); %>

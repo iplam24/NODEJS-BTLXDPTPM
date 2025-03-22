@@ -102,25 +102,37 @@ const searchCar = async (nameSP) => {
     }));
 };
 const getOneCar = async (carid) => {
-    let pool = await connectDB();
-    let result = await pool.request()
-        .input('carid',carid )
-        .query(`
-            SELECT c.*, 
-       (SELECT STRING_AGG(i.ImagePath, ',') 
-        FROM tbl_carimages i 
-        WHERE i.Car_ID = c.Car_ID) AS ImagePaths
-        FROM tbl_cars c
-        WHERE c.Car_ID LIKE @carid;
+    try {
+        if (!carid) {
+            console.error("❌ Lỗi: carid không hợp lệ!");
+            return null;
+        }
 
-        `);
+        let pool = await connectDB();
 
-    // Chuyển chuỗi ImagePaths thành mảng
-    return result.recordset.map(car => ({
-        ...car,
-        ImagePaths: car.ImagePaths ? car.ImagePaths.split(',') : []  
-    }));
+        let result = await pool.request()
+            .input('carid', carid)
+            .query(`
+                SELECT c.*, 
+                (SELECT STRING_AGG(i.ImagePath, ',') 
+                FROM tbl_carimages i 
+                WHERE i.Car_ID = c.Car_ID) AS ImagePaths
+                FROM tbl_cars c
+                WHERE c.Car_ID = @carid;
+            `);
+
+        return result.recordset.length > 0 
+            ? result.recordset.map(car => ({
+                ...car,
+                ImagePaths: car.ImagePaths ? car.ImagePaths.split(',') : []  
+            }))[0] 
+            : null;
+    } catch (error) {
+        console.error("❌ Lỗi khi lấy thông tin xe:", error);
+        throw error;
+    }
 };
+
 const addMoTa=async(req,res)=>{
     let pool = await connectDB();
 
@@ -155,16 +167,45 @@ const getAllDetails=async(req,res)=>{
     `);
     return result.recordset;
 }
-const getOneDetails=async(carid)=>{
+const getOneDetails = async (carid) => {
+    try {
+        if (!carid) {
+            console.error("❌ Lỗi: carid không hợp lệ!");
+            return null;
+        }
+        let pool = await connectDB();
+        let request = pool.request();
+        let result = await request
+            .input("carid", carid)
+            .query(`SELECT * FROM tbl_detail WHERE Car_ID = @carid`);
+        return result.recordset.length > 0 ? result.recordset[0] : null;
+    } catch (error) {
+        console.error("❌ Lỗi khi lấy chi tiết sản phẩm:", error);
+        throw error;
+    }
+};
+
+
+//Hàm xoá xe
+
+const deleteCar = async (carid) => {
     let pool = await connectDB();
-    let result = await pool.request();
 
-    await request
-    .input("carid",carid)
-    .query(`SELECT * FROM tbl_detail where Car_ID=@carid`);
+    // Xóa dữ liệu trong bảng liên quan trước
+    await pool.request()
+        .input("carid", carid)
+        .query("DELETE FROM tbl_detail WHERE Car_ID = @carid");
 
-    return result.recordset.length > 0 ? result.recordset[0] : null; 
-   
-}
+    await pool.request()
+        .input("carid", carid)
+        .query("DELETE FROM tbl_carimages WHERE Car_ID = @carid");
 
-module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail,getAllDetails,getOneDetails,getOneCar };
+    // Cuối cùng xóa xe trong bảng chính
+    await pool.request()
+        .input("carid", carid)
+        .query("DELETE FROM tbl_cars WHERE Car_ID = @carid");
+};
+
+
+
+module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail,getAllDetails,getOneDetails,getOneCar,deleteCar };

@@ -1,7 +1,9 @@
 const upload = require('../middleware/upload');
+const fs = require("fs");
+const path = require("path");
 const {checkUser,createUser,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
 const {addCarDB,getAllCar,addMoTa, addDetail,
-        getAllDetails
+        getAllDetails,deleteCar
 } = require('../models/productDAO');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
@@ -195,6 +197,50 @@ const getDetail=async(req,res)=>{
     let details = await getAllDetails();
     res.render("admin/details",{Listdetails:details});
 }
+
+const deleteCaradmin = async (req, res) => {
+    try {
+        let carid = req.params.carid;
+        let uploadPath = path.join(__dirname, "../public/upload");
+
+        // Lấy danh sách file trong thư mục upload
+        fs.readdir(uploadPath, (err, files) => {
+            if (err) {
+                console.error("Lỗi đọc thư mục upload:", err);
+                return;
+            }
+
+            // Lọc các file có chứa carid
+            files.forEach((file) => {
+                if (file.includes(carid)) {
+                    let filePath = path.join(uploadPath, file);
+                    
+                    // Xóa file
+                    fs.unlink(filePath, (err) => {
+                        if (err) {
+                            console.error(`Lỗi xóa file ${file}:`, err);
+                        } else {
+                            console.log(`Đã xóa ảnh: ${file}`);
+                        }
+                    });
+                }
+            });
+        });
+
+        // Xoá xe khỏi database
+        await deleteCar(carid);
+        
+        // Lấy danh sách xe mới
+        const cars = await getAllCar();
+        
+        console.log("Xoá thành công xe:", carid);
+        res.render("admin/cars", { cars });
+
+    } catch (error) {
+        console.error("❌ Lỗi khi xoá xe:", error);
+        res.status(500).send("Lỗi xoá xe");
+    }
+};
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
-    postDetail,getDetail
+    postDetail,getDetail,deleteCaradmin
 }
