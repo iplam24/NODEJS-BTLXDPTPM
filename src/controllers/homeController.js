@@ -185,9 +185,10 @@ const timKiemSanPham = async(req, res) => {
 
 const getChiTietSanPham=async(req,res)=>{
     const carid = req.params.carid;
-    let detail = await getOneDetails(carid);
-    let car = await getOneCar(carid);
-    res.render("chitietsp",{detail,car});
+    //let detail = await getOneDetails(carid);
+   //let car = await getOneCar(carid);
+   // res.render("chitietsp",{detail,car});
+    res.render("chitietsp");
 }
 
 module.exports = { 
