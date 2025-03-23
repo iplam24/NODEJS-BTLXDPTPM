@@ -28,36 +28,53 @@ html, body {
     z-index: 1000;
 }
 
-/* search bar */
+/* Search Bar */
 .search-bar {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-65%); 
     display: flex;
     align-items: center;
-    background: #f1f1f1;
-    border-radius: 20px;
-    padding: 1px 11px;
-    width: 250px; 
-    margin-right: 5px;
-    
+    background: white;
+    border-radius: 25px;
+    padding: 5px 15px;
+    width: 300px; 
+    border: 1px solid #ddd;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-bar:hover {
+    background: transparent;
+    border: 1px solid #aaa;
 }
 
 .search-bar input {
+    flex: 1;
     border: none;
     outline: none;
     background: transparent;
-    
-    
+    font-size: 14px;
+    padding: 5px;
+    color: #000;
 }
 
 .search-bar button {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
 }
 
 .search-bar button i {
-    font-size: 15px;
-    color: #333;
+    font-size: 16px;
+    color: #555;
 }
+
 
 
 /* Logo */
@@ -1109,7 +1126,7 @@ small a {
     border-radius: 5px 0 0 5px;
     width: 250px;
     outline: none; 
-    background-color: #f0f0f0;
+    background-color: transparent;
 }
 
 
