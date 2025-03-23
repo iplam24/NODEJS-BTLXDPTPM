@@ -32,7 +32,7 @@ html, body {
 .search-bar {
     position: absolute; 
     left: 50%; 
-    transform: translateX(-65%); 
+    transform: translateX(-62%); 
     display: flex;
     align-items: center;
     background: white;
