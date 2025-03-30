@@ -206,6 +206,29 @@ const deleteCar = async (carid) => {
         .query("DELETE FROM tbl_cars WHERE Car_ID = @carid");
 };
 
+//UPDATE DETAIL
+const updateDetail = async (car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5) => {
+    let pool = await connectDB();
+    let request = pool.request();
 
+    // Cập nhật thông tin trong bảng tbl_users
+    await request
+        .input("car_id", car_id)
+        .input("title1", title1)
+        .input("ds1", ds1)
+        .input("title2", title2)
+        .input("ds2", ds2)
+        .input("title3", title3)
+        .input("ds3", ds3)
+        .input("title4", title4)
+        .input("ds4", ds4)
+        .input("title5", title5)
+        .input("ds5", ds5)
+        .query(`
+            UPDATE tbl_detail 
+            SET Title1 = @title1, Describe1 = @ds1, Title1 = @title1, Describe1 = @ds1,Title1 = @title1, Describe1 = @ds1,Title1 = @title1, Describe1 = @ds1,Title1 = @title1, Describe1 = @ds1
+            WHERE Car_id = @car_id
+        `);
+};
 
-module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail,getAllDetails,getOneDetails,getOneCar,deleteCar };
+module.exports = { addCarDB,getAllCar,searchCar,addMoTa,addDetail,getAllDetails,getOneDetails,getOneCar,deleteCar,updateDetail };
