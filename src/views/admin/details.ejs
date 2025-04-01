@@ -45,9 +45,10 @@
                         <td><%= detail.Title5 %></td>
                         <td><%= detail.Describe5 %></td>
                         <td>
-                            <form action="/admin/update-detail:<%= user.Car_ID %>" method="GET">
-                                <button class="btn btn-warning">Sửa</button>
-                            </form>
+                            
+                                <a href="/admin/update-car:<%= detail.Car_ID %>">Sửa</a> 
+                                <!-- <a href="/admin/update-car">Sửa</a>  -->
+                            
                             <form action="" method="post">
                                 <button class="btn btn-danger">Xóa</button>
                             </form>
