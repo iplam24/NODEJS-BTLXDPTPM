@@ -10,7 +10,9 @@ const {getAdmin,
     searchAccount,
     postDetail,
     getDetail,
-    deleteCaradmin} =require('../controllers/adminController');
+    deleteCaradmin,
+    getUpDateCar,
+    postUpDateDetail,postUpDateCar} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
@@ -32,9 +34,13 @@ router.post('/admin/addDetail',postDetail);
 
 router.get('/admin/car',getCar);
 router.get('/admin/detail',getDetail);
+router.post('/admin/update-detail',postUpDateDetail);
+
 
 router.post('/admin/addcar',addCar);
-
+router.post('/admin/updateCar',postUpDateCar);
 router.post('/admin/delete-car::carid',deleteCaradmin);
+
+router.get('/admin/update-car::carid',getUpDateCar);
 
 module.exports = router;

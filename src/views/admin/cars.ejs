@@ -58,7 +58,8 @@
                             <% } %>
                         </td>
                         <td>
-                            <a href="/admin/edit-car/<%= car.Car_ID %>">Sửa</a> 
+                            <a href="/admin/update-car:<%= car.Car_ID %>">Sửa</a> 
+                            <!-- <a href="/admin/update-car">Sửa</a>  -->
                         </td>
                         <td>
                             <form action="/admin/delete-car:<%= car.Car_ID %>" method="post">

@@ -3,8 +3,12 @@ const fs = require("fs");
 const path = require("path");
 const {checkUser,createUser,updateUser,deleteUser,getAllUser,get1UserUpDate} = require('../models/userDAO');
 const {addCarDB,getAllCar,addMoTa, addDetail,
-        getAllDetails,deleteCar
+        getAllDetails,deleteCar,
+        getOneCar,
+        getOneDetails,
+        updateDetail,updateCar,updateCar2
 } = require('../models/productDAO');
+const { render } = require('ejs');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
 }
@@ -112,61 +116,6 @@ const getCar =async(req,res)=>{
     }
 }
 
-const addCar = async (req, res) => {
-    upload(req, res, async (err) => {
-        if (err) {
-            return res.status(500).json({ message: "Lỗi upload ảnh!", error: err.message });
-        }
-
-        // 🟢 Kiểm tra `req.files`
-        if (!req.files || !Array.isArray(req.files) || req.files.length === 0) {
-            return res.send(`<script>
-                alert("Không có ảnh nào được tải lên!");
-                window.location.href = "/admin/car"; 
-            </script>`);
-        }
-
-        const { carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain } = req.body;
-       
-        let dongco;
-        if (engine === "xang") {
-            dongco = 1; 
-        }else if(engine==="dien"){
-            dongco=2;
-        }else if(engine==="khac"){
-            dongco=3
-        }
-        // 🟢 Chỉnh sửa đường dẫn ảnh (chỉ giữ `/upload/...`)
-        let imagePaths;
-        try {
-            imagePaths = req.files.map(file => {
-                let relativePath = file.path.replace(/\\/g, "/"); // Chuyển dấu `\` thành `/`
-                relativePath = relativePath.replace(/^.*\/public\//, "/"); // Bỏ đi phần `/public/`
-                return relativePath; // Kết quả chỉ còn `/upload/...`
-            });
-
-            if (!Array.isArray(imagePaths) || imagePaths.length === 0) {
-                throw new Error("imagePaths không phải là mảng hợp lệ!");
-            }
-        } catch (error) {
-            console.error("❌ Lỗi khi xử lý đường dẫn ảnh:", error);
-            return res.status(500).json({ message: "Lỗi xử lý ảnh!", error: error.message });
-        }
-
-        console.log("✅ Ảnh được lưu vào CSDL với đường dẫn:", imagePaths);
-
-        try {
-            await addCarDB(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
-            return res.send(`<script>
-                alert("Thêm xe thành công!");
-                window.location.href = "/admin"; 
-            </script>`);
-        } catch (dbError) {
-            console.error("❌ Lỗi khi lưu vào database:", dbError);
-            return res.status(500).json({ message: "Lỗi khi lưu dữ liệu vào database!", error: dbError.message });
-        }
-    });
-};
 
 
 //Tìm kiếm 
@@ -241,6 +190,137 @@ const deleteCaradmin = async (req, res) => {
         res.status(500).send("Lỗi xoá xe");
     }
 };
+
+const getUpDateCar = async (req, res) => {
+    try {
+        let carid = req.params.carid;
+        console.log("check carid:", carid);
+
+        let car = await getOneCar(carid);
+        let detail = await getOneDetails(carid);
+
+
+        
+        if (!detail) {
+            detail = { Car_ID: "", Other_Field: "" };
+        }
+
+        const engineOptions = [
+            { id: 1, name: "Động cơ xăng" },
+            { id: 2, name: "Động cơ điện" },
+            { id: 3, name: "Loại khác" }
+        ];
+
+        res.render("admin/updateCar", { car, detail, engineOptions });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Lỗi server!");
+    }
+};
+const postUpDateDetail=async(req,res)=>{
+    const {carID,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5} = req.body;
+    let result = await updateDetail(carID,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5)
+    console.log("Cập nhật thành công!",carID);
+    return res.send(`<script>
+        alert("Cập nhật thành công !");
+        window.location.href = "/admin"; 
+    </script>`);
+}
+
+const handleImagePaths = (files) => {
+    // Xử lý đường dẫn ảnh chung cho cả 2 hàm
+    if (!files || !Array.isArray(files) || files.length === 0) {
+        throw new Error("Không có ảnh nào được tải lên!");
+    }
+    
+    return files.map(file => {
+        let relativePath = file.path.replace(/\\/g, "/");
+        relativePath = relativePath.replace(/^.*\/public\//, "/");
+        return relativePath;
+    });
+};
+
+const postUpDateCar = async (req, res) => {
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(500).json({ message: "Lỗi upload ảnh!", error: err.message });
+        }
+
+        let imagePaths = [];
+        try {
+            imagePaths = handleImagePaths(req.files); // Xử lý ảnh
+        } catch (error) {
+            console.error("❌ Lỗi khi xử lý đường dẫn ảnh:", error);
+            return res.status(500).json({ message: "Lỗi xử lý ảnh!", error: error.message });
+        }
+
+        const { carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain } = req.body;
+
+        let dongco;
+        if (engine === "xang") {
+            dongco = 1;
+        } else if (engine === "dien") {
+            dongco = 2;
+        } else if (engine === "khac") {
+            dongco = 3;
+        }
+
+        try {
+            if (imagePaths && imagePaths.length > 0) {
+                await updateCar(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
+            } else {
+                await updateCar2(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain);
+            }
+
+            return res.send(`<script>
+                alert("Cập nhật xe thành công!");
+                window.location.href = "/admin"; 
+            </script>`);
+        } catch (dbError) {
+            console.error("❌ Lỗi khi cập nhật dữ liệu vào database:", dbError);
+            return res.status(500).json({ message: "Lỗi khi cập nhật dữ liệu vào database!", error: dbError.message });
+        }
+    });
+};
+
+const addCar = async (req, res) => {
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(500).json({ message: "Lỗi upload ảnh!", error: err.message });
+        }
+
+        let imagePaths = [];
+        try {
+            imagePaths = handleImagePaths(req.files); // Xử lý ảnh
+        } catch (error) {
+            console.error("❌ Lỗi khi xử lý đường dẫn ảnh:", error);
+            return res.status(500).json({ message: "Lỗi xử lý ảnh!", error: error.message });
+        }
+
+        const { carID, model, version, price, color, engine, capkw, torquenm, accel, rangekm, fastcharge, drivertrain } = req.body;
+        
+        let dongco;
+        if (engine === "xang") {
+            dongco = 1;
+        } else if (engine === "dien") {
+            dongco = 2;
+        } else if (engine === "khac") {
+            dongco = 3;
+        }
+
+        try {
+            await addCarDB(carID, model, version, price, color, dongco, capkw, torquenm, accel, rangekm, fastcharge, drivertrain, imagePaths);
+            return res.send(`<script>
+                alert("Thêm xe thành công!");
+                window.location.href = "/admin"; 
+            </script>`);
+        } catch (dbError) {
+            console.error("❌ Lỗi khi lưu vào database:", dbError);
+            return res.status(500).json({ message: "Lỗi khi lưu dữ liệu vào database!", error: dbError.message });
+        }
+    });
+};
+
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
-    postDetail,getDetail,deleteCaradmin
+    postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar
 }
