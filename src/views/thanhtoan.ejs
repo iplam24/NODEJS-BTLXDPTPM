@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh Toán Hóa Đơn - Bán Ô Tô</title>
     <link rel="stylesheet" href="/src/public/css/thanhtoan.css">
+    <link rel="stylesheet" href="/css/thanhtoan.css">
     <link rel="icon" href="/image/Vinfast-logo.png" type="image/png">
 </head>
 <body>
@@ -56,10 +57,11 @@
                 <input type="radio" name="payment-method" value="Tiền mặt"> Tiền mặt
             </label>
 
-            <button type="submit">Xác nhận thanh toán</button>
+            
+            <button type="submit" class="custom-button" onclick="thanhToanZaloPay()">Xác nhận thanh toán</button>
         </form>
     </div>
 
-    <script src="/src/public/js/thanhtoan.js"></script>
+    <script src="/js/thanhtoan.js"></script>
 </body>
 </html>

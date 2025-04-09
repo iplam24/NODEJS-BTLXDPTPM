@@ -41,3 +41,7 @@ router.post('/dangky-taikhoan',postCreateNewUser);
 router.get('/chitietsanpham:carid',getChiTietSanPham);
 router.post('/timkiem-sanpham',timKiemSanPham);
 module.exports = router
+
+router.get('/thanhtoan', (req, res) => {
+    res.render('thanhtoan'); //render ra trang thanh toan
+});

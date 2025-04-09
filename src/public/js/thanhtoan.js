@@ -74,3 +74,16 @@ document.getElementById("payment-form").addEventListener("submit", function(even
 
 // Gọi hàm để hiển thị giỏ hàng ban đầu
 renderCart();
+
+function thanhToanZaloPay() {
+    fetch('/payment', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+            if (data.payUrl) {
+                window.open(data.payUrl, '_blank'); // Mở trang thanh toán ZaloPay trong tab mới
+            } else {
+                alert("Lỗi khi tạo thanh toán!");
+            }
+        })
+        .catch(error => console.error("Lỗi:", error));
+}
