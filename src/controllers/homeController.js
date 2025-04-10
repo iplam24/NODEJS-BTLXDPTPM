@@ -199,6 +199,8 @@ const getChiTietSanPham = async (req, res) => {
     res.render("chitietsp", { detail, car });
 };
 
+
+
 module.exports = { 
     logInserver, 
     getHomePage, 

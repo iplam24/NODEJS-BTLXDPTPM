@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/hoadon.css">
+    <link
+		rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+		integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+		crossorigin="anonymous"
+		referrerpolicy="no-referrer"
+	/>
+    <title>Login</title>
+</head>
+
+        <body>
+            <div class="repair-order">
+                <div class="repair-header">
+                  <div class="logo-left">
+                    <img src="/image/logovf.png" alt="Logo" />
+                  </div>
+                  <div class="title">
+                    <h2>HÓA ĐƠN THANH TOÁN</h2>
+                    <p>Ngày: XX-XX-XXXX</p>
+                  </div>
+                  
+                </div>
+              
+                <div class="repair-customer">
+                  <p><strong>Khách hàng:</strong> Đinh Lê Hoàng Sơn</p>
+                  <p><strong>Địa chỉ:</strong> Hành tinh Na Mếch</p>
+                  <p><strong>Điện thoại:</strong> 03-8683-0665</p>
+                  <p><strong>Mã xe:</strong> VinFast President V8</p>
+                </div>
+              
+                <div class="repair-table-wrapper">
+                  <table class="repair-table">
+                    <thead>
+                      <tr>
+                        <th>Mã đơn hàng</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DH01001</td>
+                        <td>VinFast President V8</td>
+                        <td>1</td>
+                        <td>1.000.000.000 vnđ</td>
+                        <td>1.000.000.000 vnđ</td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              
+                <div class="repair-summary">
+                  <p><strong>Số tiền chiết khấu:</strong> ....................</p>
+                  <p><strong>Cộng tiền hàng (Đã trừ CK):</strong> ..........</p>
+                  <p><strong>Thuế suất GTGT:</strong> ....................</p>
+                  <p><strong>Tiền thuế GTGT:</strong> ....................</p>
+                  <p><strong>Tổng cộng tiền thanh toán:</strong> ....................</p>
+                </div>
+              
+                <div class="repair-signature">
+                  <div>Người mua<br>(Ký, họ tên)</div>
+                 
+                  <div>
+                    Đại diện cửa hàng<br>(Ký, họ tên)<br>
+                    <img src="/image/sign.png" alt="Chữ ký Sơn" class="signature-img">
+                    <div class="seller-name">Đinh Lê Hoàng Sơn</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="repair-buttons">
+                <button onclick="window.print()"><i class="fas fa-print"></i> In hóa đơn</button>
+                <button onclick="downloadInvoice()"><i class="fas fa-download"></i> Tải hóa đơn</button>
+              </div>
+              
+              
+          
+        </body>
+ 
+          
+        </div>
+
+        <script>
+            function downloadInvoice() {
+              const element = document.querySelector(".repair-order");
+              const opt = {
+                margin:       0.5,
+                filename:     'hoa-don-thanh-toan.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+              };
+          
+              html2pdf().from(element).set(opt).save();
+            }
+          </script>
+          
+          <!-- Thêm thư viện html2pdf.js để dùng chức năng Tải hóa đơn -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+          
+        
+    </body>
+</html>
