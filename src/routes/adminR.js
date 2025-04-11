@@ -12,12 +12,12 @@ const {getAdmin,
     getDetail,
     deleteCaradmin,
     getUpDateCar,
-    postUpDateDetail,postUpDateCar} =require('../controllers/adminController');
+    postUpDateDetail,postUpDateCar,getOrder} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
 // Áp dụng checkRole([0]) cho tất cả các route bắt đầu bằng '/admin'
-router.use('/admin', checkRole([0]));
+//router.use('/admin', checkRole([0]));
 // Route trang dashboard admin
 router.get('/admin',getAdmin);
 
@@ -42,5 +42,5 @@ router.post('/admin/updateCar',postUpDateCar);
 router.post('/admin/delete-car::carid',deleteCaradmin);
 
 router.get('/admin/update-car::carid',getUpDateCar);
-
+router.get('/admin/order',getOrder);
 module.exports = router;

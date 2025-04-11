@@ -8,6 +8,9 @@ const {addCarDB,getAllCar,addMoTa, addDetail,
         getOneDetails,
         updateDetail,updateCar,updateCar2
 } = require('../models/productDAO');
+
+
+const {getAllOrder} = require('../services/CRUD-service');
 const { render } = require('ejs');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
@@ -320,7 +323,11 @@ const addCar = async (req, res) => {
         }
     });
 };
-
+const getOrder = async(req,res)=>{
+    const order = await getAllOrder();
+    
+    res.render("admin/orders",{listOrders:order});
+}
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
-    postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar
+    postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar,getOrder
 }
