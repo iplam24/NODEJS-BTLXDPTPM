@@ -10,8 +10,9 @@ const {addCarDB,getAllCar,addMoTa, addDetail,
 } = require('../models/productDAO');
 
 
-const {getAllOrder} = require('../services/CRUD-service');
+const {getAllOrder, addOrder,updateOrder,deleteOrder} = require('../services/CRUD-service');
 const { render } = require('ejs');
+const { param } = require('../routes/adminR');
 const getAdmin =(req,res)=>{
     res.render('admin/admin')
 }
@@ -328,6 +329,25 @@ const getOrder = async(req,res)=>{
     
     res.render("admin/orders",{listOrders:order});
 }
+
+const postOrder = async (req, res) => {
+    console.log("check", req.body);
+
+    const { ID, Ma_KH, orderDate, Soluong, Price, orderStatus, address, orderPayment } = req.body;
+
+    await addOrder(ID, Ma_KH, orderDate, Soluong, Price, orderStatus, address, orderPayment);
+
+    const order = await getAllOrder();
+    res.render("admin/orders", { listOrders: order });
+}
+
+
+const deleteOrderDB =async(req,res)=>{
+    const id  = req.params.carid;
+    await deleteOrder(id);
+    const order = await getAllOrder();
+    res.render("admin/orders",{listOrders:order});
+}
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
-    postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar,getOrder
+    postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar,getOrder,postOrder,deleteOrderDB
 }

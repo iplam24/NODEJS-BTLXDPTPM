@@ -3,253 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quản lý đơn hàng</title>
+  <title>quản lý xe</title>
+  <link rel="stylesheet" href="/css/themXe.css"/>
   <link rel="icon" href="/image/Vinfast-logo.png" type="image/png"/>
-  <style>
-    /* Reset style */
-    body, h1, table, th, td, button, span, input {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-    }
-
-    .main-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    .table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-
-    .table th, .table td {
-      border: 1px solid #dee2e6;
-      padding: 12px;
-      text-align: left;
-    }
-
-    .table thead th {
-      background-color: #f8f9fa;
-      font-weight: bold;
-    }
-
-    .table tbody tr:nth-child(odd) {
-      background-color: #f9f9f9;
-    }
-
-    .table tbody tr:hover {
-      background-color: #f1f1f1;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .btn-danger {
-      background-color: #dc3545;
-      color: #fff;
-    }
-
-    .btn-danger:hover {
-      background-color: #c82333;
-    }
-
-    .btn-warning {
-      background-color: #ffc107;
-      color: #000;
-    }
-
-    .btn-primary {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .btn-success {
-      background-color: #28a745;
-      color: white;
-    }
-
-    .custom-modal {
-      display: none;
-      position: fixed;
-      z-index: 999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.4);
-    }
-
-    .custom-modal-content {
-      background-color: #fff;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 600px;
-      position: relative;
-    }
-
-    .custom-close {
-      position: absolute;
-      right: 20px;
-      top: 15px;
-      font-size: 28px;
-      color: #aaa;
-      cursor: pointer;
-    }
-
-    .custom-close:hover {
-      color: red;
-    }
-
-    input {
-      width: 100%;
-      margin-bottom: 10px;
-      padding: 10px;
-    }
-  </style>
 </head>
 <body>
+  <div class="main-content">
+    <h1>Quản lý đơn hàng</h1>
+    <button class="openModal1">Thêm đơn hàng</button>
+    
 
-<div class="main-content">
-  <h1>Quản lý đơn hàng</h1>
-  <button id="openAddFormBtn" class="btn btn-primary">➕ Thêm Đơn Hàng</button>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Mã đơn hàng</th>
-        <th>Mã khách hàng</th>
-        <th>Ngày đặt hàng</th>
-        <th>Tổng tiền</th>
-        <th>Trạng thái</th>
-        <th>Địa chỉ giao hàng</th>
-        <th>Phương thức thanh toán</th>
-        <th>Sửa</th>
-        <th>Xóa</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% listOrders.forEach(function(order){ %>
-        <tr>
-          <td><%= order.Order_ID %></td>
-          <td><%= order.Customer_ID %></td>
-          <td><%= order.OrderDate %></td>
-          <td><%= order.TotalAmount %></td>
-          <td><%= order.Status %></td>
-          <td><%= order.ShippingAddress %></td>
-          <td><%= order.PaymentMethod %></td>
-          <td>
-            <button class="btn btn-warning" onclick="openEditOrderModal('<%= order.Order_ID %>')">Sửa</button>
-          </td>
-          <td>
-            <form action="/orders/delete/<%= order.Order_ID %>" method="post">
-              <button class="btn btn-danger">Xóa</button>
-            </form>
-          </td>
-        </tr>
-      <% }); %>
-    </tbody>
-  </table>
-</div>
-
-<!-- Modal Thêm -->
-<div id="modalAddOrder" class="custom-modal">
-  <div class="custom-modal-content">
-    <span class="custom-close" onclick="closeAddOrderModal()">&times;</span>
-    <h2>Thêm đơn hàng</h2>
-    <form action="/orders/add" method="post">
-      <input name="Customer_ID" type="text" placeholder="Mã khách hàng" required>
-      <input name="OrderDate" type="date" required>
-      <input name="TotalAmount" type="number" placeholder="Tổng tiền" required>
-      <input name="Status" type="text" placeholder="Trạng thái">
-      <input name="ShippingAddress" type="text" placeholder="Địa chỉ giao hàng">
-      <input name="PaymentMethod" type="text" placeholder="Phương thức thanh toán">
-      <button type="submit" class="btn btn-success">Lưu</button>
-    </form>
+    <table class="table table-bordered mt-3">
+      <thead>
+        <thead>
+          <tr>
+            <th>Mã đơn hàng</th>
+            <th>Mã khách hàng</th>
+            <th>Ngày đặt hàng</th>
+            <th>Tổng tiền</th>
+            <th>Trạng thái</th>
+            <th>Địa chỉ giao hàng</th>
+            <th>Phương thức thanh toán</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% listOrders.forEach(function(order){ %>
+            <tr>
+              <td><%= order.Order_ID %></td>
+              <td><%= order.Customer_ID %></td>
+              <td><%= order.OrderDate %></td>
+              <td><%= order.TotalAmount %></td>
+              <td><%= order.Status %></td>
+              <td><%= order.ShippingAddress %></td>
+              <td><%= order.PaymentMethod %></td>
+              <td>
+                <button class="btn btn-warning" onclick="openEditOrderModal('<%= order.Order_ID %>')">Sửa</button>
+              </td>
+              <td>
+                <form action="/admin/delete/<%= order.Order_ID %>" method="post">
+                  <button class="btn btn-danger">Xóa</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+    </table>
   </div>
-</div>
 
-<!-- Modal Sửa -->
-<div id="modalEditOrder" class="custom-modal">
-  <div class="custom-modal-content">
-    <span class="custom-close" onclick="closeEditOrderModal()">&times;</span>
-    <h2>Sửa đơn hàng</h2>
-    <form action="/orders/update" method="post">
-      <input name="Order_ID" id="editOrderId" type="text" readonly>
-      <input name="Customer_ID" id="editCustomerId" type="text">
-      <input name="OrderDate" id="editOrderDate" type="date">
-      <input name="TotalAmount" id="editTotal" type="number">
-      <input name="Status" id="editStatus" type="text">
-      <input name="ShippingAddress" id="editAddress" type="text">
-      <input name="PaymentMethod" id="editPayment" type="text">
-      <button type="submit" class="btn btn-warning">Cập nhật</button>
-    </form>
+  <!-- Modal Form 1 -->
+  <div id="modalForm1" class="modal">
+    <div class="register-container">
+      <span class="closeModal1 close">&times;</span>
+      <h2>Thêm Đơn Hàng</h2>
+      <form action="/admin/addOrder" class="signup-form" method="post">
+        <!-- Các input form như cũ, không cần thay đổi gì -->
+        <label>Mã DH</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào mã DH" name="ID" />
+        </div>
+
+        <label>Mã KH</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào mã khách hàng" name="Ma_KH" />
+        </div>
+
+        <label>Ngày đặt hàng</label>
+        <div class="inputForm">
+        <input type="datetime-local" class="input" name="orderDate" />
+        </div>
+
+
+        <label>Số lượng</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào số lượng" name="Soluong" />
+        </div>
+
+        <label>Giá</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào giá" name="Price" />
+        </div>
+
+        <label>Trạng thái đơn hàng</label>
+        <div class="inputForm">
+        <select class="input" name="orderStatus" >
+            <option value="Chưa thanh toán">Chưa thanh toán</option>
+            <option value="Đã thanh toán">Đã thanh toán</option>
+        </select>
+        </div>
+
+        
+
+        <label>Địa chỉ khách hàng</label>
+        <div class="inputForm">
+          <input type="text" class="input" name="address" placeholder="Nhập vào địa chỉ khách hàng" />
+        </div>
+
+        <label>Hình thức thanh toán</label>
+        <div class="inputForm">
+            <select class="input" name="orderPayment">
+                <option value="Tiền mặt">Tiền mặt</option>
+                <option value="Chuyển khoản">Chuyển khoản</option>
+            </select>
+            </div>
+
+       
+        <div class="inputForm">
+          <button class="button-submitt">Thêm</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // --- Modal Thêm ---
-      const openAddFormBtn = document.getElementById("openAddFormBtn");
-      const modalAddOrder = document.getElementById("modalAddOrder");
-      const closeAddOrderBtn = modalAddOrder.querySelector(".custom-close");
-    
-      openAddFormBtn.onclick = () => {
-        modalAddOrder.style.display = "block";
+  <!-- Modal Form 2 -->
+  <div id="modalForm2" class="modal2">
+    <div class="register-container">
+      <span class="closeModal2 close">&times;</span>
+      <h2>Sửa Đơn Hàng</h2>
+      <!-- Các input form như cũ, không cần thay đổi gì -->
+      <label>Mã DH</label>
+      <div class="inputForm">
+        <input type="text" class="input" placeholder="Nhập vào mã DH" name="carID" />
+      </div>
+
+      <label>Mã KH</label>
+      <div class="inputForm">
+        <input type="text" class="input" placeholder="Nhập vào mã khách hàng" name="model" />
+      </div>
+
+      <label>Ngày đặt hàng</label>
+      <div class="inputForm">
+      <input type="datetime-local" class="input" name="orderDate" />
+      </div>
+
+
+      <label>Số lượng</label>
+      <div class="inputForm">
+        <input type="text" class="input" placeholder="Nhập vào số lượng" name="price" />
+      </div>
+
+      <label>Giá</label>
+      <div class="inputForm">
+        <input type="text" class="input" placeholder="Nhập vào giá" name="color" />
+      </div>
+
+      <label>Trạng thái đơn hàng</label>
+      <div class="inputForm">
+      <select class="input" name="orderStatus">
+          <option value="chua">Chưa thanh toán</option>
+          <option value="da">Đã thanh toán</option>
+      </select>
+      </div>
+
+      
+
+      <label>Địa chỉ khách hàng</label>
+      <div class="inputForm">
+        <input type="text" class="input" name="capkw" placeholder="Nhập vào địa chỉ khách hàng" />
+      </div>
+
+      <label>Hình thức thanh toán</label>
+      <div class="inputForm">
+          <select class="input" name="orderStatus">
+              <option value="chua">Tiền mặt</option>
+              <option value="da">Chuyển khoản</option>
+          </select>
+          </div>
+
+     
+      <div class="inputForm">
+        <button class="button-submitt">Sửa</button>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      const modal1 = document.getElementById('modalForm1');
+      const modal2 = document.getElementById('modalForm2');
+      const btnOpen1 = document.querySelector('.openModal1');
+      const btnClose1 = document.querySelector('.closeModal1');
+      const btnOpen2 = document.querySelector('.openModal2');
+      const btnClose2 = document.querySelector('.closeModal2');
+
+      if (btnOpen1 && modal1) {
+        btnOpen1.addEventListener('click', () => {
+          modal1.style.display = 'flex';
+          modal2.style.display = 'none';
+        });
       }
-    
-      closeAddOrderBtn.onclick = () => {
-        modalAddOrder.style.display = "none";
+      if (btnClose1 && modal1) {
+        btnClose1.addEventListener('click', () => {
+          modal1.style.display = 'none';
+        });
       }
-    
-      // --- Modal Sửa ---
-      const modalEditOrder = document.getElementById("modalEditOrder");
-      const closeEditOrderBtn = modalEditOrder.querySelector(".custom-close");
-    
-      window.openEditOrderModal = function(orderId) {
-        const orderRow = Array.from(document.querySelectorAll("tr"))
-          .find(row => row.children[0]?.textContent === orderId);
-    
-        if (orderRow) {
-          const cells = orderRow.children;
-          document.getElementById("editOrderId").value = cells[0].textContent;
-          modalEditOrder.style.display = "block";
-        } else {
-          console.error("Không tìm thấy đơn hàng cần sửa");
-        }
+
+      if (btnOpen2 && modal2) {
+        btnOpen2.addEventListener('click', () => {
+          modal2.style.display = 'flex';
+          modal1.style.display = 'none';
+        });
       }
-    
-      closeEditOrderBtn.onclick = () => {
-        modalEditOrder.style.display = "none";
+      if (btnClose2 && modal2) {
+        btnClose2.addEventListener('click', () => {
+          modal2.style.display = 'none';
+        });
       }
-    
-      // Đóng khi bấm ra ngoài modal
-      window.onclick = function(e) {
-        if (e.target === modalAddOrder) modalAddOrder.style.display = "none";
-        if (e.target === modalEditOrder) modalEditOrder.style.display = "none";
-      }
+
+      window.addEventListener('click', function (event) {
+        if (event.target === modal1) modal1.style.display = 'none';
+        if (event.target === modal2) modal2.style.display = 'none';
+      });
     });
-    </script>
-    
-
+  </script>
 </body>
 </html>

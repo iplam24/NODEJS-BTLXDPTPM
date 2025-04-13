@@ -12,7 +12,8 @@ const {getAdmin,
     getDetail,
     deleteCaradmin,
     getUpDateCar,
-    postUpDateDetail,postUpDateCar,getOrder} =require('../controllers/adminController');
+    postUpDateDetail,postUpDateCar,getOrder
+    ,postOrder,deleteOrderDB} =require('../controllers/adminController');
 const { checkRole } = require("../middleware/auth");
 const router = express.Router();
 
@@ -43,4 +44,6 @@ router.post('/admin/delete-car::carid',deleteCaradmin);
 
 router.get('/admin/update-car::carid',getUpDateCar);
 router.get('/admin/order',getOrder);
+router.post('/admin/addorder',postOrder);
+router.post('/admin/delete/:id',deleteOrderDB);
 module.exports = router;
