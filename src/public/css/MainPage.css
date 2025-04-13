@@ -1256,3 +1256,55 @@ form label {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+
+/* Nút mở chat */
+#chatbot-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 24px;
+  }
+  
+  /* Container của chatbot */
+  #chatbot-container {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 300px;
+    max-height: 500px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  /* Header của khung chat */
+  #chatbot-header {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Body nơi chứa chatbot thật sự */
+  #chatbot-body {
+    height: 400px;
+    background-color: #f8f9fa;
+  }
+  
