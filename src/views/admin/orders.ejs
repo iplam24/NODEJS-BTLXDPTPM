@@ -21,7 +21,6 @@
             <th>Mã khách hàng</th>
             <th>Ngày đặt hàng</th>
             <th>Tổng tiền</th>
-            <th>Giá</th>
             <th>Trạng thái</th>
             <th>Địa chỉ giao hàng</th>
             <th>Phương thức thanh toán</th>
@@ -36,13 +35,13 @@
               <td><%= order.Customer_ID %></td>
               <td><%= order.OrderDate %></td>
               <td><%= order.TotalAmount %></td>
-              <td><%= order.Price %></td>
               <td><%= order.Status %></td>
               <td><%= order.ShippingAddress %></td>
               <td><%= order.PaymentMethod %></td>
               <td>
-                <button class="btn btn-warning" onclick="openEditOrderModal('<%= order.Order_ID %>')">Sửa</button>
+                <button class="btn btn-warning openModal2" onclick="openEditOrderModal('<%= order.Order_ID %>')">Sửa</button>
               </td>
+              
               <td>
                 <form action="/admin/delete/<%= order.Order_ID %>" method="post">
                   <button class="btn btn-danger">Xóa</button>
@@ -182,7 +181,8 @@
   </div>
 
   <script>
-    window.addEventListener('DOMContentLoaded', function () {
+
+     window.addEventListener('DOMContentLoaded', function () {
       const modal1 = document.getElementById('modalForm1');
       const modal2 = document.getElementById('modalForm2');
       const btnOpen1 = document.querySelector('.openModal1');
@@ -207,6 +207,7 @@
           modal2.style.display = 'flex';
           modal1.style.display = 'none';
         });
+
       }
       if (btnClose2 && modal2) {
         btnClose2.addEventListener('click', () => {
