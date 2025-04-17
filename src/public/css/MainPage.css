@@ -1258,53 +1258,26 @@ form label {
 }
 
 
-/* Nút mở chat */
-#chatbot-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #007bff;
+
+
+
+.chatbot-popup-z { width: 100%; max-width: 400px; height: 500px; display: flex; flex-direction: column; position: relative; background: white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); overflow: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+.chat-header-z { background-color: #003366; color: white; padding: 10px 15px; display: flex; align-items: center; gap: 10px; }
+.chat-header-z img { height: 30px; }
+.chat-header-z h1 { margin: 0; font-size: 1.2rem; }
+.chat-messages-z { flex: 1; overflow-y: auto; padding: 10px 15px; background-color: #e6f0ff; }
+.message-z { margin-bottom: 10px; padding: 10px 14px; border-radius: 18px; max-width: 80%; word-wrap: break-word; line-height: 1.4; position: relative; animation: fadeIn 0.3s ease; font-size: 0.95rem; }
+.user-message-z { background-color: #e3f2fd; margin-left: auto; border-bottom-right-radius: 5px; }
+.bot-message-z { background-color: #f1f1f1; margin-right: auto; border-bottom-left-radius: 5px; }
+.message-sender-z { font-weight: bold; font-size: 0.8rem; margin-bottom: 3px; }
+.chat-input-container-z { padding: 10px; background-color: white; border-top: 1px solid #ddd; display: flex; gap: 8px; }
+#message-input { flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 20px; font-size: 0.95rem; }
+#send-button { padding: 8px 16px; background-color: #003366; color: white; border: none; border-radius: 20px; font-size: 0.9rem; cursor: pointer; }
+.suggestions-z { padding: 8px 10px; background: white; border-top: 1px solid #ddd; overflow-x: auto; display: flex; gap: 8px; }
+.suggestion-btn-z { padding: 6px 12px; font-size: 0.8rem; border: 1px solid #ccc; border-radius: 20px; background: #fff; cursor: pointer; white-space: nowrap; }
+.suggestion-btn-z:hover {
+    background-color: var(--primary-color);
     color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    font-size: 24px;
-  }
-  
-  /* Container của chatbot */
-  #chatbot-container {
-    position: fixed;
-    bottom: 90px;
-    right: 20px;
-    width: 300px;
-    max-height: 500px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    display: none;
-    flex-direction: column;
-    overflow: hidden;
-    z-index: 1000;
-  }
-  
-  /* Header của khung chat */
-  #chatbot-header {
-    background-color: #007bff;
-    color: white;
-    padding: 12px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  /* Body nơi chứa chatbot thật sự */
-  #chatbot-body {
-    height: 400px;
-    background-color: #f8f9fa;
-  }
-  
+    border-color: var(--primary-color);
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
