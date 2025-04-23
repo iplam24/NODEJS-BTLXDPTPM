@@ -1,0 +1,68 @@
+version: "3.1"
+
+nlu:
+- intent: chao_hoi
+  examples: |
+    - xin chào
+    - hello
+    - chào bạn
+    - hi
+
+- intent: hoi_gia_xe
+  examples: |
+    - giá xe VinFast là bao nhiêu?
+    - VF 8 giá bao nhiêu?
+    - xe VF 9 có giá như thế nào?
+    - tôi muốn biết giá xe VinFast
+
+- intent: hoi_khuyen_mai
+  examples: |
+    - hiện có chương trình khuyến mãi nào không?
+    - có ưu đãi gì khi mua xe VinFast không?
+    - khuyến mãi mới nhất là gì?
+
+- intent: hoi_thong_so_ky_thuat
+  examples: |
+    - thông số VF8
+    - thông số kỹ thuật của VF 8
+    - VF 9 có những tính năng gì?
+    - động cơ xe VinFast như thế nào?
+
+- intent: hoi_dia_chi_showroom
+  examples: |
+    - showroom VinFast ở đâu?
+    - đại lý gần nhất ở Hà Nội?
+    - tôi muốn xem xe trực tiếp
+
+- intent: cam_on
+  examples: |
+    - cảm ơn
+    - thank you
+    - cám ơn bạn
+
+- intent: dang_ky_tu_van
+  examples: |
+    - tôi muốn đăng ký tư vấn
+    - đăng ký nhận thông tin
+    - tư vấn cho tôi
+    - tôi cần tư vấn mua xe
+
+- intent: dang_ky_lai_thu
+  examples: |
+    - đăng ký lái thử
+    - tôi muốn test drive
+    - đặt lịch lái thử xe
+    - có được lái thử xe không
+
+- intent: cung_cap_thong_tin
+  examples: |
+    - tên tôi là [Nguyễn Văn A](name)
+    - số điện thoại của tôi là [0912345678](phone)
+    - [0123456789](phone)
+    - email là [example@mail.com](email)
+
+- intent: cung_cap_thong_tin_lai_thu
+  examples: |
+    - tôi tên [Trần Thị B](name), sđt [0987654321](phone), muốn lái thử [VF 8](car_model)
+    - [VF 9](car_model) tại [Hà Nội](location) ngày [15/10](date)
+    - số điện thoại [0909123456](phone), tên [Lê Văn C](name)
