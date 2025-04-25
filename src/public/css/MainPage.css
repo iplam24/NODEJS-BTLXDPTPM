@@ -1147,17 +1147,23 @@ button:hover {
 .suggestions {
     position: absolute;
     top: 45px;
-    background-color: white;
+    background-color: #fff;
     width: 250px;
     max-height: 150px;
     overflow-y: auto;
-    z-index: 10;
-    display: none;
+    z-index: 1000;
+    display: block;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
 .suggestion-item {
     padding: 10px;
     cursor: pointer;
+    background-color: #fff; /* Nền trắng rõ */
+    color: #000;             /* Chữ đen rõ nét */
+    border-bottom: 1px solid #e0e0e0; /* Viền nhẹ phân cách */
 }
 
 .suggestion-item:hover {
