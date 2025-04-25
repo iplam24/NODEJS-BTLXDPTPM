@@ -90,6 +90,8 @@ body, h1, table, th, td, button {
 
 /* Ban đầu ẨN form đi */
 
+
+
 /* Form đăng ký */
 .register-container {
     background-color: #fff;
@@ -185,8 +187,7 @@ body, h1, table, th, td, button {
 }
 
 
-/* Modal cho Thêm Đơn Hàng */
-.modal {
+.modal{
     display: none; /* Ẩn form khi tải trang */
     position: fixed;
     top: 0;
@@ -199,7 +200,6 @@ body, h1, table, th, td, button {
     z-index: 9999;
 }
 
-/* Modal cho Sửa Đơn Hàng */
 .modal2 {
     display: none;
     position: fixed;
@@ -212,7 +212,7 @@ body, h1, table, th, td, button {
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0,0.4);
-}
+  }
   
 
 .register-container {
@@ -229,17 +229,4 @@ body, h1, table, th, td, button {
     top: 10px;
 }
 
-/* Modal Animation */
-.modal, .modal2 {
-    transition: opacity 0.3s ease;
-}
 
-.modal.open, .modal2.open {
-    display: flex;
-    opacity: 1;
-}
-
-.modal, .modal2 {
-    opacity: 0;
-    visibility: hidden;
-}

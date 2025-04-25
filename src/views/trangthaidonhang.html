@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trạng Thái Đơn Hàng - VinFast</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+
+    .order-container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .order-header {
+      margin-bottom: 24px;
+    }
+
+    .order-header h2 {
+      margin: 0 0 12px;
+    }
+
+    .order-info {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .car-info {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .car-info img {
+      width: 140px;
+      border-radius: 8px;
+      margin-right: 20px;
+    }
+
+    .car-details h4 {
+      margin: 0 0 6px;
+    }
+
+    .car-details p {
+      margin: 2px 0;
+      font-size: 14px;
+    }
+
+    .payment-status {
+      margin-top: 30px;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      background-color: #f0f0f0;
+      color: #555;
+    }
+
+    .paid {
+      color: green;
+      background-color: #e6f7e6;
+      border-left: 6px solid green;
+    }
+
+    .unpaid {
+      color: red;
+      background-color: #ffeaea;
+      border-left: 6px solid red;
+    }
+
+    .support {
+      margin-top: 32px;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .support a {
+      color: #d0021b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="order-container">
+    <div class="order-header">
+      <h2>Trạng Thái Đơn Hàng</h2>
+      <div class="order-info">
+        Mã đơn hàng: <strong>#VF123456</strong><br>
+        Ngày đặt: <strong>23/04/2025</strong><br>
+        Khách hàng: <strong>Nguyễn Văn A</strong>
+      </div>
+    </div>
+
+    <div class="car-info">
+      <img src="https://vinfastauto.com/themes/porto/img/vf-luxa.png" alt="VinFast Lux A2.0">
+      <div class="car-details">
+        <h4>VinFast Lux A2.0 - Tiêu chuẩn</h4>
+        <p>Màu: Trắng, Động cơ: 2.0 Turbo, 5 chỗ</p>
+        <p>Giá: <strong>₫980.000.000</strong></p>
+      </div>
+    </div>
+
+    <!-- Thay đổi class 'paid' thành 'unpaid' nếu chưa thanh toán -->
+    <div class="payment-status paid">
+      ✅ Đã thanh toán
+    </div>
+
+    <div class="support">
+      Cần hỗ trợ? Gọi <a href="tel:19002345">1900 2345</a> hoặc <a href="#">liên hệ tư vấn viên</a>.
+    </div>
+  </div>
+
+</body>
+</html>

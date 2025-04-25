@@ -1,0 +1,53 @@
+version: "3.1"
+
+stories:
+- story: chào hỏi
+  steps:
+  - intent: chao_hoi
+  - action: utter_chao_hoi
+
+- story: hỏi giá xe
+  steps:
+  - intent: hoi_gia_xe
+  - action: utter_hoi_gia_xe
+
+- story: hỏi khuyến mãi
+  steps:
+  - intent: hoi_khuyen_mai
+  - action: utter_hoi_khuyen_mai
+
+- story: hỏi thông số kỹ thuật
+  steps:
+  - intent: hoi_thong_so_ky_thuat
+  - action: utter_hoi_thong_so_ky_thuat
+
+- story: hỏi địa chỉ showroom
+  steps:
+  - intent: hoi_dia_chi_showroom
+  - action: utter_hoi_dia_chi_showroom
+
+- story: cảm ơn
+  steps:
+  - intent: cam_on
+  - action: utter_cam_on
+
+- story: đăng ký tư vấn
+  steps:
+  - intent: dang_ky_tu_van
+  - action: action_hoi_ten
+  - intent: cung_cap_thong_tin
+    entities:
+    - name
+    - phone
+  - action: action_luu_thong_tin_lien_he
+
+- story: đăng ký lái thử
+  steps:
+  - intent: dang_ky_lai_thu
+  - action: utter_hoi_thong_tin_lai_thu
+  - intent: cung_cap_thong_tin_lai_thu
+    entities:
+    - name
+    - phone
+    - car_model
+  - action: action_gui_thong_tin_test_drive

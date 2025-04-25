@@ -1,0 +1,76 @@
+{
+  "type": "MaxHistoryTrackerFeaturizer",
+  "state_featurizer": {
+    "action_texts": [],
+    "entity_tag_specs": [],
+    "feature_states": {
+      "intent": {
+        "back": 0,
+        "cam_on": 1,
+        "chao_hoi": 2,
+        "cung_cap_thong_tin": 3,
+        "cung_cap_thong_tin_lai_thu": 4,
+        "dang_ky_lai_thu": 5,
+        "dang_ky_tu_van": 6,
+        "hoi_dia_chi_showroom": 7,
+        "hoi_gia_xe": 8,
+        "hoi_khuyen_mai": 9,
+        "hoi_thong_so_ky_thuat": 10,
+        "nlu_fallback": 11,
+        "out_of_scope": 12,
+        "restart": 13,
+        "session_start": 14
+      },
+      "action_name": {
+        "action_listen": 0,
+        "action_restart": 1,
+        "action_session_start": 2,
+        "action_default_fallback": 3,
+        "action_deactivate_loop": 4,
+        "action_revert_fallback_events": 5,
+        "action_default_ask_affirmation": 6,
+        "action_default_ask_rephrase": 7,
+        "action_two_stage_fallback": 8,
+        "action_unlikely_intent": 9,
+        "action_back": 10,
+        "...": 11,
+        "action_extract_slots": 12,
+        "action_chao_hoi": 13,
+        "action_hoi_gia_xe": 14,
+        "action_hoi_khuyen_mai": 15,
+        "action_hoi_thong_so_ky_thuat": 16,
+        "action_hoi_dia_chi_showroom": 17,
+        "action_cam_on": 18,
+        "action_luu_thong_tin_lien_he": 19,
+        "action_gui_thong_tin_test_drive": 20,
+        "action_hoi_ten": 21,
+        "utter_cam_on": 22,
+        "utter_chao_hoi": 23,
+        "utter_hoi_dia_chi_showroom": 24,
+        "utter_hoi_gia_xe": 25,
+        "utter_hoi_khuyen_mai": 26,
+        "utter_hoi_thong_so_ky_thuat": 27,
+        "utter_hoi_thong_tin_lai_thu": 28,
+        "lien_he_form": 29,
+        "test_drive_form": 30
+      },
+      "entities": {},
+      "slots": {
+        "name_0": 0,
+        "phone_0": 1,
+        "email_0": 2,
+        "car_model_0": 3,
+        "car_model_1": 4,
+        "car_model_2": 5,
+        "location_0": 6,
+        "date_0": 7
+      },
+      "active_loop": {
+        "lien_he_form": 0,
+        "test_drive_form": 1
+      }
+    }
+  },
+  "remove_duplicates": true,
+  "max_history": 5
+}

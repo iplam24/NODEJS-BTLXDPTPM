@@ -1,0 +1,118 @@
+version: "3.1"
+
+intents:
+  - chao_hoi
+  - hoi_gia_xe
+  - hoi_khuyen_mai
+  - hoi_thong_so_ky_thuat
+  - hoi_dia_chi_showroom
+  - cam_on
+  - dang_ky_tu_van
+  - dang_ky_lai_thu
+  - cung_cap_thong_tin
+  - cung_cap_thong_tin_lai_thu
+
+slots:
+  name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: name
+        intent: cung_cap_thong_tin
+      - type: from_entity
+        entity: name
+        intent: cung_cap_thong_tin_lai_thu
+
+  phone:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: phone
+        intent: cung_cap_thong_tin
+      - type: from_entity
+        entity: phone
+        intent: cung_cap_thong_tin_lai_thu
+
+  email:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: email
+        intent: cung_cap_thong_tin
+
+  car_model:
+    type: categorical
+    values:
+      - "VF 8"
+      - "VF 9"
+    mappings:
+      - type: from_entity
+        entity: car_model
+        intent: cung_cap_thong_tin_lai_thu
+
+  location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: location
+        intent: cung_cap_thong_tin_lai_thu
+
+  date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date
+        intent: cung_cap_thong_tin_lai_thu
+
+forms:
+  lien_he_form:
+    required_slots:
+      - name
+      - phone
+      - email
+      
+  test_drive_form:
+    required_slots:
+      - name
+      - phone
+      - car_model
+      - location
+      - date
+
+responses:
+  utter_chao_hoi:
+  - text: "Xin chào! Tôi là trợ lý ảo VinFast. Tôi có thể giúp gì cho bạn về các dòng xe VinFast?"
+  
+  utter_hoi_gia_xe:
+  - text: "Hiện tại VinFast có các dòng xe với mức giá như sau:\n- VF 8: Từ 1,2 tỷ đồng\n- VF 9: Từ 2,3 tỷ đồng\nBạn quan tâm đến dòng xe nào ạ?"
+
+  utter_hoi_khuyen_mai:
+  - text: "Hiện VinFast đang có chương trình ưu đãi:\n- Giảm 50% lệ phí trước bạ\n- Hỗ trợ lãi suất 0% trong 24 tháng\n- Tặng gói bảo dưỡng 3 năm đầu"
+
+  utter_hoi_thong_so_ky_thuat:
+  - text: "Các dòng xe VinFast có thông số kỹ thuật ấn tượng:\n- VF 8: Công suất 402 mã lực, tầm hoạt động 400km\n- VF 9: Công suất 402 mã lực, tầm hoạt động 450km\nBạn cần thông tin cụ thể về dòng nào?"
+
+  utter_hoi_dia_chi_showroom:
+  - text: "VinFast có hệ thống showroom trên toàn quốc. Bạn có thể đến:\n- Hà Nội: 7 Phạm Hùng, Nam Từ Liêm\n- TP.HCM: 171 Nguyễn Thị Minh Khai, Q.3\nBạn ở khu vực nào để tôi tìm đại lý gần nhất?"
+
+  utter_cam_on:
+  - text: "Cảm ơn bạn đã quan tâm đến VinFast! Nếu cần thêm thông tin, tôi luôn sẵn sàng hỗ trợ."
+
+  utter_hoi_thong_tin_lai_thu:
+  - text: "Để đăng ký lái thử, vui lòng cung cấp các thông tin sau:\n- Họ tên\n- Số điện thoại\n- Dòng xe quan tâm\n- Địa điểm gần nhất\n- Thời gian mong muốn"
+
+actions:
+  - action_chao_hoi
+  - action_hoi_gia_xe
+  - action_hoi_khuyen_mai
+  - action_hoi_thong_so_ky_thuat
+  - action_hoi_dia_chi_showroom
+  - action_cam_on
+  - action_default_fallback
+  - action_luu_thong_tin_lien_he
+  - action_gui_thong_tin_test_drive
+  - action_hoi_ten
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
