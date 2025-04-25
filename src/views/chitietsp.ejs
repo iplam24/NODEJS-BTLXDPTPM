@@ -24,18 +24,32 @@
             <div class="logo">
                 <img src="https://storage.googleapis.com/dev-vinfast-vn-cmu-data/2022/08/00b5ffc0-vin-logo-vertical.png" alt="Logo">
             </div>
+
+            
         
             <div class="menu-toggle">☰</div> <!-- Nút mở menu -->
         
             <nav class="menu-nav">
                 <ul class="menu-list">
-                    <li class="menu-item"><a href="/M">Trang chủ</a></li>
+                    
+                    <li class="menu-item"><a href="/">Trang chủ</a></li>
                     <li class="menu-item"><a href="/sanpham">Sản phẩm</a></li>
                     <li class="menu-item"><a href="/lienhe">Liên hệ</a></li>
-                    <li class="menu-item mobile-only" style="margin-left: auto;"><a href="/dangnhap">Đăng nhập</a></li>
-                    <li class="menu-item mobile-only"><a href="/dangky">Đăng ký</a></li>
-                </ul>
+                    <% if (session && session.user) { %>
+                        <li class="menu-item mobile-only" style="margin-left: auto;">
+                            <a href="#">Xin chào, <%= session.user.usernameLogin %></a>
+                        </li>
+                        <li class="menu-item mobile-only">
+                            <a href="#" onclick="confirmLogout()">Đăng xuất</a>
+                        </li>
+                    <% } else { %>
+                        <li class="menu-item mobile-only" style="margin-left: auto;"><a href="/dangnhap">Đăng nhập</a></li>
+                        <li class="menu-item mobile-only"><a href="/dangky">Đăng ký</a></li>
+                    <% } %>
+                    
             </nav>
+        
+            
         </header>
 
         <!-- Nội dung chính

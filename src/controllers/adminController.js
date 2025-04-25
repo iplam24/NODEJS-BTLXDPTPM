@@ -346,7 +346,7 @@ const deleteOrderDB =async(req,res)=>{
     const id  = req.params.carid;
     await deleteOrder(id);
     const order = await getAllOrder();
-    res.render("admin/orders",{listOrders:order});
+    res.render("admin",{listOrders:order});
 }
 module.exports ={getAdmin,getAccount,postCreateNewUserAdmin,getUpDateUser,postUpDateUserAdmin,postDeleteUser,getCar,addCar,searchAccount,
     postDetail,getDetail,deleteCaradmin,getUpDateCar,postUpDateDetail,postUpDateCar,getOrder,postOrder,deleteOrderDB
