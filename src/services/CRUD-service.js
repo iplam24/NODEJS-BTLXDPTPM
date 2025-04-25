@@ -73,4 +73,14 @@ const deleteOrder = async (orderid) => {
         `);
 };
 
-module.exports =  {getAllOrder,addOrder,updateOrder,deleteOrder}
+
+const addContact = async(name, email, message)=>{
+    let pool = await connectDB();
+    let request = pool.request();
+
+    await request
+    .input("Contact_id", sql.Int, parseInt(orderid))
+    .input("CusID", sql.Int, parseInt(cusid))
+    .input("OrderDate", sql.DateTime, new Date(orderdate))
+}
+module.exports =  {getAllOrder,addOrder,updateOrder,deleteOrder,addContact}
