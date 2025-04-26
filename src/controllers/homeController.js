@@ -195,6 +195,7 @@ const getChiTietSanPham = async (req, res) => {
 
     let detail = await getOneDetails(carid);
     let car = await getOneCar(carid);
+    
     console.log("Thông tin chi tiết sản xe mã: ",carid);
     res.render("chitietsp", { detail, car });
 };

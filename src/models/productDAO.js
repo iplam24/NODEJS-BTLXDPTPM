@@ -286,7 +286,7 @@ const addCarDB = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Tor
         const insertedCarID = result.recordset[0].Car_ID;
 
         //Thêm ảnh vào bảng CarImages
-        for (let imgPath of imagePaths) {
+        for (let imgPath of imagePathsFormatted) {
             await pool.request()
                 .input('CarID', sql.NVarChar(10), insertedCarID)
                 .input('ImagePath', sql.NVarChar(255), imgPath)
