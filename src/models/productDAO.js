@@ -84,27 +84,28 @@ const addMoTa=async(req,res)=>{
 
 }
 
-const addDetail =async(car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5)=>{
+const addDetail = async (car_id, title1, ds1, title2, ds2, title3, ds3, title4, ds4, title5, ds5) => {
     let pool = await connectDB();
     let request = pool.request();
     
     await request
-        .input("car_id", car_id)
-        .input("title1", title1)
-        .input("ds1", ds1)
-        .input("title2", title2)
-        .input("ds2", ds2)
-        .input("title3", title3)
-        .input("ds3", ds3)
-        .input("title4", title4)
-        .input("ds4", ds4)
-        .input("title5", title5)
-        .input("ds5", ds5)
+        .input("car_id", sql.NVarChar(10), car_id)
+        .input("title1", sql.NVarChar(255), title1)
+        .input("ds1", sql.NVarChar(sql.MAX), ds1)
+        .input("title2", sql.NVarChar(255), title2)
+        .input("ds2", sql.NVarChar(sql.MAX), ds2)
+        .input("title3", sql.NVarChar(255), title3)
+        .input("ds3", sql.NVarChar(sql.MAX), ds3)
+        .input("title4", sql.NVarChar(255), title4)
+        .input("ds4", sql.NVarChar(sql.MAX), ds4)
+        .input("title5", sql.NVarChar(255), title5)
+        .input("ds5", sql.NVarChar(sql.MAX), ds5)
         .query(`
-            INSERT INTO tbl_detail (Car_ID,Title1, Describe1, Title2, Describe2, Title3, Describe3,Title4,Describe4,Title5,Describe5) 
-            VALUES (@car_id,@title1,@ds1,@title2,@ds2,@title3,@ds3,@title4,@ds4,@title5,@ds5)
+            INSERT INTO tbl_detail (Car_ID, Title1, Describe1, Title2, Describe2, Title3, Describe3, Title4, Describe4, Title5, Describe5) 
+            VALUES (@car_id, @title1, @ds1, @title2, @ds2, @title3, @ds3, @title4, @ds4, @title5, @ds5)
         `);
 }
+
 
 const getAllDetails=async(req,res)=>{
     let pool = await connectDB();
@@ -153,29 +154,34 @@ const deleteCar = async (carid) => {
 };
 
 //UPDATE DETAIL
-const updateDetail = async (car_id,title1,ds1,title2,ds2,title3,ds3,title4,ds4,title5,ds5) => {
+const updateDetail = async (car_id, title1, ds1, title2, ds2, title3, ds3, title4, ds4, title5, ds5) => {
     let pool = await connectDB();
     let request = pool.request();
 
-    // Cập nhật thông tin trong bảng tbl_users
     await request
-        .input("car_id", car_id)
-        .input("title1", title1)
-        .input("ds1", ds1)
-        .input("title2", title2)
-        .input("ds2", ds2)
-        .input("title3", title3)
-        .input("ds3", ds3)
-        .input("title4", title4)
-        .input("ds4", ds4)
-        .input("title5", title5)
-        .input("ds5", ds5)
+        .input("car_id", sql.NVarChar(10), car_id)
+        .input("title1", sql.NVarChar(255), title1)
+        .input("ds1", sql.NVarChar(sql.MAX), ds1)
+        .input("title2", sql.NVarChar(255), title2)
+        .input("ds2", sql.NVarChar(sql.MAX), ds2)
+        .input("title3", sql.NVarChar(255), title3)
+        .input("ds3", sql.NVarChar(sql.MAX), ds3)
+        .input("title4", sql.NVarChar(255), title4)
+        .input("ds4", sql.NVarChar(sql.MAX), ds4)
+        .input("title5", sql.NVarChar(255), title5)
+        .input("ds5", sql.NVarChar(sql.MAX), ds5)
         .query(`
             UPDATE tbl_detail 
-            SET Title1 = @title1, Describe1 = @ds1, Title2 = @title2, Describe2 = @ds2,Title3 = @title3, Describe3 = @ds3,Title4 = @title4, Describe4 = @ds4,Title5 = @title5, Describe5 = @ds5
-            WHERE Car_id = @car_id
+            SET 
+                Title1 = @title1, Describe1 = @ds1, 
+                Title2 = @title2, Describe2 = @ds2,
+                Title3 = @title3, Describe3 = @ds3,
+                Title4 = @title4, Describe4 = @ds4,
+                Title5 = @title5, Describe5 = @ds5
+            WHERE Car_ID = @car_id
         `);
 };
+
 const updateCar = async (CarID, Model, Version, Price, Color, Engine, Cap_KW, Torque_NM, Accel, Range_km, FastCharge, Drivertrain, imagePaths) => {
     try {
         let pool = await connectDB();
