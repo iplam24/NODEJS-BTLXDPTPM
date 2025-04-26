@@ -85,7 +85,7 @@
         <div id="depositModal" class="modal">
             <div class="modal-content">
                 <span class="close" onclick="closeDepositForm()">&times;</span>
-                <h2>Đặt Cọc</h2>
+                <h2>Đặt hàng</h2>
                 <form action="/dat-coc" class="signup-form" method="post">
                     <label>Phiên bản</label>
                     <div  class="inputForm">
@@ -145,7 +145,68 @@
                 </form>
             </div>
         </div>
+<div id="modalForm1" class="modal">
+    <div class="register-container">
+      <span class="closeModal1 close">&times;</span>
+      <h2>Thêm Đơn Hàng</h2>
+      <form action="/admin/addOrder" class="signup-form" method="post">
+        <!-- Các input form như cũ, không cần thay đổi gì -->
+        <label>Mã DH</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào mã DH" name="ID" />
+        </div>
 
+        <label>Mã KH</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào mã khách hàng" name="Ma_KH" />
+        </div>
+
+        <label>Ngày đặt hàng</label>
+        <div class="inputForm">
+        <input type="datetime-local" class="input" name="orderDate" />
+        </div>
+
+
+        <label>Số lượng</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào số lượng" name="Soluong" />
+        </div>
+
+        <label>Giá</label>
+        <div class="inputForm">
+          <input type="text" class="input" placeholder="Nhập vào giá" name="Price" />
+        </div>
+
+        <label>Trạng thái đơn hàng</label>
+        <div class="inputForm">
+        <select class="input" name="orderStatus" >
+            <option value="Chưa thanh toán">Chưa thanh toán</option>
+            <option value="Đã thanh toán">Đã thanh toán</option>
+        </select>
+        </div>
+
+        
+
+        <label>Địa chỉ khách hàng</label>
+        <div class="inputForm">
+          <input type="text" class="input" name="address" placeholder="Nhập vào địa chỉ khách hàng" />
+        </div>
+
+        <label>Hình thức thanh toán</label>
+        <div class="inputForm">
+            <select class="input" name="orderPayment">
+                <option value="Tiền mặt">Tiền mặt</option>
+                <option value="Chuyển khoản">Chuyển khoản</option>
+            </select>
+            </div>
+
+       
+        <div class="inputForm">
+          <button class="button-submitt">Thêm</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
         <!-- QC1 -->
         <div class="content">
